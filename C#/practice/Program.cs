@@ -156,7 +156,13 @@ namespace practice
             Spider spider = new Spider();
             //spider.autoExcute();
             spider.WatcherStrat(@"D:\Documents and Settings\Desktop\SourceHanSansCN", "*.html");
+
+            //UseShell useshell = new UseShell();
+            //useshell.excute();
+
             Console.ReadKey();
+
+
 
 
         }
