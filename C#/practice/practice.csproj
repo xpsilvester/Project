@@ -44,6 +44,7 @@
     <Compile Include="BubbleSorter.cs" />
     <Compile Include="CarDealer.cs" />
     <Compile Include="Currency.cs" />
+    <Compile Include="Document1.cs" />
     <Compile Include="DocumentManager.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="HelloCollection.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="MusicTitles.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Racer.cs" />
     <Compile Include="RegExp.cs" />
     <Compile Include="Spider.cs" />
     <Compile Include="UseShell.cs" />
