@@ -5,3 +5,4 @@ E:\test\后台\practice\practice\bin\Debug\practice.pdb
 E:\test\后台\practice\practice\obj\Debug\practice.csprojResolveAssemblyReference.cache
 E:\test\后台\practice\practice\obj\Debug\practice.exe
 E:\test\后台\practice\practice\obj\Debug\practice.pdb
+E:\test\Project\C#\practice\bin\Debug\practice.exe.config

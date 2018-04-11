@@ -41,12 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="10\Employee.cs" />
     <Compile Include="BubbleSorter.cs" />
     <Compile Include="CarDealer.cs" />
     <Compile Include="Currency.cs" />
+    <Compile Include="DataLib\Formula1.cs" />
+    <Compile Include="DataLib\Program.cs" />
+    <Compile Include="DataLib\Racer.cs" />
+    <Compile Include="DataLib\Team.cs" />
     <Compile Include="Document1.cs" />
     <Compile Include="DocumentManager.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="10\EmployeeId.cs" />
     <Compile Include="HelloCollection.cs" />
     <Compile Include="MathOperations.cs" />
     <Compile Include="MusicTitles.cs" />

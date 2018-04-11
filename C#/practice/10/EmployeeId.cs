@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace practice
+namespace practice._10
 {
     [Serializable]
     public class EmployeeIdException : Exception
