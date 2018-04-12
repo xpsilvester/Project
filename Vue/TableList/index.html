@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue表格操作</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js"></script>
+    <script src="tableData.js"></script>
+    <link href="style.css" type="text/css" rel="stylesheet"/>
+</head>
+
+<body>
+    <div id="grid">
+        <input type="text" v-model="searchQuery" placeholder="please enter text" />
+        <demo-grid :rows="rowData" :columns="columnData" :filter-key="searchQuery">
+            <!--注意这里不能出现驼峰式-->
+        </demo-grid>
+    </div>
+    <script type="text/x-template" id="grid-template">
+        <table v-if="filterData.length">
+            <thead>
+                <th v-for="col in columns" @click="order(col)">{{col}}
+                    <!--不同的列有不同的排序，需要一个保存列的排序对象setOrder-->
+                    <span class="arrow" :class="setOrder[col] > 0 ? 'asc':'dsc'"></span>
+                </th>
+            </thead>
+            <tbody>
+                <tr v-for="row in filterData">
+                    <td v-for="col in columns">{{row[col]}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <p v-else>No match data...</p>
+    </script>
+    <div id="tableList">
+        <input type="text" v-model="message" placeholder="please enter text" />
+        <div v-for="item in tableListDate">
+            <h3>{{item.name}}</h3>
+            <span>产品类型</span><span>产品名称</span><span>保修期</span>
+            <table border="0" cellpadding="0" cellspacing="0" v-for="tr in item.detail">
+                <tbody v-for="(td,tdindex) in tr.model">
+                    <tr class="trTpmini" v-for="td1 in td">
+                        <td width="33.3333%">
+                            {{tr.type}}  
+                        </td>
+                        <td width="33.3333%">
+                            {{td1}}
+                        </td>
+                        <td width="33.3333%">
+                            {{tr.time[tdindex]}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>  
+        </div> 
+    </div>
+</body>
+<script type="text/javascript">
+
+var tableList = new Vue({
+    el: '#tableList',
+    data: {
+        message: 'Hello Vue!',
+        tableListDate : consultTable
+    },
+    computed: {
+        filterData: function() {
+            var sortKey = this.sortKey
+            var data = this.rows.slice()
+            var filterKey = this.filterKey && this.filterKey.toLowerCase()
+            var order = this.setOrder[sortKey]
+
+            if (filterKey) {
+                data = data.filter(function(row) {
+                    return Object.keys(row).some(function(key) {
+                        return String(row[key]).toLowerCase().indexOf(filterKey) > -1
+                    })
+                })
+            }
+
+            if (sortKey) {
+
+                data.sort(function(a, b) {
+                    a = a[sortKey]
+                    b = b[sortKey]
+                    return order > 0 ? a > b : a < b
+                })
+            }
+
+            return data
+        }
+    }
+})
+
+</script>
+<script type="text/javascript">
+     Vue.component('demo-grid', {
+        template: '#grid-template',
+        props: {
+            rows: Array,
+            columns: Array,
+            filterKey: String
+        },
+        data: function() {
+            var colOrders = {}
+            this.columns.forEach(function(col) {
+                colOrders[col] = 1
+            })
+            return {
+                setOrder: colOrders,
+                sortKey: ''
+            }
+
+        },
+        computed: {
+            filterData: function() {
+                var sortKey = this.sortKey
+                var data = this.rows.slice()
+                var filterKey = this.filterKey && this.filterKey.toLowerCase()
+                var order = this.setOrder[sortKey]
+
+                if (filterKey) {
+                    data = data.filter(function(row) {
+                        return Object.keys(row).some(function(key) {
+                            return String(row[key]).toLowerCase().indexOf(filterKey) > -1
+                        })
+                    })
+                }
+
+                if (sortKey) {
+
+                    data.sort(function(a, b) {
+                        a = a[sortKey]
+                        b = b[sortKey]
+                        return order > 0 ? a > b : a < b
+                    })
+                }
+
+                return data
+            }
+        },
+        methods: {
+            //对一个包含对象的数组的排序，需要提供一个对象键并以此值来进行排序
+            order: function(key) {
+                this.sortKey = key
+                this.setOrder[key] = this.setOrder[key] * -1
+            },
+        }
+
+    })
+    var vm = new Vue({
+        el: '#grid',
+        data: {
+            columnData: ['name', 'age'],
+            searchQuery: '',
+            rowData: [{
+                name: 'xpsilvester',
+                age: '10'
+            }, {
+                name: 'wanglisu',
+                age: '11'
+            }, {
+                name: 'sujiding',
+                age: '17'
+            }, {
+                name: 'pingse',
+                age: '3'
+            }]
+        },
+
+    })
+</script>
+</html>
