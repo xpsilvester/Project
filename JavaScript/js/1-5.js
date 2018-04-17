@@ -335,28 +335,194 @@ var sum=values.reduceRight(function(prev,cur,index,array){
 console.log(sum);//15
 
 
+//Date类型
+var now=new Date();
+console.log(now);//Tue Apr 17 2018 09:04:31 GMT+0800 (中国标准时间)
+console.log(Date.parse(now));//1523927071000
+
+var y2k=new Date(Date.UTC(2000,0));//GMT时间2000年1月1日午夜零时
+console.log(y2k);//Sat Jan 01 2000 08:00:00 GMT+0800 (中国标准时间)
 
 
+var arr2 = new Array(1,2,10,9,5,10,23,34,435,4534,12,
+	324,34,34,34,32,42,43,42,54,5,6,6767,4564,6546,4,
+	345,435,56,5653,5435,345,65,65,45,435,4);
+//计算程序执行时间
+function calculateTime(){
+	//取得开始时间
+	var start=Date.now();
+	console.log(start);
+	//调用函数
+	bubbleSort(arr2);
+	//取得停止时间
+	var stop=Date.now(),
+		result=stop-start;
+	console.log(stop);
+	console.log(result);
+}
+
+function bubbleSort(A){
+	var i,j,flag,temp;
+	for(i=A.length-1;i>=1;i--){
+		flag=0;
+		for(j=1;j<=i;j++){
+			if(A[j-1]>A[j]){
+				temp=A[j];
+				A[j]=A[j-1];
+				A[j-1]=temp;
+				flag=1;
+			}		
+		}
+		if(flag==0)
+				return;
+	}
+}
+
+calculateTime();
+
+var now=new Date();
+console.log(now.toLocaleDateString());//2018/4/17
+console.log(now.toLocaleTimeString());//上午9:27:30
+
+//RegExp类型
+
+var pattern1=/[bc]at/i;//匹配第一个"bat"或"cat",不区分大小写
+var pattern2=new RegExp("[bc]at","i");//与pattern1相同，只不过是使用构造函数创建的
+
+var re=null,i;
+//只为/cat/创建了一个RegExp实例，第二次调用从索引为3的字符开始
+for(i=0;i<10;i++){
+	re = /cat/g;
+	re.test("catastrophe");
+}
+//每一次都创建一个实例
+for(i=0;i<10;i++){
+	re = new RegExp("cat","g");
+	re.test("catastrophe");
+}
+
+//exec():接受一个参数，即要应用模式的字符串，然后返回包含第一个匹配信息的数组
+var text ="mom and dad and baby";
+var pattern=/mom( and dad( and baby)?)?/gi;
+
+var matches=pattern.exec(text);
+console.log(matches.index);//0
+console.log(matches.input);//mom and dad and baby
+console.log(matches[0]);//mom and dad and baby
+console.log(matches[1]);//and dad and baby
+console.log(matches[2]);//and baby
+
+//test():接受一个字符串参数，在模式与该传参数匹配的情况下返回true
+var text="000-00-0000";
+var pattern=/\d{3}-\d{2}-\d{4}/;
+console.log(pattern.test(text));//true
+
+//Function类型
+
+function callSomeFunction(someFunction,someArgument){
+	return someFunction(someArgument);
+}
+
+function add10(num){
+	return num+10;
+}
+var result1=callSomeFunction(add10,10);
+
+console.log(result1);//20
+
+//返回函数
+function createComparisonFunction(propertyName){
+	return function(object1,object2){
+		var value1=object1[propertyName];
+		var value2=object2[propertyName];
+
+		if(value1 < value2){
+			return -1;
+		} else if(value1 > value2){
+			return 1;
+		}else{
+			return 0;
+		}
+	};
+}
+
+var data=[{name:"Zachary",age:28},{name:"Nicholas",age:29}];
+data.sort(createComparisonFunction("name"));
+console.log(data[0].name);//Nicholas
+
+data.sort(createComparisonFunction("age"));
+console.log(data[0].name);//Zachary
 
 
+function factorial(num){
+	if(num<=1){
+		return 1;
+	}else{
+		return num*factorial(num-1);
+	}
+}
 
+//修改解除factorial函数名耦合 用arguments.callee()
 
+function factorial(num){
+	if(num <=1){
+		return 1;
+	}else{
+		return num*arguments.callee(num-1);
+	}
+}
+var trueFactorial=factorial;
+factorial=function(){
+	return 0;
+}
+console.log(trueFactorial(5));//120
+console.log(factorial(5));//0
 
+//this
+window.color="red";
+var o={color:"blue"};
 
+function sayColor(){
+	console.log(this.color);
+}
+sayColor();//red
 
+o.sayColor=sayColor;
+o.sayColor();//blue
 
+//apply():接受两个参数：一个是在其中运行函数的作用域，
+//另一个是参数数组，第二个参数可以是Array的实例，也可以是arguments对象
+function sum10(num1,num2){
+	return num1+num2;
+}
+function callSum1(num1,num2){
+	return sum10.apply(this,arguments);//传入arguments对象
+}
+function callSum2(num1,num2){
+	return sum10.apply(this,[num1,num2]);//传入数组
+}
 
+console.log(callSum1(10,20));//30
+console.log(callSum2(10,20));//30
 
+//call():与apply方法作用相同，区别在于接收参数方式不同，在使用call时，
+//传递函数的参数必须逐个列举出来
 
+function callSum(num1,num2){
+	return sum10.call(this,num1,num2);
+}
 
+console.log(callSum(10,20));
 
+//扩充函数赖以运行的作用域
 
+sayColor.call(this);//red
+sayColor.call(window);//red
+sayColor.call(o);//blue
 
-
-
-
-
-
+//bind():创建一个函数的实例，其this值会被绑定到传给bind()函数的值
+var objectSayColor=sayColor.bind(o);
+objectSayColor();//blue
 
 
 
