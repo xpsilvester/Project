@@ -1,85 +1,24 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+    <div v-html="msg"></div>
+    <div>
+      <h1>site : {{site}}</h1>
+      <h1>url : {{url}}</h1>
+      <h1>{{details()}}</h1>
+      <h1>Alexa : {{alexa}}</h1>
+    </div>
+    <label for="r1">修改颜色</label>
+    <input type="checkbox" v-model="class1" id="r1">
+    <br>
+    <div v-bind:class="{'class1':class1}">
+      directiva v-bind:class
+    </div>
+    <h1>{{site}} 反转：{{ reverseMessage }}</h1>
+    <input type="button" value="点击" v-on:click="isSeen()"/>
+    <h1 v-if="seen">现在你看到了</h1>
+    <br>
+    <input v-model="site">
+    <h1>用过滤器把首字母变大写：{{ site | capitalize }}</h1>
   </div>
 </template>
 
@@ -87,8 +26,29 @@
 export default {
   name: 'HelloWorld',
   data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+    var data = { msg: '<h1>Welcome to Vue.js</h1>', site: '学习vue', url: 'www.xpsilvester.com', alexa: '10000', class1: false, seen: true }
+    return data
+  },
+  methods: {
+    'details': function () {
+      return this.site + '- 学的不仅是技术！'
+    },
+    'isSeen': function () {
+      this.seen = !this.seen
+    }
+  },
+  filters: {
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.slice(0, 2) + value.charAt(2).toUpperCase() + value.slice(3)
+    }
+  },
+  computed: {
+    // 计算属性的getter,computed 是基于它的依赖缓存，只有相关依赖发生改变时才会重新取值
+    reverseMessage: function () {
+      // `this` 指向 vm 实例
+      return this.site.split('').reverse().join('')
     }
   }
 }
@@ -109,5 +69,9 @@ li {
 }
 a {
   color: #42b983;
+}
+.class1 {
+  background: #444;
+  color: #eee;
 }
 </style>
