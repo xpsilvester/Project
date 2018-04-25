@@ -1,0 +1,36 @@
+<template>
+  <div class="pptlist">
+    <div v-html="msg"></div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'PPTList',
+  data () {
+    return { msg: '<h1>Welcome to PPTList</h1>' }
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h1, h2 {
+  font-weight: normal;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+.class1 {
+  background: #444;
+  color: #eee;
+}
+</style>
