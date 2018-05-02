@@ -1,11 +1,13 @@
 <!--index.wxml-->
-<view>{{text}}</view>
-<button bindtap="changeText"> Change normal data </button>
-<view>{{num}}</view>
-<button bindtap="changeNum"> Change normal num </button>
-<view>{{array[0].text}}</view>
-<button bindtap="changeItemInArray"> Change Array data </button>
-<view>{{object.text}}</view>
-<button bindtap="changeItemInObject"> Change Object data </button>
-<view>{{newField.text}}</view>
-<button bindtap="addNewField"> Add new data </button>
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view>
