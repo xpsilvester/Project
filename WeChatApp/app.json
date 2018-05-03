@@ -1,7 +1,9 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/wxParse/wxParse",
+    "pages/webview/webview"
   ],
   "window":{
     "backgroundTextStyle":"light",

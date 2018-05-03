@@ -1,0 +1,11 @@
+
+<import src="../../wxParse/wxParse.wxml"/> 
+<view class="wxParse">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view>
+
+<view style="padding: 20px 10px; background-color:#eee;">
+    <block wx:for="{{replyTemArray}}" wx:key="">
+        回复{{index}}:<template is="wxParse" data="{{wxParseData:item}}"/>
+    </block>
+</view>

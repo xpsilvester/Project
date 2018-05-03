@@ -7,7 +7,10 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+  <navigator url='/pages/webview/webview'>
+    在小程序引入webview
+  </navigator>
+  <navigator url='/pages/wxParse/wxParse'>
+    wxParse：在小程序引入html标签
+  </navigator>
 </view>

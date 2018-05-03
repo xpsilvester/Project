@@ -19,3 +19,12 @@
 .usermotto {
   margin-top: 200px;
 }
+navigator{
+  width: 200rpx;
+  height: 245rpx;
+  border: 1rpx solid #aaa;
+  margin: 100rpx auto;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 10rpx;
+}
