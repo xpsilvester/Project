@@ -13,4 +13,7 @@
   <navigator url='/pages/wxParse/wxParse'>
     wxParse：在小程序引入html标签
   </navigator>
+  <navigator url='/pages/dropDownMenu/dropDownMenu'>
+    下拉菜单
+  </navigator>
 </view>

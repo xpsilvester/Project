@@ -1,0 +1,12 @@
+<!--pages/dropDownMenu/dropDownMenu.wxml-->
+<dl class="menu">  
+    <block wx:for="{{reportData}}" wx:key="idMenu" wx:for-item="menuItem" wx:for-index="idMenu">  
+      <dt data-index="{{idMenu}}" bindtap="tapMainMenu">{{menuItem.reportType}}</dt>  
+      <dd class="{{subMenuDisplay[idMenu]}}" animation="{{animationData[idMenu]}}">  
+        <ul wx:for="{{menuItem.chilItem}}" wx:key="chilItem.ID" wx:for-item="chilItem" wx:for-index="idChil">  
+          <li class="{{subMenuHighLight[idMenu][idChil]}}" bindtap="tapSubMenu" data-index="{{idMenu}}-{{idChil}}">{{chilItem.Name}}</li>  
+        </ul>  
+        <picker class="timePicker" mode="date" value="{{dateValue}}" bindchange="datePickerBindchange" start="1999-01-01" end="2999-12-12"> 时间：{{dateValue}}</picker>  
+      </dd>  
+    </block>  
+</dl> 
