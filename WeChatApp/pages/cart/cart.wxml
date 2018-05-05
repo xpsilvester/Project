@@ -1,0 +1,69 @@
+<!--pages/cart/cart.wxml-->
+<view class="container">
+  <!-- 购物车不为空 -->
+  <view wx:if="{{cartList.length}}" class="cart-not-empty">
+    <view class="cart-state">
+      <!-- 全选 -->
+      <view bindtap="selectAll" class="select-all" >
+        <icon wx:if="{{!selectedAllStatus}}" type="clear" color="white" size="18" class="no-check"/>
+        <icon wx:else type="success" color="orange" size="20" class="check"/>
+        <text>全选</text>
+      </view>
+      <!-- 编辑 -->
+      <view bindtap="editCartList" class="edit">
+        <text>{{editOrComplete}}</text>
+      </view>
+    </view>
+
+    <!-- 购物车列表 -->
+    <view class="cart-list">
+      <view class="cart-list-item" wx:for="{{cartList}}" wx:for-item="list" wx:key="id">
+        <view class="select-one" bindtap="selectOne">
+          <icon wx:if="{{!list.selected}}" type="clear" color="white" size="18" class="no-check" data-id="{{list.id}}"/>
+          <icon wx:else type="success" color="orange" size="20" class="check" data-id="{{list.id}}"/>
+        </view>
+
+        <view class="cart-list-a" bindtap="getJumpURL" data-id="{{list.id}}">
+          <image class="cart-list-img" src="{{list.img}}"></image>
+
+          <view class="cart-list-text">
+            <text class="cart-list-title">{{list.title}}</text>
+            <view>
+              <text class="cart-list-price">￥{{list.price}}</text>
+              <text class="cart-list-num" wx:if="{{editOrComplete == '编辑'}}">x{{list.num}}</text>
+            </view>
+          </view>
+
+          <view class="cart-list-cnt" wx:if="{{editOrComplete == '完成'}}">
+            <!-- 减号 -->
+            <text class="cart-list-minus {{list.minusClass}}" data-id="{{list.id}}" catchtap="minus">-</text>
+            <!-- 数值 -->
+            <input type="number" catchchange="changeNum" class="int" data-id="{{list.id}}" value="{{list.num}}"/>
+            <!-- 加号 -->
+            <text class="cart-list-plus" data-id="{{list.id}}" catchtap="plus">+</text>
+          </view>
+
+        </view>
+      </view>
+    </view>
+
+    <!-- 合计 -->
+    <view class="cart-bottom">
+      <button class="buy-now {{buyClass}}" disabled="{{!canBuy}}" bindtap="toBuy">立即购买</button>
+      <view class="cart-bottom-word">
+        <text class="total">合计：￥{{totalPrice}}</text>
+        <text class="hints">不含运费</text>
+      </view>
+    </view>
+
+    <!-- 删除 -->
+    <view class="cart-delete {{cartDeleteClass}}">
+      <button class="delete {{deleteClass}}" disabled="{{!canDelete}}" bindtap="deleteSelected">删除</button>
+    </view>
+
+  </view>
+  <!-- 购物车为空 -->
+  <view wx:else class="cart-empty">
+    <text>购物车还是空的</text>
+  </view>
+</view>

@@ -1,0 +1,73 @@
+/* pages/order/pay/pay.wxss */
+.container{
+  background: #fff;
+}
+.address{
+  height: 80rpx;
+  background: #fff;
+  font-size: 30rpx;
+  line-height: 80rpx;
+  border-top: 10rpx solid #f6f6f6;
+  border-bottom: 10rpx solid #f6f6f6; 
+  width: 90%;
+  padding: 0 5%;
+}
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+.product-list{
+  background: #fff;
+}
+.product-items{
+  width: 100%;
+  height: 250rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.product-items image{
+  width: 200rpx;
+  height: 200rpx;
+  float: left;
+  margin:25rpx 0 0 20rpx;
+}
+.product-items text{
+  float: left;
+  font-size: 30rpx;
+  margin:30rpx 30rpx 0; 
+}
+.product-items .item-title{
+  width: 460rpx;
+}
+.product-items .price{
+  color: #FF8247;
+}
+.product-items .num{
+  margin-left: -5rpx;
+  color: #ccc;
+}
+.product-items .pay{
+  width: 460rpx;
+  text-align: right;
+}
+.payGrey{
+  height: 80rpx;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background: #f6f6f6;
+  line-height: 80rpx;
+  color: #ccc;
+}
+.payActive{
+  height: 80rpx;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background: #FF8247;
+  line-height: 80rpx;
+  color: #fff;
+}

@@ -2,14 +2,42 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/wxParse/wxParse",
-    "pages/webview/webview",
-    "pages/dropDownMenu/dropDownMenu"
+    "pages/cart/cart",
+    "pages/about/about",
+    "pages/products/list/list",
+    "pages/products/detail/detail",
+    "pages/products/detail/args",
+    "pages/order/list/list",
+    "pages/order/pay/pay",
+    "pages/order/refunds/refunds"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "货架",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "selectedColor": "#000",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/ic_home_normal.png",
+        "selectedIconPath": "images/ic_home_pressed.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "images/ic_cart_normal.png",
+        "selectedIconPath": "images/ic_cart_pressed.png"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "我",
+        "iconPath": "images/ic_about_normal.png",
+        "selectedIconPath": "images/ic_about_pressed.png"
+      }
+    ]
   }
 }

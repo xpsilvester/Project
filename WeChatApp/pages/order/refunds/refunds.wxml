@@ -1,0 +1,24 @@
+<!--pages/order/refunds/refunds.wxml-->
+<!--pages/order/list/list.wxml-->
+<view class="container">
+<!--顶部tag-->
+  <view class='tag'>
+    <view bindtap="all">全部</view>
+  </view>
+  <!-- 订单列表 -->
+  <view class='product-list' wx:if="{{orderList.length > 0}}">
+    <view class='product-items' wx:for="{{orderList}}" wx:key="unique">
+      <image class='pro-img' src='{{item.imgSrc}}'></image>
+      <text class='item-title'>{{item.title}}</text>
+      <text class='price'>￥{{item.price}}</text>
+      <text class='num'>x {{item.num}}</text>
+      <text class='pay'>实付款:￥{{item.price*item.num}}</text>
+      <view class='return'>
+        <text>退货</text>
+        <text>换货</text>
+      </view>
+    </view>
+  </view>
+  <view class='none' wx:else><text>没有订单</text></view>
+</view>
+

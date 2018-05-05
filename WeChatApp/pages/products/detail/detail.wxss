@@ -1,0 +1,252 @@
+/* pages/products/detail/detail.wxss */
+swiper{
+  width: 100%;
+  height: 750rpx;
+}
+swiper-item image{
+  width: 100%;
+  height: 750rpx;
+}
+.item-title{
+  font-size: 28rpx;
+  line-height: 36rpx;
+  margin:20rpx 0;
+  display:block;
+}
+.product-tip{
+  background: #fff;
+  width:90%;
+  padding:30rpx 5% 50rpx;
+}
+.product-title{
+  font-size: 34rpx;
+  line-height: 36rpx;
+  margin:20rpx 0;
+  display:block;
+  width: 100%;
+}
+.price-now{
+  font-size: 32rpx;
+  color: #FF8247;
+}
+.price-old{
+  margin-left: 10rpx;
+  font-size: 32rpx;
+  color:#ccc;
+  text-decoration:line-through;
+}
+.pro-args{
+  width: 90%;
+  background: #fff;
+  padding:40rpx 5% 5rpx;
+  margin:15rpx auto;
+  border-bottom:15rpx solid #f5f5f5;
+}
+.pro-detail-title{
+  padding-left:15rpx;
+  border-left:2px solid #000;
+  font-size:30rpx;
+  margin-bottom:30rpx;
+}
+.pro-detail-logo{
+  font-size: 28rpx;
+  float: left;
+  margin-bottom:15rpx;
+  clear: both;
+}
+.pro-detail-logo-name{
+  font-size: 28rpx;
+  float: right;
+}
+.detail-list{
+  float: left;
+  font-size: 28rpx;
+  width: 100%;
+  margin-top:25rpx;
+  border-top:1rpx solid #f5f5f5;
+  padding-top:10rpx;
+  line-height:50rpx;
+}
+.detail-list .arrow{
+  float: right;
+}
+.pro-detail{
+  width: 100%;
+}
+.pro-detail .pro-detail-title{
+  width: 90%;
+  margin:20rpx auto 30rpx;
+}
+.pro-detail image{
+  width: 100%;
+  height: 2000px;
+  margin-bottom: 110rpx;
+}
+.bottomBar{
+  position: fixed;
+  width: 100%;
+  height: 120rpx;
+  background: #fff;
+  bottom: 0;
+  display: flex;
+  font-size: 30rpx;
+  line-height: 120rpx;
+}
+.online{
+  width: 15%;
+  border: 1rpx solid #f5f5f5;
+}
+.online image{
+  width: 50rpx;
+  height: 50rpx;
+  margin:0 -25rpx;
+  display: block;
+}
+.online button{
+  width: 50rpx;
+  height: 50rpx;
+  margin: 35rpx auto;
+  display: block;
+  background: #fff;
+}
+.online button::after{
+  border: none;
+}
+.cart{
+  width: 15%;
+  border: 1rpx solid #f5f5f5;
+  position: relative;
+}
+.cart image{
+  width: 50rpx;
+  height: 50rpx;
+  margin: 35rpx auto;
+  display: block;
+}
+.cartNum{
+  width:30rpx;
+  height:30rpx;
+  border-radius:15rpx;
+  background:#FF0000;
+  display:block;
+  position:absolute;
+  top:27rpx;
+  right:15rpx;
+  z-index:99;
+  text-align: center;
+  line-height: 30rpx;
+  font-size: 22rpx;
+  color: #fff;
+}
+.join{
+  width: 35%;
+  text-align: center;
+  border: 1rpx solid #f5f5f5;
+}
+.buy{
+  width: 35%;
+  background: #FF8247;
+  text-align: center;
+  color: #fff;
+}
+.join-box{
+  width: 100%;
+  height: 385rpx;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  z-index: 99;
+}
+.join-box image{
+  width: 130rpx;
+  height: 130rpx;
+  margin: 5%;
+  float: left;
+}
+.join-box text{
+  display: block;
+  float: left;
+  font-size: 28rpx;
+  width:400rpx;
+}
+.join-title{
+  margin-top:5%; 
+}
+.join-price{
+  color: #FF8247;
+  margin-top: 10rpx;
+}
+.pro-stock{
+  width: 90%;
+  border-top:1rpx solid #f5f5f5;
+  clear: both;
+  margin: 0 auto;
+  padding:10rpx 0;
+}
+.pro-stock text{
+  margin-top: 15rpx;
+  width: 200rpx;
+}
+.grey{
+  color:#808080;
+  margin-left: -140rpx;
+}
+/*加号和减号*/  
+/*主容器*/  
+.stepper {  
+    width: 80px;  
+    height: 26px;  
+    /*给主容器设一个边框*/  
+    border: 1px solid #ccc;  
+    border-radius: 3px;  
+    margin:8rpx auto;
+    float:right; 
+}  
+.stepper text {  
+    width: 19px;  
+    line-height: 12px;  
+    text-align: center;  
+    float: left;  
+}  
+  
+/*数值*/  
+.stepper input {  
+    width: 40px;  
+    height: 26px;  
+    float: left;  
+    margin: 0 auto;  
+    text-align: center;  
+    font-size: 12px;  
+    /*给中间的input设置左右边框即可*/  
+    border-left: 1px solid #ccc;  
+    border-right: 1px solid #ccc;  
+}  
+  
+/*普通样式*/  
+.stepper .normal{  
+    color: black;  
+}  
+  
+/*禁用样式*/  
+.stepper .disabled{  
+    color: #ccc;  
+}  
+.join-box .button{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 90rpx;
+  font-size: 34rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: #fff;
+  background: #FF8247;
+}
+.mask{
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  background:rgba(0,0,0,0.4);
+  overflow: hidden;
+}

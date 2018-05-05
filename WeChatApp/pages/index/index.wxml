@@ -1,19 +1,26 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <!-- 顶部logo -->
+  <view class="header">
+    <view class="logo">
+      <image src="{{logoUrl}}"></image>
+    </view>
+    <view class='logo-title'>{{logoTitle}}</view>
   </view>
-  <navigator url='/pages/webview/webview'>
-    在小程序引入webview
-  </navigator>
-  <navigator url='/pages/wxParse/wxParse'>
-    wxParse：在小程序引入html标签
-  </navigator>
-  <navigator url='/pages/dropDownMenu/dropDownMenu'>
-    下拉菜单
-  </navigator>
+  <!-- 产品列表 -->
+  <view class='product-list'>
+    <view class='product-category' bindtap='toProList'>
+      {{category}}
+      <view class='arrow'>></view>
+    </view>
+    <view class='product-items' wx:for="{{proList}}" wx:key="SysNo" data-id="{{item.SysNo}}" catchtap='toProDetail'>
+      <image class='pro-img' src='{{item.ProductPicSrc200}}'></image>
+      <text class='item-title'>{{item.ProductName}}</text>
+      <text class='price-now'>￥{{item.CurrentPrice}}</text>
+      <text class='price-old'>￥{{item.BasicPrice}}</text>
+    </view>
+    <view class='more' bindtap='toProList'>更多>></view>
+  </view>
+   <view class='show-all' bindtap='toProList'>{{showAll}}</view> 
 </view>
+

@@ -1,0 +1,69 @@
+<!--pages/products/detail/detail.wxml-->
+<view class="container">
+  <!-- 轮播图 -->
+  <swiper indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="true">
+    <block wx:for="{{imgUrls}}" wx:key="id">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 标题 -->
+  <view class='product-tip'>
+    <view class='product-title'>{{proListArray[proId].ProductName}}</view>
+    <text class='price-now'>￥{{proListArray[proId].CurrentPrice}}</text>
+    <text class='price-old'>￥{{proListArray[proId].BasicPrice}}</text>
+  </view>
+  <!-- 参数 -->
+  <view class='pro-args'>
+    <view class='pro-detail-title'>商品参数</view>
+    <view class='pro-detail-logo'>品牌</view><view class='pro-detail-logo-name'>TP-LINK/普联</view>
+    <view class='pro-detail-logo'>传输速率</view><view class='pro-detail-logo-name'>{{proDetail.transRate}}</view>
+    <view class='pro-detail-logo'>路由器类型</view><view class='pro-detail-logo-name'>{{proDetail.routerType}}</view>
+    <view class='detail-list' bindtap='toArgs'>
+      详细参数
+      <view class='arrow'>></view>
+    </view>
+  </view>
+  <!-- 详情 -->
+  <view class='pro-detail'>
+    <view class='pro-detail-title'>商品详情</view>
+    <image wx:for="{{proListArray[proId].ProductDescLong}}" src='{{item}}' wx:key="id" mode='widthFix'></image>
+  </view> 
+  <!-- 底部按钮 -->
+  <view class='bottomBar'>
+    <view class='online'>
+      <button open-type="contact" session-from="weapp">
+          <image src='/images/comments.png'></image>
+      </button>
+    </view>
+    <view class='cart' bindtap='toCart'>
+      <image src='/images/cart.png'></image>
+      <text class='cartNum' wx:if="{{cartNum}}">{{cartNum}}</text>
+    </view>
+    <view class='join' bindtap="addCart">加入购物车</view>
+    <view class='buy' bindtap="addBuy">立即购买</view>
+  </view>
+  <!-- 加入购物车/立即购买弹出框 -->
+  <view class='join-box' hidden="{{boxFlag}}">
+    <image src='{{proListArray[proId].ProductPicSrc200}}'></image>
+    <text class='join-title'>{{proListArray[proId].ProductName}}</text>
+    <text class='join-price'>￥{{proListArray[proId].CurrentPrice}}</text>
+    <!-- 库存 -->
+    <view class='pro-stock'>
+      <text>数量</text> <text class='grey'>（库存{{stock}}件）</text>
+      <!-- 加减按钮 --> 
+      <view class="stepper">  
+        <!-- 减号 -->  
+        <text class="{{minusStatus}}" bindtap="bindMinus">-</text>  
+        <!-- 数值 -->  
+        <input type="number" bindchange="bindManual" value="{{num}}" />  
+        <!-- 加号 -->  
+        <text class="normal" bindtap="bindPlus">+</text>  
+      </view>     
+    </view>
+    <view class='button' bindtap="{{addButton=='立即购买'? 'toPay':'toAddCart'}}">{{addButton}}</view>
+  </view>
+  <view class='mask' hidden="{{boxFlag}}" bindtap="addHide"></view>
+</view>

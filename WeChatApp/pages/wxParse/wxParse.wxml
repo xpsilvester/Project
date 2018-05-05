@@ -1,8 +1,0 @@
-<!--pages/wxParse/wxParse.wxml-->
-<import src="../../wxParse/wxParse.wxml"/> 
-<text>引入html标签</text>
-<template is="wxParse" data="{{wxParseData:article.nodes}}"/>
-<template is="wxParse" data="{{wxParseData:img.nodes}}"/>
-
-
-

@@ -12,8 +12,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.9.98",
-	"appid": "touristappid",
-	"projectname": "shop",
+	"appid": "wx133c603714b47313",
+	"projectname": "tpshop",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -23,13 +23,66 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": 0,
+					"name": "cart",
+					"pathName": "pages/cart/cart",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "pages/products/detail/detail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "商品详情列表",
+					"pathName": "pages/products/detail/args",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "产品列表",
+					"pathName": "pages/products/list/list",
+					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "我的订单",
+					"pathName": "pages/order/list/list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "购买",
+					"pathName": "pages/order/pay/pay",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "退换货",
+					"pathName": "pages/order/refunds/refunds",
+					"query": ""
+				},
+				{
+					"id": 7,
+					"name": "about",
+					"pathName": "pages/about/about",
+					"query": ""
+				}
+			]
 		}
 	}
 }

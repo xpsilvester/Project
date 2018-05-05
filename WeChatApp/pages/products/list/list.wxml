@@ -1,0 +1,18 @@
+<!--pages/products/list/list.wxml-->
+<view class="container">
+<!--顶部tag-->
+  <view class='tag'>
+    <view class="{{tagNum==0?'active':'default'}}" bindtap="price">价格{{order}}</view>
+    <view class="{{tagNum==1?'active':'default'}}" bindtap='sale'>销量</view>
+    <view class="{{tagNum==2?'active':'default'}}" bindtap='time'>上架时间</view>
+  </view>
+  <!-- 产品列表 -->
+  <view class='product-list'>
+    <view class='product-items' wx:for="{{proList}}" wx:key="unique" bindtap='toProDetail'>
+      <image class='pro-img' src='{{item.ProductPicSrc200}}'></image>
+      <text class='item-title'>{{item.ProductName}}</text>
+      <text class='price-now'>￥{{item.CurrentPrice}}</text>
+    </view>
+  </view>
+  <view class='end'>—— END ——</view>
+</view>

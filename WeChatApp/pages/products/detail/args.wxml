@@ -1,0 +1,19 @@
+<!--pages/products/detail/args.wxml-->
+<view class="container">
+  <view class='pro-args'>
+    <view class='pro-detail-title'>商品参数</view>
+    <view class='pro-detail-logo'>品牌</view><view class='pro-detail-logo-name'>TP-LINK/普联</view>
+    <view class='pro-detail-logo'>传输速率</view><view class='pro-detail-logo-name'>{{proDetail.transRate}}</view>
+    <view class='pro-detail-logo'>路由器类型</view><view class='pro-detail-logo-name'>{{proDetail.routerType}}</view>
+    <view class='pro-detail-logo'>传输速率</view><view class='pro-detail-logo-name'>{{proDetail.transRate}}</view>
+    <view class='pro-detail-logo'>路由器类型</view><view class='pro-detail-logo-name'>{{proDetail.routerType}}</view>
+    <view class='pro-detail-logo'>传输速率</view><view class='pro-detail-logo-name'>{{proDetail.transRate}}</view>
+    <view class='pro-detail-logo'>路由器类型</view><view class='pro-detail-logo-name'>{{proDetail.routerType}}</view>
+    <view class='pro-detail-logo'>传输速率</view><view class='pro-detail-logo-name'>{{proDetail.transRate}}</view>
+    <view class='pro-detail-logo'>路由器类型</view><view class='pro-detail-logo-name'>{{proDetail.routerType}}</view>
+    <view class='pro-detail-logo'>传输速率</view><view class='pro-detail-logo-name'>{{proDetail.transRate}}</view>
+    <view class='pro-detail-logo'>路由器类型</view><view class='pro-detail-logo-name'>{{proDetail.routerType}}</view>
+    <view class='pro-detail-logo'>传输速率</view><view class='pro-detail-logo-name'>{{proDetail.transRate}}</view>
+    <view class='pro-detail-logo'>路由器类型</view><view class='pro-detail-logo-name'>{{proDetail.routerType}}</view>
+  </view>
+</view>

@@ -1,0 +1,37 @@
+<!--pages/about/about.wxml-->
+<view class="container">
+  <!-- 头像 -->
+  <view class="userinfo">
+     <!-- <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>  -->
+     <!-- <block wx:else>  -->
+      <!-- <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image> -->
+      <open-data type="userAvatarUrl" class="userinfo-avatar"></open-data>
+      <open-data type="userNickName" class="userinfo-nickname"></open-data> 
+      <!-- <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
+     <!-- </block>   -->
+  </view>
+  <!-- 订单 -->
+  <view class="my-order">
+    <!-- 订单头部 -->
+    <view class="order-head">
+      <text class="left ">我的订单</text>
+      <navigator class="right" url="/pages/order/list/list?tagNum=0">查看全部订单 ></navigator>
+    </view>
+    <!-- 订单状态 -->
+    <view class="order-state">
+      <navigator class="item item-{{id}}" wx:for="{{itemList}}" wx:for-index="id" wx:for-item="item" wx:key="id" wx:if="{{item.name}}" url="{{item.jump}}">
+          <text class='item-num' wx:if="{{item.num != 0}}">{{item.num}}</text>
+          <image src="{{item.img}}" class="item-img item-img-{{id}}"></image>
+          <text class="item-text item-text-{{id}}">{{item.name}}</text>
+      </navigator>
+    </view>
+    <!-- 售后服务 -->
+    <view class="service">
+      <navigator url="/pages/order/refunds/refunds">
+        <text class='service-num' wx:if="{{serviceNum != 0}}">{{serviceNum}}</text>
+        <image src="/images/service.png" class="service-img"></image>
+        <text class="service-text">退换/售后</text>
+      </navigator>
+    </view>
+  </view>
+</view>

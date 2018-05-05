@@ -1,0 +1,20 @@
+<!--pages/order/pay/pay.wxml-->
+<view class="container">
+  <!--收货地址-->
+  <view class='address' bindtap='toAddress'>
+    <text class='left'>收货地址</text>
+    <text class='right'>></text>
+  </view>
+  <!-- 订单列表 -->
+  <view class='product-list'>
+    <view class='product-items' wx:for="{{orderList}}" wx:key="id">
+      <image class='pro-img' src='{{item.img}}'></image>
+      <text class='item-title'>{{item.title}}</text>
+      <text class='price'>￥{{item.price}}</text>
+      <text class='num'>x {{item.num}}</text>
+      <text class='pay'>实付款:￥{{item.price*item.num}}</text>
+    </view>
+  </view>
+  <view class="{{addressData.userName.length>0 ? 'payActive' :'payGrey'}}">付款</view>
+</view>
+
