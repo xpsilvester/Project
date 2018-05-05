@@ -8,7 +8,7 @@
   </view>
   <!-- 产品列表 -->
   <view class='product-list'>
-    <view class='product-items' wx:for="{{proList}}" wx:key="unique" bindtap='toProDetail'>
+    <view class='product-items' wx:for="{{proList}}" wx:key="unique" bindtap='toProDetail' data-id="{{item.SysNo}}">
       <image class='pro-img' src='{{item.ProductPicSrc200}}'></image>
       <text class='item-title'>{{item.ProductName}}</text>
       <text class='price-now'>￥{{item.CurrentPrice}}</text>

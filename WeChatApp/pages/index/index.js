@@ -61,7 +61,7 @@ Page({
   toProDetail: function (e) {
     var SysNo = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/products/detail/detail?SysNo=' + SysNo,
+      url: '/pages/products/detail/detail?SysNo=' + SysNo
     })
   },
   onLoad: function () {

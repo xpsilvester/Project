@@ -1,6 +1,6 @@
 // pages/products/detail/args.js
 let proDetail = {
-  transRate: '11AC双频1167Mbps',
+  transRate: '11AC1167Mbps',
   routerType: '无线'
 }
 Page({

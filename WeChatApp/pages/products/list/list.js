@@ -1,41 +1,49 @@
 // pages/products/list/list.js
 let proListup = [{
+  SysNo: 111,
   ProductPicSrc200: '//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/6efc52e32da7595519d9907cc124a50c.jpg?thumb=1&w=720&h=792',
   ProductName: '红米Note 5 AI双摄',
   CurrentPrice: 1399,
   }
   , {
-  ProductPicSrc200: '//i8.mifile.cn/v1/a1/2928abd1-0e07-b1ba-59cc-9f3410cf7fde!720x792.webp',
-  ProductName: '小米6 变焦双摄',
-  CurrentPrice: 2299,
+    SysNo: 121,
+    ProductPicSrc200: '//i8.mifile.cn/v1/a1/2928abd1-0e07-b1ba-59cc-9f3410cf7fde!720x792.webp',
+    ProductName: '小米6 变焦双摄',
+    CurrentPrice: 2299,
 }]
 let proListdown = [
   {
-  ProductPicSrc200: '//i8.mifile.cn/v1/a1/2928abd1-0e07-b1ba-59cc-9f3410cf7fde!720x792.webp',
-  ProductName: '小米6 变焦双摄',
-  CurrentPrice: 2299,
+    SysNo: 121,
+    ProductPicSrc200: '//i8.mifile.cn/v1/a1/2928abd1-0e07-b1ba-59cc-9f3410cf7fde!720x792.webp',
+    ProductName: '小米6 变焦双摄',
+    CurrentPrice: 2299,
   },{ 
+    SysNo: 111,
     ProductPicSrc200: '//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/6efc52e32da7595519d9907cc124a50c.jpg?thumb=1&w=720&h=792',
     ProductName: '红米Note 5 AI双摄',
     CurrentPrice: 1399,
   }
 ]
 let proListSale = [{
+  SysNo: 111,
   ProductPicSrc200: '//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/6efc52e32da7595519d9907cc124a50c.jpg?thumb=1&w=720&h=792',
   ProductName: '红米Note 5 AI双摄',
   CurrentPrice: 1399,
   }
   , {
+    SysNo: 121,
     ProductPicSrc200: '//i8.mifile.cn/v1/a1/2928abd1-0e07-b1ba-59cc-9f3410cf7fde!720x792.webp',
     ProductName: '小米6 变焦双摄',
     CurrentPrice: 2299,
 }]
 let proListTime = [{
+  SysNo: 121,
   ProductPicSrc200: '//i8.mifile.cn/v1/a1/2928abd1-0e07-b1ba-59cc-9f3410cf7fde!720x792.webp',
   ProductName: '小米6 变焦双摄',
   CurrentPrice: 2299,
   }
   , {
+    SysNo: 111,
     ProductPicSrc200: '//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/6efc52e32da7595519d9907cc124a50c.jpg?thumb=1&w=720&h=792',
     ProductName: '红米Note 5 AI双摄',
     CurrentPrice: 1399,
@@ -105,8 +113,9 @@ Page({
     })
   },
   toProDetail: function (e) {
+    var SysNo = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/products/detail/detail',
+      url: '/pages/products/detail/detail?SysNo=' + SysNo,
     })
   },
   /**

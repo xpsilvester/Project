@@ -1,6 +1,6 @@
 // pages/products/detail/detail.js
 let proDetail={
-  transRate:'11AC双频1167Mbps',
+  transRate:'11AC1167Mbps',
   routerType:'无线'
 }
 let cartList = wx.getStorageSync('cartList') || [];
@@ -11,11 +11,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrls: [
-      '/images/5adec202Ndea433bd.jpg',
-      '/images/5adec202Ndea433bd.jpg',
-      '/images/5adec202Ndea433bd.jpg',
-    ],
     indicatorDots: false,
     autoplay: false,
     interval: 5000,
