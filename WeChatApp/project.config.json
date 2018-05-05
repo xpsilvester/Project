@@ -12,8 +12,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.9.98",
-	"appid": "wx133c603714b47313",
-	"projectname": "tpshop",
+	"appid": "",
+	"projectname": "shop",
 	"condition": {
 		"search": {
 			"current": -1,
