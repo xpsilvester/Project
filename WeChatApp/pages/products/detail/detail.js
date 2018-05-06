@@ -94,12 +94,9 @@ Page({
   toPay: function (e) {
     var $this = this;
     var testProduct = this.data.cartProduct;
+    testProduct.num = this.data.num;
     let payList = [];
-    for (let i = 0; i < cartList.length; i++) {
-      if (cartList[i].proId == testProduct.proId) {
-        payList.push(cartList[i]);
-      }
-    }
+    payList.push(testProduct);
     wx.setStorageSync('payList', payList);
     wx.navigateTo({
       url: '/pages/order/pay/pay'
@@ -108,7 +105,7 @@ Page({
   toAddCart:function(e){
     var $this=this;
     var testProduct = this.data.cartProduct;
-    console.log(testProduct);
+    testProduct.num=this.data.num;
     var flag=0;
     for(let i=0;i<cartList.length;i++){
       if (cartList[i].proId == testProduct.proId){
