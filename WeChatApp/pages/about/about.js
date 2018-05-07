@@ -91,7 +91,6 @@ Page({
   // },
   // 登录
   logOn: function () {
-    
   },
   getOpenId: function () {
     
