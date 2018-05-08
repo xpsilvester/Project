@@ -21,6 +21,7 @@
   color:#000;
 }
 .product-list{
+  background:#fff;
   width: 100%;
 }
 .product-items{
@@ -40,6 +41,10 @@
   line-height: 36rpx;
   margin:20rpx 0;
   display:block;
+  display: -webkit-box; 
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 2; 
+  overflow: hidden; 
 }
 .product-items .price-now{
   font-size: 28rpx;

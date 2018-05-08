@@ -8,19 +8,19 @@
     <view class='logo-title'>{{logoTitle}}</view>
   </view>
   <!-- 产品列表 -->
-  <view class='product-list'>
-    <view class='product-category' bindtap='toProList'>
-      {{category}}
+  <view class='product-list' wx:for-item="classList" wx:key="className" wx:for='{{classList}}'>
+    <view class='product-category' bindtap='toProList' data-type="{{classList.className}}">
+      {{classList.className}}
       <view class='arrow'>></view>
     </view>
-    <view class='product-items' wx:for="{{proList}}" wx:key="SysNo" data-id="{{item.SysNo}}" catchtap='toProDetail'>
+    <view class='product-items' wx:for="{{proList}}" wx:key="SysNo" data-id="{{item.SysNo}}" catchtap='toProDetail' wx:if="{{item.className==classList.className}}">
       <image class='pro-img' src='{{item.ProductPicSrc200}}'></image>
       <text class='item-title'>{{item.ProductName}}</text>
       <text class='price-now'>￥{{item.CurrentPrice}}</text>
       <text class='price-old'>￥{{item.BasicPrice}}</text>
     </view>
-    <view class='more' bindtap='toProList'>更多>></view>
+    <view class='more' bindtap='toProList' data-type="{{classList.className}}">更多>></view>
   </view>
-   <view class='show-all' bindtap='toProList'>{{showAll}}</view> 
+  <view class='show-all' bindtap='toProList' data-type="全部">{{showAll}}</view> 
 </view>
 
