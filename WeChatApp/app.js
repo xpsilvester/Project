@@ -37,39 +37,36 @@ App({
     userInfo: null,
     cookie:null,
     //实现cookie添加
-    cookieUtil:{
-      add:function(oldCookie,newCookie){
-        var cookie,
-            arr10=[],
-            arr20;
-        if(oldCookie!='' && newCookie!=''){
-          var arr1=oldCookie.split(';'),
-              arr2=newCookie.split(';');
-          for(let i=0;i<arr1.length;i++){
-            for(let j=0;j<arr2.length;j++){
-              var arr3=arr1[i].split('='),
-                  arr4=arr2[j].split('=');
-              if(arr3[0].trim()==arr4[0].trim()){
-                arr1[i]=arr2[j]
-                break;
-              }
-              if (!this.contain(arr10,arr2[j]) && !this.contain(arr1,arr2[j])){
-                arr10.push(arr2[j]);
-              }
+    cookieUtil: {
+      add: function (cookieOld, cookieNew) {
+        var arr1 = cookieOld.split(';');
+        var arr2 = cookieNew.split(';');
+        var arr10 = [], arr20;
+        for (let i = 0; i < arr1.length; i++) {
+          for (let j = 0; j < arr2.length; j++) {
+            var arr3 = arr1[i].split('=');
+            var arr4 = arr2[j].split('=');
+            if (arr3[0].trim() == arr4[0].trim()) {
+              arr1[i] = arr2[j];
+              break;
+            }
+            if (!this.contain(arr10, arr2[j]) && !this.contain(arr1, arr2[j])) {
+              arr10.push(arr2[j]);
             }
           }
-          if(arr10.length > 0){
-            arr1.concat(arr10);
-          }
-          cookie=arr1.join(';');
-        }else{
-          cookie = oldCookie || newCookie;
         }
-        return cookie;
+
+        if (arr10.length > 0) {
+          arr20 = arr1.concat(arr10);
+        } else {
+          arr20 = arr1
+        }
+        return arr20.join(';');
+
       },
-      contain:function(arr,item){
-        for(let i=0;i<arr.length;i++){
-          if(arr[i]==item){
+      contain: function (arr, item) {
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] == item) {
             return true;
           }
         }
