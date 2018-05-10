@@ -8,6 +8,7 @@
     "pages/products/detail/detail",
     "pages/products/detail/args",
     "pages/order/list/list",
+    "pages/order/detail/detail",
     "pages/order/pay/pay",
     "pages/order/refunds/refunds"
   ],
