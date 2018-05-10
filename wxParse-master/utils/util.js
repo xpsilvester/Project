@@ -20,6 +20,56 @@ function formatNumber(n) {
     return n[1] ? n : '0' + n;
 }
 
+function getProductList(data){
+    proList = data.data.productList;
+    //console.log(proList);
+    //分类组装
+    let classList = [];
+    //console.log(data.data.classNames);
+    for (let j = 0; j < data.data.classNames.length;j++){
+      let classObj={};
+      classObj.className = data.data.classNames[j];
+      classObj.ids = data.data.idsForClass[j];
+      classList.push(classObj);
+    }
+    //获取图片
+    for (let i = 0; i < proList.length;i++){
+      let str = proList[i].ProductPicSrc200;
+      let tag =str.indexOf(" ");
+      proList[i].ProductPicSrc200 = str.substring(0, tag).replace('http://172.31.1.215:8066','http://www.tp-linkshop.com.cn');
+      try {
+        proList[i].ProductDescLong = proList[i].ProductDescLong.match(/src=".*?"/ig).map(function (item) { return item.replace('src="', '').replace('"', '') });
+      }
+      catch (err) {
+        proList[i].ProductDescLong = '';
+      }
+      
+      //添加相应分类
+      for(let k=0;k<classList.length;k++){
+        let classArr = classList[k].ids.split(',');
+        //console.log(classArr);
+        for(let j=0;j<classArr.length;j++){
+          if (proList[i].SysNo==classArr[j]){
+            proList[i].className = classList[k].className;
+            //是否在首页显示
+            if (j < _this.data.showNum) {
+              proList[i].visible = 1;
+            } else {
+              proList[i].visible = 0;
+            }
+          }
+        }
+      }
+    }
+    console.log(proList);
+    //设置Storage--proList
+    wx.setStorageSync('proList', proList);
+    _this.setData({
+      proList: proList,
+      classList: classList
+    })
+}
+
 // 格式化时间戳
 function getTime( timestamp ) {
     var time = arguments[ 0 ] || 0;
