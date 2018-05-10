@@ -21,11 +21,9 @@ function formatNumber(n) {
 }
 
 function getProductList(data){
-    proList = data.data.productList;
-    //console.log(proList);
+    proList = data;
     //分类组装
     let classList = [];
-    //console.log(data.data.classNames);
     for (let j = 0; j < data.data.classNames.length;j++){
       let classObj={};
       classObj.className = data.data.classNames[j];
@@ -36,14 +34,13 @@ function getProductList(data){
     for (let i = 0; i < proList.length;i++){
       let str = proList[i].ProductPicSrc200;
       let tag =str.indexOf(" ");
-      proList[i].ProductPicSrc200 = str.substring(0, tag).replace('http://172.31.1.215:8066','http://www.tp-linkshop.com.cn');
+      proList[i].ProductPicSrc200 = str.substring(0, tag)
       try {
         proList[i].ProductDescLong = proList[i].ProductDescLong.match(/src=".*?"/ig).map(function (item) { return item.replace('src="', '').replace('"', '') });
       }
       catch (err) {
         proList[i].ProductDescLong = '';
       }
-      
       //添加相应分类
       for(let k=0;k<classList.length;k++){
         let classArr = classList[k].ids.split(',');
@@ -61,7 +58,6 @@ function getProductList(data){
         }
       }
     }
-    console.log(proList);
     //设置Storage--proList
     wx.setStorageSync('proList', proList);
     _this.setData({
