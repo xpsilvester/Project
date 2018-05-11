@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "practice", "practice\practice.csproj", "{CC850C15-523D-4C46-8205-2AF379C9ADE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.MVC", "Web.MVC\Web.MVC.csproj", "{F016DE83-BB7D-40AD-AF07-B35FA72DE533}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.MVC", "Web.MVC\Web.MVC.csproj", "{43CDB0DB-0546-494C-B560-753C44133C63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,10 @@ Global
 		{CC850C15-523D-4C46-8205-2AF379C9ADE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC850C15-523D-4C46-8205-2AF379C9ADE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC850C15-523D-4C46-8205-2AF379C9ADE2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F016DE83-BB7D-40AD-AF07-B35FA72DE533}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F016DE83-BB7D-40AD-AF07-B35FA72DE533}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F016DE83-BB7D-40AD-AF07-B35FA72DE533}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F016DE83-BB7D-40AD-AF07-B35FA72DE533}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43CDB0DB-0546-494C-B560-753C44133C63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43CDB0DB-0546-494C-B560-753C44133C63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43CDB0DB-0546-494C-B560-753C44133C63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43CDB0DB-0546-494C-B560-753C44133C63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

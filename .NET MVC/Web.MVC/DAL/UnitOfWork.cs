@@ -1,8 +1,8 @@
 ﻿using System;
-using TPLINK.Task.PPTService.Dal;
-using TPLINK.Task.PPTService.Model;
+using Web.Mvc.Dal;
+using Web.Mvc.Model;
 
-namespace TPLINK.Task.PPTService.DAL
+namespace Web.Mvc.DAL
 {
     public class UnitOfWork : IDisposable
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace TPLINK.Task.PPTService.Controllers
+namespace Web.Mvc.Controllers
 {
     public class HomeController : Controller
     {

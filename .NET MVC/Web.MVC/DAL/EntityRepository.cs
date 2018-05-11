@@ -3,9 +3,9 @@ using System.Linq.Expressions;
 using System.Linq;
 using System.Data;
 using System.Data.Entity;
-using TPLINK.Task.PPTService.Model;
+using Web.Mvc.Model;
 
-namespace TPLINK.Task.PPTService.Dal
+namespace Web.Mvc.Dal
 {
     public class EntityRepository<T> where T : class
     {
@@ -123,7 +123,7 @@ namespace TPLINK.Task.PPTService.Dal
                 switch (typeName)
                 {
                     case "PPTItem":
-                        PPTItem pptItem = entityToUpdate as TPLINK.Task.PPTService.Model.PPTItem;
+                        PPTItem pptItem = entityToUpdate as Web.Mvc.Model.PPTItem;
                         context.Database.ExecuteSqlCommand(
         @"update PPTItem set classId=@p0,title=@p1,author=@p2,validDate=@p3,description=@p4,pptSrc=@p5,thumbnailSrc=@p6,visible=@p7,updateDate=@p8,updateUser=@p9 where id=@p10",
         pptItem.classId, pptItem.title, pptItem.author, pptItem.validDate, pptItem.description, pptItem.pptSrc, pptItem.thumbnailSrc, pptItem.visible, pptItem.updateDate, pptItem.updateUser, pptItem.id

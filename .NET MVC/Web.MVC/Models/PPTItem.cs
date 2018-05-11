@@ -1,4 +1,4 @@
-namespace TPLINK.Task.PPTService.Model
+namespace Web.Mvc.Model
 {
     using System;
     using System.Collections.Generic;

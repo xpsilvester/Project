@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TPLINK.Task.PPTService.DAL;
-using TPLINK.Task.PPTService.Model;
+using Web.Mvc.DAL;
+using Web.Mvc.Model;
 
-namespace TPLINK.Task.PPTService.Controllers
+namespace Web.Mvc.Controllers
 {
     public class CmsController : Controller
     {

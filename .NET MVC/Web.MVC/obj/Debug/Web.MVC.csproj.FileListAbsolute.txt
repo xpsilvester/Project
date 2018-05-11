@@ -17,6 +17,5 @@ E:\test\Project\.NET MVC\Web.MVC\bin\System.Web.WebPages.xml
 E:\test\Project\.NET MVC\Web.MVC\bin\System.Web.WebPages.Deployment.xml
 E:\test\Project\.NET MVC\Web.MVC\bin\System.Web.WebPages.Razor.xml
 E:\test\Project\.NET MVC\Web.MVC\bin\zh-Hans\System.Web.Providers.resources.dll
-E:\test\Project\.NET MVC\Web.MVC\obj\Debug\Web.MVC.csprojResolveAssemblyReference.cache
 E:\test\Project\.NET MVC\Web.MVC\obj\Debug\Web.MVC.dll
 E:\test\Project\.NET MVC\Web.MVC\obj\Debug\Web.MVC.pdb
