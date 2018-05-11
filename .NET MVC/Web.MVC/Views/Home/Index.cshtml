@@ -1,4 +1,12 @@
-﻿@{
+﻿@using Web.Mvc.Model
+@{
     ViewBag.Title = "Index";
+    List<PPTClass> classList = ViewData["classList"] as List<PPTClass>;
 }
 <h1>Index</h1>
+<div>
+@foreach (PPTClass ap in classList)
+{
+    @:<p>@ap.className</p> 
+}         
+</div>
