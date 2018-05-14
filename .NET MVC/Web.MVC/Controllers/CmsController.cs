@@ -32,6 +32,9 @@ namespace Web.Mvc.Controllers
         }
         public ActionResult PPTUpload()
         {
+            this.WebUnity = new UnitOfWork();
+            List<PPTClass> classList = WebUnity.PPTClassRepository.GetPPTClassList().ToList<PPTClass>();
+            ViewData["classList"] = classList;
             return View();
         }
     }
