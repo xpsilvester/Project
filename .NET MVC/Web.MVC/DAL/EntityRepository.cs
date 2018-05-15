@@ -143,7 +143,7 @@ namespace Web.Mvc.Dal
                     case "PPTItem":
                         PPTItem entity1 = entityToUpdate as PPTItem;
                         context.Database.ExecuteSqlCommand(
-        @"insert into PPTItem(classId,title,author,validDate,description,pptSrc,thumbnailSrc,visible,updateDate,updateUser) values(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7)",
+        @"insert into PPTItem(classId,title,author,validDate,description,pptSrc,thumbnailSrc,visible,updateDate,updateUser) values(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9)",
         entity1.classId, entity1.title, entity1.author, entity1.validDate, entity1.description, entity1.pptSrc, entity1.thumbnailSrc, entity1.visible, entity1.updateDate, entity1.updateUser
         );
                         break;
