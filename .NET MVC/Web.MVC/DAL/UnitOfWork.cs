@@ -71,6 +71,14 @@ namespace Web.Mvc.DAL
                        (_PPTClassListRepository = new EntityRepository<PPTClass>(_context));
             }
         }
+        private PPTItemRepository _PPTItemRepository;
 
+        public PPTItemRepository PPTItemRepository
+        {
+            get
+            {
+                return _PPTItemRepository ?? (_PPTItemRepository = new PPTItemRepository(_context));
+            }
+        }
     }
 }
