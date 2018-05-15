@@ -254,7 +254,7 @@ namespace Web.Mvc.Controllers
             PPTItem = this.WebUnity.PPTItemRepository.GetById(Convert.ToInt32(Request.QueryString["id"]));
             bool state = false;
             PPTItem.visible = state;
-            PPTItem.updateUser = Session["uid"].ToString();//Convert.ToInt32(Session["uid"]);
+            PPTItem.updateUser = "test";//Session["uid"].ToString();//Convert.ToInt32(Session["uid"]);
             PPTItem.updateDate = DateTime.Now;
             this.WebUnity.PPTItemRepository.Update(PPTItem);
             this.WebUnity.Save();
@@ -279,7 +279,7 @@ namespace Web.Mvc.Controllers
             ViewData["pageCount"] = pageCount;
             ViewData["pageIndex"] = pageIndex;
             ViewData["kw"] = "";
-            return View("~/views/cms/PPTItem/PPTItem.cshtml");
+            return View("~/views/cms/PPTManager.cshtml");
         }
 
         //显示下载
@@ -292,7 +292,7 @@ namespace Web.Mvc.Controllers
             PPTItem = this.WebUnity.PPTItemRepository.GetById(Convert.ToInt32(Request.QueryString["id"]));
             bool state = true;
             PPTItem.visible = state;
-            PPTItem.updateUser = Session["uid"].ToString();//Convert.ToInt32(Session["uid"]);
+            PPTItem.updateUser = "test";//Session["uid"].ToString();//Convert.ToInt32(Session["uid"]);
             PPTItem.updateDate = DateTime.Now;
             this.WebUnity.PPTItemRepository.Update(PPTItem);
             this.WebUnity.Save();
@@ -318,7 +318,7 @@ namespace Web.Mvc.Controllers
             ViewData["pageCount"] = pageCount;
             ViewData["pageIndex"] = pageIndex;
             ViewData["kw"] = "";
-            return View("~/views/cms/PPTItem/PPTItem.cshtml");
+            return View("~/views/cms/PPTManager.cshtml");
         }
 
         [ActionName("delete")]
@@ -372,7 +372,7 @@ namespace Web.Mvc.Controllers
             ViewData["pageCount"] = pageCount;
             ViewData["pageIndex"] = pageIndex;
             ViewData["kw"] = "";
-            return View("~/views/cms/PPTItem/PPTItem.cshtml");
+            return View("~/views/cms/PPTManager.cshtml");
         }
 
         #endregion

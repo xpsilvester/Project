@@ -99,10 +99,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CmsController.cs" />
+    <Compile Include="Controllers\extends\CustomExtensins.cs" />
+    <Compile Include="Controllers\extends\EPermission.cs" />
+    <Compile Include="Controllers\extends\Filter.cs" />
+    <Compile Include="Controllers\extends\PPTAuthrizeAttribute.cs" />
+    <Compile Include="Controllers\extends\Util.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\EntityRepository.cs" />
     <Compile Include="DAL\PPTClassRepository.cs" />
+    <Compile Include="DAL\PPTItemRepository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -167,6 +174,15 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="dist\css\cms.css" />
+    <Content Include="dist\css\search.min.css" />
+    <Content Include="dist\css\style.min.css" />
+    <Content Include="dist\js\cms.js" />
+    <Content Include="dist\js\flexible.min.js" />
+    <Content Include="dist\js\jquery-1.7.2.min.js" />
+    <Content Include="dist\js\kindeditor-min.js" />
+    <Content Include="dist\js\style.min.js" />
+    <Content Include="dist\js\zh_CN.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
@@ -205,6 +221,7 @@
     <Content Include="Views\Cms\PPTManager.cshtml" />
     <Content Include="Views\Cms\PPTUpload.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Cms\PPTItemSave.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

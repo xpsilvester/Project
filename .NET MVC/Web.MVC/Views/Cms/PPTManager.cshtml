@@ -1,5 +1,380 @@
-﻿@{
-    ViewBag.Title = "PPTManager";
+﻿@using Web.Mvc.Model;
+@{
+    //Layout = "~/Views/Shared/_LayoutCms.cshtml";
+    string state = ViewData["state"].ToString();
+
+    PPTItem PPTItem = ViewData["PPTItem"] as PPTItem;
+    List<PPTItem> PPTItemList = ViewData["PPTItemList"] as List<PPTItem>;
+    List<PPTClass> PPTClassList = ViewData["PPTClassList"] as List<PPTClass>;
+    int pageCount = int.Parse(ViewData["pageCount"].ToString());
+    int pageIndex = int.Parse(ViewData["pageIndex"].ToString());
+    string kw = ViewData["kw"].ToString();
 }
 
-<h2>PPTManager</h2>
+@helper DisplayState(bool isshow)
+{
+            if (isshow)
+            {
+                @:已发布
+            }
+            else
+            {
+                @:已隐藏
+            }
+        }
+@helper DisplayClassName(int classid, PPTItem PPTItem)
+{
+            if (PPTItem.classId == classid)
+            {
+                @: selected
+            }
+        }
+@helper DisplaySuitableClasses(string[] classArry , int id)
+{
+    
+    if(classArry.Contains(id.ToString()))
+    {
+        @:checked="checked" 
+        
+    }
+
+}
+    <script type="text/javascript" charset="utf-8" src="/dist/js/kindeditor-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/dist/js/zh_CN.js"></script>
+    <script>
+        $(function () {
+            $('#sub').click(function () {
+                if ($('#classid').children('option:selected').val() == 0) {
+                    alert('请选择下载类别');
+                    return false;
+                } else if ($('#productclassid').children('option:selected').val() == 0) {
+                    alert('请选择软件类别');
+                    return false;
+                }
+                //$('#form1').submit();
+            });
+            $('.uploadQRcode').change(function () {
+                preview(this);
+                //$('.uploadFileTips').html($(this).val().replace(/^.+?\\([^\\]+?)(\.[^\.\\]*?)?$/gi, "$1") + '.' + $(this).val().replace(/.+\./, ""));
+            });
+
+            function preview(file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('.uploadFileTips img').attr('src', e.target.result);
+                    //$('.uploadQRcode').val(e.target.result);
+                    console.log(e.target.result);
+                }
+                
+                
+                reader.readAsDataURL(file.files[0]);
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#create').click(function () {
+                window.location.href = 'create';
+            });
+            $('#edit').click(function () {
+                if (isValid())
+                { window.location.href = 'edit?id=' + getId(); }
+                else
+                { alert('请只选中一条记录'); }
+            });
+            $('#show').click(function () {
+                if (isValid())
+                { window.location.href = 'show?id=' + getId(); }
+                else
+                { alert('请只选中一条记录'); }
+            });
+            $('#hide').click(function () {
+                if (isValid())
+                { window.location.href = 'hide?id=' + getId(); }
+                else
+                { alert('请只选中一条记录'); }
+            });
+            $('#delete').click(function () {
+                if (isValid()) {
+                    var truthBeTold = window.confirm("删除后无法复原,是否删除？");
+                    if (truthBeTold) {
+                        window.location.href = 'delete?id=' + getId();
+                    }
+                }
+                else
+                { alert('请只选中一条记录'); }
+            });
+            $('.list tr:not(:first)').click(function () {
+                if ($(this).find('input[name="productId"]').prop('checked') === false) {
+                    $(this).parent().parent().find('input[name="productId"]').prop('checked', false);
+                    $(this).find('input[name="productId"]').prop('checked', true);
+                } else {
+                    $(this).find('input[name="productId"]').prop('checked', false);
+                }
+            });
+            $('input[name="productId"]').click(function (e) {
+                if ($(this).prop('checked') === true) {
+                    $(this).parent().parent().parent().find('input[name="productId"]').prop('checked', false);
+                    $(this).prop('checked', true);
+                } else {
+                    $(this).prop('checked', false);
+                }
+                e.stopPropagation();
+            });
+        });
+
+        function isValid() {
+            return $('input[name="productId"]:checked').length == 1;
+        }
+        function getId() {
+            return $('input[name="productId"]:checked').val();
+        }
+    </script>
+    <!--编辑器-->
+    <script type="text/javascript">
+        var editorDetail, editorDetail2;
+        KindEditor.ready(function (K) {
+            editorDetail = K.create('#description', {
+                //初始化参数
+                width: '670px',
+                height: '300px',
+                uploadJson: 'keditor/asp.net/upload_json.ashx',
+                afterCreate: function (id) {
+                    K.ctrl(this.edit.doc, 13, function () {
+                        //$('#form1').submit();
+                        $('#sub').click();
+                    });
+                    K.ctrl(document, 13, function () {
+                        //$('#form1').submit();
+                        $('#sub').click();
+                    });
+                }
+            });
+            editorDetail2 = K.create('#attention', {
+                //初始化参数
+                width: '670px',
+                height: '300px',
+                uploadJson: 'keditor/asp.net/upload_json.ashx',
+                afterCreate: function (id) {
+                    K.ctrl(this.edit.doc, 13, function () {
+                        //$('#form1').submit();
+                        $('#sub').click();
+                    });
+                    K.ctrl(document, 13, function () {
+                        //$('#form1').submit();
+                        $('#sub').click();
+                    });
+                }
+            });
+        });
+    </script>
+<div class="cmsContainer">
+    <div class="curPosition">
+    当前位置：下载管理 > PPT下载
+    </div>
+	<div class="search">
+        <form id="formsearch" method="get" action="list">
+		    <input type="text" name="kw"/>
+		    <button type="submit" name="submit">搜索/刷新</button>
+        </form>
+	</div>
+        @if (state == "list")
+        {
+            <div class="manipulate">
+		        <button type="button" id="create">发布下载</button>
+		        <button type="button" id="edit">编辑下载内容</button>
+                <button type="button" id="show">显示下载条目</button>
+                <button type="button" id="hide">隐藏下载条目</button>
+                @*<button type="button" id="delete">删除下载条目</button>*@
+	        </div>
+	        <div class="list PPTItemList">
+                <table>
+			        <tr>
+				        <th class="col1">选中</th>
+				        <th class="col2">名称</th>
+                        <th class="col3">状态</th>
+				        <th class="col4">更新人</th>
+				        <th class="col5">最后更新时间</th>
+			        </tr>
+        
+		        @foreach (PPTItem d in PPTItemList)
+                {
+                    <tr>
+        	            <td class="col1"><input name="productId" value="@d.id" type="checkbox"/></td>
+			            <td class="col2">@d.title</td>
+                        <td class="col3">@DisplayState((bool)@d.visible)</td>
+			            <td class="col4">@d.updateUser</td>
+			            <td class="col5">@d.updateDate</td>
+		            </tr>
+                }
+                </table>
+            </div>
+            <div class="pages">
+                <ul>
+                    <li><a href="@Html.ActionUrl("cms", "list", new { p = 1, kw = @kw })"> << </a></li>
+                    @if (pageIndex == 1)
+                    {
+                        <li><a href="@Html.ActionUrl("cms", "list", new { p = 1, kw = @kw })"> < </a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@Html.ActionUrl("cms", "list", new { p = pageIndex - 1, kw = @kw })"> < </a></li>
+                    }
+                    @if (pageCount < 8)
+                    {
+                        for (var i = 1; i <= pageCount; i++)
+                        {
+                            if (i == pageIndex)
+                            {
+                                <li><a href="@Html.ActionUrl("cms", "list", new { p = i, kw = @kw })" class="selected">@i</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="@Html.ActionUrl("cms", "list", new { p = i, kw = @kw })">@i</a></li>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (pageIndex > 3 && pageIndex < pageCount - 3)
+                        {
+                            for (var i = pageIndex - 3; i <= pageIndex + 3; i++)
+                            {
+                                if (i == pageIndex)
+                                {
+                                    <li><a href="@Html.ActionUrl("cms", "list", new { p = i, kw = @kw })" class="selected">@i</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="@Html.ActionUrl("cms", "list", new { p = i, kw = @kw })">@i</a></li>
+                                }
+                            }
+                        }
+                        else if (pageIndex <= 3)
+                        {
+                            for (var i = 1; i <= 7; i++)
+                            {
+                                if (i == pageIndex)
+                                {
+                                    <li><a href="@Html.ActionUrl("cms", "list", new { p = i, kw = @kw })" class="selected">@i</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="@Html.ActionUrl("cms", "list", new { p = i, kw = @kw })">@i</a></li>
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (var i = pageCount - 7; i <= pageCount; i++)
+                            {
+                                if (i == pageIndex)
+                                {
+                                    <li><a href="@Html.ActionUrl("cms", "list", new { p = i, kw = @kw })" class="selected">@i</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="@Html.ActionUrl("cms", "list", new { p = i, kw = @kw })">@i</a></li>
+                                }
+                            }
+                        }
+
+                    }
+                    @if (pageIndex == pageCount)
+                    {
+                        <li><a href="@Html.ActionUrl("cms", "list", new { p = pageCount, kw = @kw })"> > </a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@Html.ActionUrl("cms", "list", new { p = pageIndex + 1, kw = @kw })"> > </a></li>
+                    }
+                    <li><a href="@Html.ActionUrl("cms", "list", new { p = pageCount, kw = @kw })"> >> </a></li>
+                </ul>
+            </div>
+        }
+        else if (state == "create" || state == "edit")
+        {
+            <div class="manipulate form-block clearfix">
+                <button class="uploadFile" type="button" style="float: left;" onclick="window.open('upload','上传文件','width=400,height=450')">文件上传</button>
+                <span style="float: left;margin-top: 6px;margin-right: 20px;">（考虑公司的网速，上传文件大小已限制为不超过30M）</span>
+            </div>
+            <div class="PPTItemEdit">
+                <form id="form1" name="form1" action="save" method="post" enctype="multipart/form-data" >
+                    <input type="hidden" name="PPTItemid" value="@PPTItem.id" />
+		            <div class="form-block row">
+                        <div class="col">
+                            <label for="classid">类别:</label>
+			                <select name="classid" id="classid">
+                                @if (PPTItem.id == 0) { 
+                                    <option value="0" @DisplayClassName(0, PPTItem) >请选择PPT类别:</option>
+                                } 
+                                @*/else {
+                                    <option value="@PPTItem.classId" @DisplayClassName((int)@PPTItem.id, PPTItem) >@PPTItem.PPTClass.className</option>
+                                }*@
+                                @foreach (PPTClass dc in PPTClassList)
+                                {
+                                    if (dc.id > 4) 
+                                    {
+                                        <option value="@dc.id" @DisplayClassName((int)@dc.id, PPTItem) >@dc.className</option>
+                                    }                 
+                                }
+			                </select>
+                        </div>
+                      
+		            </div>
+		            <div class="form-block row">
+			            <label for="showname">标题:</label>
+			            <input type="text" size="60" name="title" value="@PPTItem.title" required="required"/>
+		            </div>
+                    <div class="form-block row">
+			            <label for="filename">下载地址:</label>
+			            <input type="text" size="60" name="pptSrc" value="@PPTItem.pptSrc"/>
+		            </div>
+                    @*<div class="form-block row">
+			            <label for="filename">文件大小:</label>
+			            <input type="text" size="60" name="filesize" value="@PPTItem.fileSize"/>
+		            </div>*@
+                    <div class="form-block row QRcode">
+			            <label for="filename">上传PPT略缩图:</label>
+			            <div class="uploadFileBtn">
+                            <input class="uploadQRcode" type="file" value="" name="thumbnailSrc" />
+                            <span class="uploadBtnTheme">上传PPT略缩图</span>
+                        </div>
+                        <div class="uploadFileTips" style="width: 27px;height: 27px;float: left;padding-left: 10px;">
+                            <img src="@(PPTItem.thumbnailSrc)" alt="" style="width: 100%;height: 100%;display: block;border: 0;" />
+                        </div>
+		            </div>
+                    <br />
+                    <div class="form-block row">
+			            <label for="validDate">有效日期:</label>
+			            <input type="text" size="19" id="validDate" name="validDate" value="@DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")"/>
+		            </div>
+                    <div class="form-block row">
+			            <label for="publishdate">发布日期:</label>
+			            <input type="text" size="19" id="publishdate" name="publishdate" value="@PPTItem.updateDate.ToString("yyyy-MM-dd hh:mm:ss")"/>
+		            </div>
+		            <div class="form-block row">
+			            <label for="suitableModels">描述:</label>
+			            <textarea name="description" cols="50" rows="3">@PPTItem.description</textarea>
+		            </div>
+		            @*<div class="form-block row">
+			            <label class="label-block" for="description">PPT简介:</label>
+			            <textarea id="description" name="description">
+                        @PPTItem.description
+                        </textarea>
+                    </div>*@
+                    @*<div class="form-block row">
+			            <label class="label-block" for="attention">注意事项:</label>
+			            <textarea id="attention" name="attention">
+                       
+                        </textarea>
+                    </div> *@   
+		            <div class="btn row">
+			            <button id="sub" type="submit" name="sub">保存</button>
+		            </div>
+	            </form>
+            </div>
+            
+        }
+</div>
+
