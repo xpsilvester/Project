@@ -603,7 +603,7 @@ namespace Web.Mvc.Controllers
                 Encoding encoding = Encoding.GetEncoding(936);
 
                 MailMessage Message = new MailMessage(
-                new MailAddress("liangdehao@tp-link.com.cn", "liangdehao", encoding),
+                new MailAddress("1234567@qq.com", "1234567", encoding),
                 new MailAddress(strTo));
 
                 Message.SubjectEncoding = encoding;
@@ -634,7 +634,7 @@ namespace Web.Mvc.Controllers
         public void SendMailLocalhost()
         {
             MailMessage msg = new MailMessage();
-            msg.To.Add("liangdehao@tp-link.com.cn");
+            msg.To.Add("1234567@qq.com");
             //msg.To.Add("b@b.com");    
             /* msg.To.Add("b@b.com");   
             * msg.To.Add("b@b.com");   
