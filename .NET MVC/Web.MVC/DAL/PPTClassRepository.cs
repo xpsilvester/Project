@@ -16,6 +16,9 @@ namespace Web.Mvc.DAL
         public List<PPTClass> GetPPTClassList()
         {
             //return context.PPTClasses.Where(t => t.classLevel == 2).ToList<PPTClass>();
+            var query = context.PPTClasses;
+            System.Diagnostics.Debug.WriteLine(query.ToString());
+
             return context.PPTClasses.ToList<PPTClass>();
         }
     }
