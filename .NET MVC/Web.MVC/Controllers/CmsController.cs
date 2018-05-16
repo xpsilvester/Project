@@ -678,6 +678,10 @@ namespace Web.Mvc.Controllers
         [ActionName("login")]
         public ActionResult login()
         {
+            if (Session["uid"].ToString() == "1")
+            {
+                Redirect("~/views/cms/PPTManager.cshtml");
+            }
             ViewData["username"] = "";
             ViewData["codeErroe"] = "";
             ViewData["password"] = "";
@@ -732,7 +736,10 @@ namespace Web.Mvc.Controllers
                         //Session["permission"] = ht;
                         //ViewData["userName"] = user.userName;
                         //ViewData["label"] = "No";
-
+                        Session["uid"] = 1;
+                        Session["userName"] = "test";
+                        Session["password"] = 123456;
+                        ViewData["label"] = "No";
                         return View("~/views/cms/Login.cshtml");
                     }
                 }

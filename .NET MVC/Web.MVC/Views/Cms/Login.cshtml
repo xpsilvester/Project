@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+<style>
+    body, html {
+        height:100%;
+    }
+</style>
+<div class="wrap">
+    <div class="login">
+        <form id="form1" action="/cms/loginOn" method="post">
+            <div class="loginHeader">
+                <h1>内容管理系统</h1>
+            </div>
+            <input type="hidden" name="flage" value="true" />
+            <div class="loginBody">
+                <div>
+                    <label for="username">用户名：</label>
+                    <input type="text" name="username" value="@ViewData["username"]"/>
+                </div>
+                <div>
+                    <label for="password">密码：</label>
+                    <input type="password" name="password" value="@ViewData["password"]" />
+                    <span class="errorTips">@ViewData["loginError"]</span>
+                </div>
+                <div>
+                    <label for="code">验证码：</label>
+                    <input class="code" type="text" name="code" />
+                    <img id="code" src="/cms/code" alt="验证码" onclick="changeCode()" />
+                    <span class="errorTips">@ViewData["codeError"]@ViewData["error"]</span>
+                </div>
+            </div>
+            <div class="loginFooter">
+                <button class="loginBtn" type="submit">登录</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    function changeCode() {
+        document.getElementById("code").src = "/cms/code?time" + (new Date()).getTime();
+    }
+    $(function () {
+        $('#form1').submit(function () {
+            $('.loginBtn').html('登录中...').remove('type');
+        });
+    });
+</script>
+

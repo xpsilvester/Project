@@ -63,7 +63,7 @@ body
 }
 .loginBody
 {
-    height: 300px;
+    height: 350px;
     background: #fff;
     overflow: hidden;
 }
@@ -113,7 +113,7 @@ body
 }
 #code
 {
-    /*margin: 10px 0 0 0;*/
+    margin: 10px 0 0 0;
     vertical-align: middle;
     height: 42px;
 }

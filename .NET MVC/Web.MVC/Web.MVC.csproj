@@ -106,6 +106,7 @@
     <Compile Include="Controllers\extends\Filter.cs" />
     <Compile Include="Controllers\extends\PPTAuthrizeAttribute.cs" />
     <Compile Include="Controllers\extends\Util.cs" />
+    <Compile Include="Controllers\extends\ValidateCode.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\EntityRepository.cs" />
     <Compile Include="DAL\PPTClassRepository.cs" />
@@ -222,6 +223,7 @@
     <Content Include="Views\Cms\PPTUpload.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Cms\PPTItemSave.cshtml" />
+    <Content Include="Views\Cms\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
