@@ -678,10 +678,6 @@ namespace Web.Mvc.Controllers
         [ActionName("login")]
         public ActionResult login()
         {
-            if (Session["uid"].ToString() == "1")
-            {
-                Redirect("~/views/cms/PPTManager.cshtml");
-            }
             ViewData["username"] = "";
             ViewData["codeErroe"] = "";
             ViewData["password"] = "";

@@ -1,5 +1,13 @@
 ﻿@{
     ViewBag.Title = "Login";
+    bool isRedirect = false;
+    if (Session["uid"] != null)
+    {
+        if (Session["uid"].ToString() == "1")
+        {
+            isRedirect = true;
+        }
+    }
 }
 <style>
     body, html {
@@ -45,5 +53,8 @@
             $('.loginBtn').html('登录中...').remove('type');
         });
     });
+    if ("@isRedirect" == "True") {
+        window.location.href = '/cms/list';
+    }
 </script>
 
