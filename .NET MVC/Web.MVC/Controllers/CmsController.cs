@@ -732,6 +732,7 @@ namespace Web.Mvc.Controllers
                         //Session["permission"] = ht;
                         //ViewData["userName"] = user.userName;
                         //ViewData["label"] = "No";
+                        Session.Timeout = 30;
                         Session["uid"] = 1;
                         Session["userName"] = "test";
                         Session["password"] = 123456;
