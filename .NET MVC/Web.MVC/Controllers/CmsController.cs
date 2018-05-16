@@ -683,10 +683,10 @@ namespace Web.Mvc.Controllers
             ViewData["password"] = "";
             ViewData["loginError"] = "";
             ViewData["error"] = "";
-            return View("~/views/cms/login.cshtml");
+            return View("~/views/cms/Login.cshtml");
         }
 
-        [ActionName("login")]
+        [ActionName("loginOn")]
         public ActionResult LoginOn(string username, string password, string code)
         {
             //简单的过滤自拼接表单
@@ -701,7 +701,7 @@ namespace Web.Mvc.Controllers
                         ViewData["loginError"] = "";
                         ViewData["codeError"] = "验证码错误";
                         ViewData["error"] = "";
-                        return View("~/views/cms/login.cshtml");
+                        return View("~/views/cms/Login.cshtml");
                     }
                     else if (!checkLogin(username.FilterHttpGet(), password.FilterHttpGet()))
                     {
@@ -710,7 +710,7 @@ namespace Web.Mvc.Controllers
                         ViewData["loginError"] = "用户名或密码错误";
                         ViewData["codeError"] = "";
                         ViewData["error"] = "";
-                        return View("~/views/cms/login.cshtml");
+                        return View("~/views/cms/Login.cshtml");
                     }
                     else
                     {
@@ -733,7 +733,7 @@ namespace Web.Mvc.Controllers
                         //ViewData["userName"] = user.userName;
                         //ViewData["label"] = "No";
 
-                        return View("~/views/cms/login.cshtml");
+                        return View("~/views/cms/Login.cshtml");
                     }
                 }
                 catch
@@ -744,7 +744,7 @@ namespace Web.Mvc.Controllers
                     ViewData["password"] = "";
                     ViewData["loginError"] = "";
                     ViewData["error"] = "连接超时，请重新登陆";
-                    return View("~/views/cms/login.cshtml");
+                    return View("~/views/cms/Login.cshtml");
 
                 }
             }
@@ -756,7 +756,7 @@ namespace Web.Mvc.Controllers
                 ViewData["codeError"] = "";
                 ViewData["password"] = "";
                 ViewData["loginError"] = "";
-                return View("~/views/cms/login.cshtml");
+                return View("~/views/cms/Login.cshtml");
             }
         }
 
