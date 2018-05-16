@@ -8,6 +8,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using Web.Mvc.Controllers.extend;
 using Web.Mvc.DAL;
 using Web.Mvc.Model;
 using Web.MVC.Controllers;
@@ -758,6 +759,15 @@ namespace Web.Mvc.Controllers
                 return View("~/views/cms/login.cshtml");
             }
         }
+
+        [ActionName("code")]
+        public ActionResult GetValidateCode()
+        {
+            ValidateCode vCode = new ValidateCode();
+            byte[] bytes = vCode.CreateValidateGraphic();
+            return File(bytes, @"image/jpeg");
+        }
+
         private bool checkLogin(string u, string p)
         {
             if (u == "test" && p == "123456")
