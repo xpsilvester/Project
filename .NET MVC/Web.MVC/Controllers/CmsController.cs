@@ -672,5 +672,103 @@ namespace Web.Mvc.Controllers
 
 
         #endregion
+
+        #region
+        [ActionName("login")]
+        public ActionResult login()
+        {
+            ViewData["username"] = "";
+            ViewData["codeErroe"] = "";
+            ViewData["password"] = "";
+            ViewData["loginError"] = "";
+            ViewData["error"] = "";
+            return View("~/views/cms/login.cshtml");
+        }
+
+        [ActionName("login")]
+        public ActionResult LoginOn(string username, string password, string code)
+        {
+            //简单的过滤自拼接表单
+            if (Request.Form["flage"] == "true")
+            {
+                try
+                {
+                    if (Session["checkcode"].ToString().ToLower() != code.ToLower())
+                    {
+                        ViewData["username"] = username;
+                        ViewData["password"] = password;
+                        ViewData["loginError"] = "";
+                        ViewData["codeError"] = "验证码错误";
+                        ViewData["error"] = "";
+                        return View("~/views/cms/login.cshtml");
+                    }
+                    else if (!checkLogin(username.FilterHttpGet(), password.FilterHttpGet()))
+                    {
+                        ViewData["username"] = username;
+                        ViewData["password"] = password;
+                        ViewData["loginError"] = "用户名或密码错误";
+                        ViewData["codeError"] = "";
+                        ViewData["error"] = "";
+                        return View("~/views/cms/login.cshtml");
+                    }
+                    else
+                    {
+                        string tmpUsername = username.FilterHttpGet();
+                        //Operator user = this.WebUnity.OperatorRepository
+                        //.Get(filter: t => t.userName == tmpUsername)
+                        //.First();
+                        //user.loginDate = DateTime.Now;
+                        
+                        //Session.Timeout = 30;
+                        //List<Permission> pList = user.Permissions.ToList<Permission>();
+                        //Hashtable ht = new Hashtable();
+                        //foreach (Permission p in pList)
+                        //{
+                        //    ht[p.mid] = p.permissionValue;
+                        //}
+                        ////把登录人员id和权限哈希表存入session
+                        //Session["uid"] = user.id;
+                        //Session["permission"] = ht;
+                        //ViewData["userName"] = user.userName;
+                        //ViewData["label"] = "No";
+
+                        return View("~/views/cms/login.cshtml");
+                    }
+                }
+                catch
+                {
+                    //异常，重新登录
+                    ViewData["username"] = "";
+                    ViewData["codeError"] = "";
+                    ViewData["password"] = "";
+                    ViewData["loginError"] = "";
+                    ViewData["error"] = "连接超时，请重新登陆";
+                    return View("~/views/cms/login.cshtml");
+
+                }
+            }
+            else
+            {
+                //非法表单，重新登录
+                ViewData["error"] = "登陆异常，请重新登陆";
+                ViewData["username"] = "";
+                ViewData["codeError"] = "";
+                ViewData["password"] = "";
+                ViewData["loginError"] = "";
+                return View("~/views/cms/login.cshtml");
+            }
+        }
+        private bool checkLogin(string u, string p)
+        {
+            if (u == "test" && p == "123456")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }
