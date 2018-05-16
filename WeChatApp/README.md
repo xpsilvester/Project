@@ -4,7 +4,7 @@
 ##### 最近做了关于电商类微信小程序项目，以下就是修改过的demo
 ##### 项目源码地址：https://github.com/xpsilvester/Project/tree/master/WeChatApp
 ##### 欢迎大家踊跃 提出建议 点个Star或者Fork支持一下~ 
-##### 留言地址：
+##### 留言地址：https://www.xpsilvester.com/2018/05/16/WechatApp/
 
 #### 一、首页                 
 ##### pages/index/index -- 实现基本布局，分类筛选 
