@@ -9,6 +9,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Web.Mvc.Controllers.extend;
+using Web.Mvc.Controllers.extends;
 using Web.Mvc.DAL;
 using Web.Mvc.Model;
 using Web.MVC.Controllers;
@@ -683,6 +684,7 @@ namespace Web.Mvc.Controllers
             ViewData["password"] = "";
             ViewData["loginError"] = "";
             ViewData["error"] = "";
+            Util.sessionGet();
             return View("~/views/cms/Login.cshtml");
         }
 
@@ -763,6 +765,23 @@ namespace Web.Mvc.Controllers
                 return View("~/views/cms/Login.cshtml");
             }
         }
+        //[HttpGet]
+        //public string login(string str)
+        //{
+        //    try
+        //    {
+        //        string jsonpCallback = Request.QueryString["jsonpcallback"];
+        //        Dictionary<string, string> dic = Util.sessionGet(str);
+        //        Session["uid"] = dic["userName"];
+        //        Session["email"] = dic["email"];
+        //        return jsonpCallback + "(a=1)";
+        //    }
+        //    catch (Exception)
+        //    {
+        //        string jsonpCallback = Request.QueryString["jsonpcallback"];
+        //        return jsonpCallback + "(a=0)";
+        //    }
+        //}
 
         [ActionName("code")]
         public ActionResult GetValidateCode()

@@ -8,6 +8,11 @@
             isRedirect = true;
         }
     }
+    DateTime dtStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+    TimeSpan toNow = DateTime.Now.Subtract(dtStart);
+    string timeStamp = toNow.Ticks.ToString();
+
+    timeStamp = timeStamp.Substring(0, 13);
 }
 <style>
     body, html {
@@ -18,7 +23,7 @@
     <div class="login">
         <form id="form1" action="/cms/loginOn" method="post">
             <div class="loginHeader">
-                <h1>内容管理系统</h1>
+                <h1>内容管理系统 @DateTime.Now</h1>
             </div>
             <input type="hidden" name="flage" value="true" />
             <div class="loginBody">
@@ -44,6 +49,7 @@
         </form>
     </div>
 </div>
+
 <script type="text/javascript">
     function changeCode() {
         document.getElementById("code").src = "/cms/code?time" + (new Date()).getTime();
@@ -53,8 +59,27 @@
             $('.loginBtn').html('登录中...').remove('type');
         });
     });
-    if ("@isRedirect" == "True") {
+    @*if ("@isRedirect" == "True") {
         window.location.href = '/cms/list';
-    }
+    }*@
+    //var str1 = encodeURIComponent("0ISQ3GrRTN7/EfwdM/3iz36eXVgN89JyBVWRZvwtRc05VAnInRJwftLSgcpzfq+Sd3TWAdCyZ8iqsr9TTeA6H3ccG6p4ZOf29cTaWTN2fvM=");
+    //$.ajax({
+    //    url: 'http://localhost:56377/cms/login',
+    //    type: 'get',
+    //    dataType: 'jsonp',
+    //    jsonp: "jsonpcallback",
+    //    //data:{str:"0ISQ3GrRTN7/EfwdM/3iz36eXVgN89JyBVWRZvwtRc05VAnInRJwftLSgcpzfq+Sd3TWAdCyZ8iqsr9TTeA6H3ccG6p4ZOf29cTaWTN2fvM="},
+    //    data: "str=" + str1 + "&jsonpcallback=?",
+    //    success: function (data) {
+    //        console.log(data);
+    //        //window.location.href = "http://localhost:56377/cms/list"
+    //    },
+    //    error: function(err) {
+    //        console.log('error');
+    //        //err.statusText == "success" ? window.location.href = "http://localhost:56377/cms/list" : alert("请登陆！");
+    //    }
+    //});
+    //var str1 = encodeURIComponent("0ISQ3GrRTN7/EfwdM/3iz36eXVgN89JyBVWRZvwtRc05VAnInRJwftLSgcpzfq+Sd3TWAdCyZ8iqsr9TTeA6H3ccG6p4ZOf29cTaWTN2fvM=");
+    //$('.wrap').append('<iframe src="http://localhost:56377/cms/login?str=' + str1 + '"></iframe>');
 </script>
 
