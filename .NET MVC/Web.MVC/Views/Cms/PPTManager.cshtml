@@ -51,6 +51,11 @@
                     alert('请选择软件类别');
                     return false;
                 }
+                if ($('.uploadFileTips img').attr("src") == '') {
+                    alert('请上传PPT略缩图');
+                    return false;
+                }
+                
                 //$('#form1').submit();
             });
             $('.uploadQRcode').change(function () {
@@ -170,7 +175,7 @@
     </script>
 <div class="cmsContainer">
     <div class="curPosition">
-    当前位置：下载管理 > PPT下载
+    当前位置：PPT管理
     </div>
 	<div class="search">
         <form id="formsearch" method="get" action="list">
@@ -185,16 +190,17 @@
 		        <button type="button" id="edit">编辑下载内容</button>
                 <button type="button" id="show">显示下载条目</button>
                 <button type="button" id="hide">隐藏下载条目</button>
-                @*<button type="button" id="delete">删除下载条目</button>*@
+                <button type="button" id="delete">删除下载条目</button>
 	        </div>
 	        <div class="list PPTItemList">
                 <table>
 			        <tr>
 				        <th class="col1">选中</th>
-				        <th class="col2">名称</th>
-                        <th class="col3">状态</th>
-				        <th class="col4">更新人</th>
+				        <th class="col2" width="400">名称</th>
+                        <th class="col3" width="200">状态</th>
+				        <th class="col4" width="200">作者</th>
 				        <th class="col5">最后更新时间</th>
+                        <th class="col6">有效期</th>
 			        </tr>
         
 		        @foreach (PPTItem d in PPTItemList)
@@ -203,8 +209,9 @@
         	            <td class="col1"><input name="productId" value="@d.id" type="checkbox"/></td>
 			            <td class="col2">@d.title</td>
                         <td class="col3">@DisplayState((bool)@d.visible)</td>
-			            <td class="col4">@d.updateUser</td>
+			            <td class="col4">@d.author</td>
 			            <td class="col5">@d.updateDate</td>
+                        <td class="col6">@d.validDate</td>
 		            </tr>
                 }
                 </table>
@@ -299,7 +306,7 @@
                 <span style="float: left;margin-top: 6px;margin-right: 20px;">（考虑公司的网速，上传文件大小已限制为不超过30M）</span>
             </div>
             <div class="PPTItemEdit">
-                <form id="form1" name="form1" action="save" method="post" enctype="multipart/form-data" >
+                <form id="form1" name="form1" action="save" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="PPTItemid" value="@PPTItem.id" />
 		            <div class="form-block row">
                         <div class="col">
@@ -313,7 +320,7 @@
                                 }*@
                                 @foreach (PPTClass dc in PPTClassList)
                                 {
-                                    if (dc.id > 4) 
+                                    if (dc.id > 3) 
                                     {
                                         <option value="@dc.id" @DisplayClassName((int)@dc.id, PPTItem) >@dc.className</option>
                                     }                 
@@ -337,7 +344,7 @@
                     <div class="form-block row QRcode">
 			            <label for="filename">上传PPT略缩图:</label>
 			            <div class="uploadFileBtn">
-                            <input class="uploadQRcode" type="file" value="" name="thumbnailSrc" />
+                            <input class="uploadQRcode" type="file" value="" name="thumbnailSrc" oninvalid="setCustomValidity('请上传略缩图')" oninput="setCustomValidity('')"/>
                             <span class="uploadBtnTheme">上传PPT略缩图</span>
                         </div>
                         <div class="uploadFileTips" style="width: 27px;height: 27px;float: left;padding-left: 10px;">
@@ -347,11 +354,14 @@
                     <br />
                     <div class="form-block row">
 			            <label for="validDate">有效日期:</label>
-			            <input type="text" size="19" id="validDate" name="validDate" value="@DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")"/>
+                        @{
+                            string time = PPTItem.validDate.Year > 2000 ? PPTItem.validDate.ToString() : DateTime.Now.ToString();
+                        }
+			            <input type="text" size="19" id="validDate" name="validDate" value="@time"/>
 		            </div>
                     <div class="form-block row">
 			            <label for="publishdate">发布日期:</label>
-			            <input type="text" size="19" id="publishdate" name="publishdate" value="@PPTItem.updateDate.ToString("yyyy-MM-dd hh:mm:ss")"/>
+			            <input type="text" size="19" id="publishdate" name="publishdate" value="@PPTItem.updateDate.ToString()"/>
 		            </div>
 		            <div class="form-block row">
 			            <label for="suitableModels">描述:</label>
