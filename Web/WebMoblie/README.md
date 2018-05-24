@@ -10,4 +10,4 @@ webpack #运行打包
 ![H5页面图片][2]
 
   [1]: https://raw.githubusercontent.com/xpsilvester/Project/master/Web/WebMoblie/imgs/1524377424.png
-  [2]: https://raw.githubusercontent.com/xpsilvester/Project/master/Web/WebMoblie/imgs/1524377424.png
+  [2]: https://raw.githubusercontent.com/xpsilvester/Project/master/images/webMobile.png
