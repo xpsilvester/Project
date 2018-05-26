@@ -8,7 +8,7 @@
 export default {
   name: 'PPTList',
   data () {
-    return { msg: '<h1>Welcome to PPTList</h1>' }
+    return { msg: '<h1>PPTList</h1>' }
   }
 }
 </script>
