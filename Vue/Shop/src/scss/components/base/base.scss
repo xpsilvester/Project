@@ -1,0 +1,17 @@
+@import "../config/config";
+@import "../mixins/mixins";
+
+.icon {
+    display: block;
+
+    @include background;
+}
+
+.flex-cont {
+    display: flex;
+
+    .flex-item {
+        flex: 1;
+        width: 0%;
+    }
+}

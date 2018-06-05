@@ -1,0 +1,111 @@
+@import "../config/config";
+
+// 闭合子元素浮动
+%clearfix {
+    &:before {
+        content: "";
+        display: table;
+    }
+
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+        overflow: hidden;
+    }
+}
+
+// 元素可以设置宽度才可应用省略号
+%ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// 背景repeat、position、size
+@mixin background($position: center center, $size: cover) {
+    background: {
+        repeat: no-repeat;
+        position: $position;
+        size: $size;
+    }
+}
+
+// border
+@mixin border($width: 1px, $style: solid, $color: #000) {
+    border: $width $style $color;
+}
+
+// px转换为rem
+@function pxToRem($px, $base: 750px) {
+    $min: 1 / $base * 10 * 1;
+    $result: $px / $base * 10 * 1;
+
+    @if $result < 0.027 and $result > 0 {
+        @return 2px;
+    }
+
+    @else {
+        @return $px / $base * 10 * 1rem;
+    }
+
+}
+
+// 设置dpr下的字体大小
+@mixin font-dpr($font-size, $line-height: $font-size) {
+    font-size: $font-size / 2;
+
+    @if $line-height != none {
+        line-height: $line-height / 2;
+    }
+
+    [data-dpr="2"] & {
+        font-size: $font-size;
+
+        @if $line-height != none {
+            line-height: $line-height;
+        }
+    }
+
+    [data-dpr="3"] & {
+        font-size: $font-size * 3 / 2;
+
+        @if $line-height != none {
+            line-height: $line-height * 3 / 2;
+        }
+    }
+}
+
+// 设置dpr下的图片
+@mixin img-dpr($url, $pattern) {
+    background-image: url($url);
+
+    [data-dpr="2"] & {
+        background-image: url(str-replace-first($url, $pattern, '@2x' + $pattern));
+    }
+
+    [data-dpr="3"] & {
+        background-image: url(str-replace-first($url, $pattern, '@3x' + $pattern));
+    }
+}
+
+@function str-replace-first($str, $regex, $replace) {
+    $search-start: str-index($str, $regex);
+
+    @if $search-start == null {
+        @return $str;
+    }
+
+    $result: str-slice($str, 0, $search-start - 1);
+    $result: $result + $replace;
+    $result: $result + str-slice($str, $search-start + str-length($regex));
+
+    @return $result;
+}
+
+@function mcalc($exp) {
+    $exp: unquote($exp);
+    $result: 'calc(' + $exp + ')';
+
+    @return unquote($result);
+}

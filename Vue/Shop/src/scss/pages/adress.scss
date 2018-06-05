@@ -1,0 +1,123 @@
+@import "../components/config/config.scss";
+@import "../components/mixins/mixins.scss";
+input{
+    border: none;
+    border-bottom: 1px solid #c8c7cc;
+    height: 20px;
+}
+select {
+    height:25px;
+}
+.defaultAdress{
+	background-color:#f1f1f5; 
+	color:#666;
+	padding:13px 10px 7px;
+	border-bottom: 1px solid #c8c7cc;
+	.fl{
+		span{
+			font-size: 14px; 
+			font-weight: bold; 
+			color: rgb(61,61,61);
+		}
+		a{
+			font-size:14px;
+			font-weight:bold;
+			color:rgb(61,61,61);
+			cursor:pointer;
+		}
+		em{
+			display: inline-block; 
+			width: 8px; 
+			height: 8px; 
+			border-radius: 5px; 
+			border: 1px solid #ff3d00;
+		}
+	}
+}
+.defaultTable{
+	border: 1px solid #ff4105; 
+	padding-top: 7px;
+	.addressInfo{
+		margin-bottom: 20px;
+		.input-line{
+			padding:10px;
+			li{
+				label{
+					width: 105px;
+					line-height:30px; 
+					color: rgb(20,20,20);
+					span{
+						color: #ff4105; 
+						margin-right: 5px;
+					}
+				}
+				.span-red{
+					padding:3px 10px; 
+					margin-left: 10px;
+				}
+				#lblPhone{
+					padding: 3px 10px;
+				}
+				.setdefaultAdress{
+					em{
+						display: block; 
+						margin: 5px 5px 0 0;
+						float:left;
+					}
+					span{
+						color: rgb(60,60,60);
+						float:left;
+						margin-top:2px;
+					}
+				}
+				.btn{
+					margin-top: 45px;
+					a{
+						width: 93%;
+					}
+				}
+				#area1{
+					margin:10px 0 0 20px;
+				}
+			}
+		}
+	}
+}
+.newAddr{
+	background-color:#f1f1f5; 
+	color:#666;
+	padding:13px 10px 7px;
+	border-bottom: 1px solid #c8c7cc;
+}
+.newAddress{
+	.addressInfo{
+		ul{
+			padding:10px;
+			li{
+				height: 35px;
+				border-bottom: 1px solid #c8c7cc;
+				margin-top: 15px;
+
+				label{
+					width: 105px; 
+					line-height:30px; 
+					color: rgb(20,20,20);
+
+					span{
+						color: #ff4105; 
+						margin-right: 5px;
+					}
+				}
+				#area6{
+					position:absolute;
+					left:90px;
+					top:2px;
+				}
+				#lblArea{
+					padding: 3px 10px; 
+					margin-left: 10px;
+				}
+			}
+		}
+	}
+}
