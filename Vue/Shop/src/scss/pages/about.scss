@@ -8,14 +8,35 @@
 	display: flex;
 	flex-direction:column;
 	align-items:flex-start;
-	
 	&>div,ul{
+		width: 100%;
 		background: #fff;
 		display: flex;
 		align-items:center;
 	}
+	.aboutTitle{
+		height: 40px;
+		text-align: center;
+		position: relative;
+		border-bottom: 1px solid #ccc;
+		span{
+			display: block;
+			width: 40px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			position: absolute;
+			top:0;
+			left: 0;
+		}
+		h5{
+			margin: 0 auto;
+		}
+	}
+	.securityRank{
+		height: 60px;
+	}
 	.aboutTip{
-		width: 100%;
 		border-top: 1px solid #ccc;
 		border-bottom: 1px solid #ccc;
 		height: 40px;
@@ -34,7 +55,6 @@
 		}
 	}
 	.aboutNickName{
-		width: 100%;
 		height: 80px;
 		border-top: 1px solid #ccc;
 		border-bottom: 1px solid #ccc;
@@ -52,14 +72,12 @@
 		}
 	}
 	.orderListAll{
-		width: 100%;
 		height: 40px;
 		margin: 5px 0 0;
 		border-top: 1px solid #ccc;
 		border-bottom: 1px solid #ccc;
 	}
 	.orderListStatus{
-		width: 100%;
 		height: 70px;
 		border-top: 1px solid #ccc;
 		border-bottom: 1px solid #ccc;
@@ -82,6 +100,40 @@
 		width: 10%;
 		height: 15px;
 	}
+	.usertext_29{
+		width: 90%;
+		height: 40px;
+		display: block;
+		margin: 10px auto;
+		padding: 0;
+	}
+	.verifyCode{
+		width: 90%;
+		margin: 0 auto;
+		display: flex;
+		justify-content:space-between;
+		input{
+			width: 49%;
+			height: 40px;
+		}
+		img{
+			width: 49%;
+		}
+	}
+	.Btnsendmail{
+		height: 40px; 
+		width: 90%;
+		display:block;
+		margin:5px auto;
+		background: blue;
+		color:#fff;
+		border: none;
+	}
+}
+.verifyMail{
+	width: 100%;
+	display: flex;
+
 }
 .icon-arr {
     width: 10px;
