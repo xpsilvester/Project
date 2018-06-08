@@ -3,7 +3,7 @@
 
 .aboutMain{
 	width: 100%;
-	min-height: 800px;
+	min-height: 100%;
 	background: #f5f5f5;
 	display: flex;
 	flex-direction:column;
@@ -136,7 +136,7 @@
 			width: 5%;
 		}
 		.img{
-			width: 15%;
+			width: 22%;
 			margin: 10px 5% 10px 5%;
 			
 			img{
@@ -194,7 +194,6 @@
 		span{
 			flex-grow:1;
 			text-align: center;
-			margin: 0 10%;
 			height: 50px;
 			line-height: 50px;
 		}
@@ -305,6 +304,48 @@
 			}
 		}
 	}
+	.orderSoInfo{
+		display: flex;
+		flex-wrap:wrap;
+		width: 95%;
+		padding: 5px 2.5%;
+		border-bottom: 1px solid #ccc;
+		margin-bottom: 5px;
+		h5{
+			width: 100%;
+			line-height: 50px;
+			height: 50px;
+			border-bottom: 1px solid #ccc;
+		}
+		h4{
+			width: 100%;
+			line-height: 50px;
+			height: 50px;
+			border-top:1px solid #ccc;
+			border-bottom: 1px solid #ccc;
+		}
+		p{
+			width: 100%;
+			line-height: 24px;
+		}
+		p.first{
+			margin-top: 5px;
+		}
+		p.last{
+			margin-bottom: 5px;
+		}
+		p.greg{
+			color:#808080;
+		}
+		.orderTime{
+			width: 70%;
+		}
+		.orderStatus{
+			color:#4097ff;
+			width: 30%;
+			text-align: right;
+		}
+	}
 	.aboutAddress{
 		width: 100%;
 		border-bottom: 1px solid #ccc;
@@ -345,6 +386,39 @@
 			text-align: center;
 		}
 	}
+	.pubcomment{
+		width: 100%;
+		height: 100px;
+		flex-wrap:wrap;
+		ul{
+			width: 70px;
+			margin: 10px auto;
+			display: flex;
+			height: 15px;
+			background-image: url(../images/ci_product.png);
+			background-position: -329px -14px;
+			position: relative;
+			li{
+				width: 20%;
+				height: 15px;
+				z-index: 2;
+			}
+			li.icon_star_active{
+				width: 100%;
+				position: absolute;
+				left: 0;
+				top:0;
+				background-image: url(../images/ci_product.png);
+    			background-position: -329px 0;
+    			z-index: 1;
+			}
+		}
+		p{
+			width: 100%;
+			text-align: center;
+			display: none;
+		}
+	}
 }
 .verifyMail{
 	width: 100%;
@@ -382,6 +456,14 @@
 		width: 11%;
 		text-align: center;
 	}
+}
+.reViewBottom{
+	width: 100%;
+	height: 50px;
+	background: #4097ff;
+	color:#fff;
+	text-align: center;
+	line-height: 50px;
 }
 .mask{
 	width: 100%;
