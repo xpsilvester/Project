@@ -63,3 +63,52 @@ html,body{
 		}
 	}
 }
+
+
+#categoryProductListBlock{
+	.layout2{
+		display: flex;
+		flex-wrap:wrap;
+		justify-content:space-around;
+		.productlist{
+			width: 48%;
+			border:1px solid #ccc;
+			margin-bottom: 5px;
+			flex-direction:column;
+			.productlistimg{
+				float: none;
+				margin: 5px auto;
+				border-bottom: 1px solid #ccc;
+    			width: 100%;
+			}
+		}
+	}
+} 
+.newTag{
+    width: 100%;
+    display: flex;
+    justify-content:space-around;
+    height: 40px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #ccc;
+    line-height: 40px;
+    margin-top: 5px;
+    position: relative;
+    .active{
+	    color:#03a9f4;
+	}
+	.filter{
+		color:#808080;
+	}
+	ul{
+		position: absolute;
+		top: 40px;
+		left: 0;
+		width: 80%;
+		padding: 0 10%;
+		background: #fff;
+		z-index: 99;
+		border-bottom: 1px solid #ccc;
+		display: none;
+	}
+}

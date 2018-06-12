@@ -330,3 +330,46 @@ footer{
 .price{
 	color:#2196f3;
 }
+.searchAdd{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 999;
+	background: #fff;
+	top: 0;
+	.topBar{
+		display: flex;
+		width: 100%;
+		height: 40px;
+		justify-content:space-around;
+		border-bottom: 1px solid #ccc;
+		margin-top: 10px;
+		span{
+			width: 5%;
+			line-height: 30px;
+		}
+		a{
+			width: 10%;
+			height: 30px;
+		}
+	}
+	.hotSearch{
+		width: 95%;
+		margin: 5px auto;
+		h3{
+			margin: 5px 0;
+			height: 30px;
+			line-height: 30px;
+			font-weight: bold;
+			font-size: 16px;
+		}
+		span{
+			padding: 5px;
+			background: #ccc;
+			border-radius: 2px;
+			height: 25px;
+			display: inline-block;
+			margin-bottom: 5px;
+		}
+	}
+}
