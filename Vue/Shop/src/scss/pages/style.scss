@@ -84,6 +84,7 @@
 			width:50%;
 			margin: 0 auto;
 			display: block;
+			max-width: 100px;
 		}
 	}
 	.itmeR1{ 
@@ -131,6 +132,8 @@
 		}
 		img{
 			margin: 10px auto 0;
+			max-width: 225px;
+			display: block;
 		}
 	}
 }
@@ -315,6 +318,7 @@ footer{
 				display: flex;
 				.info{
 					width: 70%;
+					max-width: 380px;
 				}
 				.img{
 					width: 30%;
