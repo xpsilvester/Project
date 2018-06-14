@@ -14,6 +14,55 @@
 		display: flex;
 		align-items:center;
 	}
+	.calNote{
+		width: 90%;
+		height: 60px;
+		padding: 0 5%;
+		flex-wrap:wrap;
+		p{
+			width: 100%;
+			line-height: 24px;
+		}
+		.bigNote{
+			font-size: 20px;
+		}
+	}
+	.calInfo{
+		width: 90%;
+		padding: 0 5%;
+		flex-wrap:wrap;
+		p{
+			width: 100%;
+			margin-bottom: 5px;
+		}
+		.title{
+			height: 26px;
+			line-height: 26px;
+			font-size: 20px;
+			position: relative;
+			span{
+				position: absolute;
+				right:0;
+			}
+		}
+	}
+	#ShowPayType{
+		.b_ff3d00{
+			border: none;
+		}
+		.contents{
+			width: 90%;
+			padding: 0 5%;
+			.paytype-list,.paytypelist-other{
+				float: none;
+				ul{
+					display: flex;
+					flex-direction:column;
+				}
+				
+			}
+		}
+	}
 	.aboutTitle{
 		height: 40px;
 		text-align: center;
@@ -542,7 +591,7 @@
 						position: absolute;
 						top:5px;
 						right: 5px;
-						
+
 					}
 				}
 			}
