@@ -3,6 +3,7 @@
 
 .homeBanner{
 	margin-bottom: 15px;
+	margin-top: 0px;
 	.navBar{
 	    width: 100%;
 	    height: 40px;
@@ -32,6 +33,18 @@
 		color:#7f7f7f;
 		height: 60px;
 		line-height: 60px;
+		position: relative;
+		span{
+			position: absolute;
+			right: 0;
+			top:3px;
+			font-size: 14px;
+			width: 100px;
+			height: 50px;
+			a{
+				color:inherit;
+			}
+		}
 	}
 }
 .floorCon{
@@ -349,31 +362,58 @@ footer{
 		border-bottom: 1px solid #ccc;
 		margin-top: 10px;
 		span{
-			width: 5%;
-			line-height: 30px;
+			width: 30px;
+			height: 30px;
+			background: url(/Areas/m/static/images/back.png);
 		}
 		a{
 			width: 10%;
 			height: 30px;
 		}
+		.searchBt2{
+			display: block;
+			width: 48px;
+			height: 32px;
+			top:0;
+			right: 0;
+			background: url(/Areas/m/static/images/searchBtn2.png);
+		}
+	}
+	.autoCompelete ul{
+		position: absolute;
+		width: 100%;
+		z-index: 999;
+		background: #fff;
+		left:0 !important;
+		top:60px !important;
+		height: 300px;
+		li{
+			padding-left: 15px;
+		    height: 30px;
+		    border-bottom: 1px solid #ccc;
+		    line-height: 30px;
+		}
 	}
 	.hotSearch{
 		width: 95%;
 		margin: 5px auto;
+		position: relative;
 		h3{
 			margin: 5px 0;
-			height: 30px;
-			line-height: 30px;
+			height: 45px;
+			line-height: 45px;
 			font-weight: bold;
 			font-size: 16px;
 		}
 		span{
 			padding: 5px;
-			background: #ccc;
-			border-radius: 2px;
-			height: 25px;
+			background: #f1f1f1;
+			border-radius: 5px;
+			height: 20px;
+			line-height: 20px;
 			display: inline-block;
 			margin-bottom: 5px;
+
 		}
 	}
 }

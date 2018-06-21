@@ -19,6 +19,7 @@ html,body{
 			font-size: 14px;
 			line-height: 30px;
 			margin-left: 10%;
+			overflow: hidden;
 		}
 		li.active{
 			color:#2196f3;
@@ -110,5 +111,15 @@ html,body{
 		z-index: 99;
 		border-bottom: 1px solid #ccc;
 		display: none;
+	}
+	.sel1{
+		width: 30px;
+		height: 100%;
+		background: url(/Areas/m/static/images/select1.png) 50% 50% no-repeat;
+	}
+	.sel2{
+		width: 30px;
+		height: 100%;
+		background: url(/Areas/m/static/images/select2.png) 50% 50% no-repeat;
 	}
 }

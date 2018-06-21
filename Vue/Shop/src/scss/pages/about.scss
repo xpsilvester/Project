@@ -77,6 +77,7 @@
 			position: absolute;
 			top:0;
 			left: 0;
+			background: url(/Areas/m/static/images/back.png) 50% 50% no-repeat;
 		}
 		h5{
 			margin: 0 auto;
@@ -114,6 +115,7 @@
 				height: 50px;
 				display: block;
 				margin: 15px auto;
+				border-radius: 25px;
 			}
 		}
 		.nickName{
@@ -138,7 +140,6 @@
 				height: 30px;
 				display: block;
 				margin: 5px auto;
-				border: 1px solid #ccc;
 			}
 			p{
 				text-align: center;
@@ -561,6 +562,7 @@
 				top:0;
 				left:0;
 				line-height: 50px;
+				background: url(/Areas/m/static/images/back.png) 50% 50% no-repeat;
 			}
 		}
 		.c{
