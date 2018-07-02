@@ -9,7 +9,9 @@
       <router-link to="/about">About</router-link>
       <router-link to="/login">Login</router-link>
     </template>
-    <router-view/>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 
