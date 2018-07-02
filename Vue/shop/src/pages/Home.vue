@@ -16,6 +16,11 @@ export default {
   },
   components: {
     Bottom
+  },
+  created () {
+    this.$http.get('/api/goods').then((data) => {
+      console.log(data.body.data)
+    })
   }
 }
 </script>
