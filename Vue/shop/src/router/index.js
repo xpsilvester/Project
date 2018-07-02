@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import Test from '@/components/Test/Test'
 import Home from '@/pages/Home'
 import Cart from '@/pages/Cart'
@@ -13,11 +12,6 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [
-    {
-      path: '/hello',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
     {
       path: '/test',
       name: 'Test',
