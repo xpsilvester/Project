@@ -9,15 +9,22 @@
       <router-link to="/about">About</router-link>
       <router-link to="/login">Login</router-link>
     </template>
-    <keep-alive>
-      <router-view/>
-    </keep-alive>
+    <transition>
+      <keep-alive>
+        <router-view/>
+      </keep-alive>
+    </transition>
+    <Bottom />
   </div>
 </template>
 
 <script>
+import Bottom from '@/components/Bottom-bar'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Bottom
+  }
 }
 </script>
 

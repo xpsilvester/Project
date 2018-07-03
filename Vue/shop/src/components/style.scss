@@ -1,0 +1,29 @@
+.bottom{
+    width: 100%;
+    max-width: 640px;
+    height: 50px;
+    position: fixed;
+    background: #fff;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    a{
+        text-decoration: none;
+        width: 25%;
+        img{
+            width: 30px;
+            height: 30px;
+            margin: 5px auto -20px;
+        }
+        p{
+            font-size: 12px;
+            color: #000;
+        }
+    }
+    .router-link-active{
+        p{
+            color: #000;
+            font-weight: bold;
+        }
+    }
+}
