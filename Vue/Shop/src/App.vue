@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Header />
     <img src="./assets/logo.png">
     <template>
       <router-link to="/test">Test</router-link>
@@ -19,23 +20,31 @@
 </template>
 
 <script>
+import Header from '@/components/Header'
 import Bottom from '@/components/Bottom-bar'
 export default {
   name: 'App',
   components: {
+    Header,
     Bottom
   }
 }
 </script>
 
 <style>
+body{
+  margin: 0;
+  padding: 0;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
 }
 .child-view {
   height: 200px;
