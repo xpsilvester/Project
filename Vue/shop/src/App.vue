@@ -9,9 +9,9 @@
       <router-link to="/about">About</router-link>
       <router-link to="/login">Login</router-link>
     </template>
-    <transition>
+    <transition name="slide-left">
       <keep-alive>
-        <router-view/>
+        <router-view class="child-view"></router-view>
       </keep-alive>
     </transition>
     <Bottom />
@@ -36,5 +36,22 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.child-view {
+  height: 200px;
+  width: 100%;
+  /* transition: all .8s ease; */
+}
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  /* -webkit-transform: translate(100%, 0); */
+  /* transform: translate(100%, 0); */
+}
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  /* -webkit-transform: translate(-100%, 0); */
+  /* transform: translate(-100% 0); */
 }
 </style>
