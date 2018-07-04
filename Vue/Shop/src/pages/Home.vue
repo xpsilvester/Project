@@ -1,10 +1,12 @@
 <template>
-  <div class="hello">
+  <div class="home">
+    <!-- <Tab /> -->
     <h1>{{ msg }}</h1>
   </div>
 </template>
 
 <script>
+import Tab from '@/components/Tab'
 export default {
   name: 'Home',
   data () {
@@ -13,6 +15,7 @@ export default {
     }
   },
   components: {
+    Tab
   },
   created () {
     this.$http.get('/api/goods').then((data) => {

@@ -1,15 +1,6 @@
 <template>
   <div id="app">
     <Header />
-    <img src="./assets/logo.png">
-    <template>
-      <router-link to="/test">Test</router-link>
-      <router-link to="/home">Home</router-link>
-      <router-link to="/cart">Cart</router-link>
-      <router-link to="/category">Category</router-link>
-      <router-link to="/about">About</router-link>
-      <router-link to="/login">Login</router-link>
-    </template>
     <transition name="slide-left">
       <keep-alive>
         <router-view class="child-view"></router-view>
@@ -47,7 +38,6 @@ body{
   margin: 0 auto;
 }
 .child-view {
-  height: 200px;
   width: 100%;
   /* transition: all .8s ease; */
 }

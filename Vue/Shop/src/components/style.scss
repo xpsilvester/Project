@@ -4,15 +4,14 @@ input{
     border: none;
     background: inherit;
     outline:none;
-    margin: 0;
-    padding: 0;
 }
 .header{
     width: 100%;
     height: 50px;
     display: flex;
+    justify-content: space-around;
     .logo{
-        width: 15%;
+        width: 20%;
         padding-top: 10px;
         p{
             color: $deepColor;
@@ -28,9 +27,38 @@ input{
         height: 30px;
         border-radius: 3px;
         margin-top: 10px;
+        display: flex;
+        span{
+            width: 10%;
+            img{
+                width: 20px;
+                height: 20px;
+                margin:5px auto;
+            }
+        }
         input{
             width: 90%;
             height: 25px;
+            margin-top: 3px;
+        }
+    }
+    .info{
+        width: 10%;
+        img{
+            width: 30px;
+            height: 30px;
+            margin: 10px auto;
+        }
+    }
+}
+.tab{
+    width: 100%;
+    height: 50px;
+    ul{
+        width: 100%;
+        display: flex;
+        li{
+            font-size: 16px;
         }
     }
 }
