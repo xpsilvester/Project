@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <!-- <Tab /> -->
-    <h1>{{ msg }}</h1>
+      <Tab />
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="tab">
       <ul>
-          <li>手机</li>
+          <li class="active">手机</li>
           <li>电脑</li>
           <li>路由器</li>
           <li>电器</li>
