@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <transition name="slide-left">
+    <transition name="slide">
       <keep-alive>
         <router-view class="child-view"></router-view>
       </keep-alive>
@@ -39,24 +39,16 @@ body{
 }
 .child-view {
   width: 100%;
-   transition: all .8s ease;
+  transition: all .8s cubic-bezier(.55, 0, .1, 1);
 }
-.slide-left-enter,
-.slide-right-leave-active {
-  opacity: 0;
+.slide-leave-active {
   position: absolute;
-  margin: 0;
-  padding: 0;
-  -webkit-transform: translate3d(0,0,0);
-  transform: translate3d(0,0,0);
+  -webkit-transform: translate(-100%, 0);
+  transform: translate(-100%, 0);
 }
-.slide-left-leave-active,
-.slide-right-enter {
-  opacity: 0;
+.slide-enter{
   position: absolute;
-  margin: 0;
-  padding: 0;
-  -webkit-transform: translate3d(-100%,0,0);
-  transform: translate(-100%,0,0);
+  -webkit-transform: translate(100%, 0);
+  transform: translate(100%, 0);
 }
 </style>
