@@ -1,11 +1,13 @@
 <template>
   <div id="app">
     <Header />
-    <transition name="slide">
-      <keep-alive>
-        <router-view class="child-view"></router-view>
-      </keep-alive>
-    </transition>
+    <div id="container">
+      <transition name="slide">
+        <keep-alive>
+          <router-view class="child-view"></router-view>
+        </keep-alive>
+      </transition>
+    </div>
     <Bottom />
   </div>
 </template>
@@ -23,9 +25,11 @@ export default {
 </script>
 
 <style>
-body{
+body,html{
   margin: 0;
   padding: 0;
+  height: 100%;
+  position: relative;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -37,17 +41,20 @@ body{
   max-width: 640px;
   margin: 0 auto;
 }
+#container{
+  width: 100%;
+  overflow: hidden;
+}
 .child-view {
   width: 100%;
   transition: all .8s cubic-bezier(.55, 0, .1, 1);
 }
 .slide-leave-active {
-  position: absolute;
   -webkit-transform: translate(-100%, 0);
   transform: translate(-100%, 0);
+  position: absolute;
 }
 .slide-enter{
-  position: absolute;
   -webkit-transform: translate(100%, 0);
   transform: translate(100%, 0);
 }

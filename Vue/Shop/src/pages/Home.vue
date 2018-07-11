@@ -1,11 +1,13 @@
 <template>
   <div class="home">
       <Tab />
+      <Slider />
   </div>
 </template>
 
 <script>
 import Tab from '@/components/Tab'
+import Slider from '@/components/Slider'
 export default {
   name: 'Home',
   data () {
@@ -14,7 +16,8 @@ export default {
     }
   },
   components: {
-    Tab
+    Tab,
+    Slider
   },
   created () {
     this.$http.get('/api/goods').then((data) => {
