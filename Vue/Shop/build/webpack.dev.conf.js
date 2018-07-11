@@ -17,6 +17,7 @@ var appData = require('../goods.json')
 var seller = appData.seller
 var goods = appData.goods
 var ratings = appData.ratings
+var recommend = appData.recommend
 var apiRoutes = express.Router()
 app.use('/api', apiRoutes)
 
@@ -54,13 +55,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       poll: config.dev.poll,
     },
     before(app) {
-      app.get('/api/seller', (req, res) => {
-        res.json({
-          // 这里是你的json内容
-          errno: 0,
-          data: seller
-        })
-      }),
       app.get('/api/goods', (req, res) => {
         res.json({
           // 这里是你的json内容
@@ -73,6 +67,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
           // 这里是你的json内容
           errno: 0,
           data: ratings
+        })
+      }),
+      app.get('/api/recommend', (req, res) => {
+        res.json({
+          // 这里是你的json内容
+          errno: 0,
+          data: recommend
         })
       })
     }

@@ -1,0 +1,45 @@
+.recommend{
+    padding-bottom: 50px;
+    h3{
+        font-size: 18px;
+        width: 100%;
+        text-align: center;
+        color: #7f7f7f;
+        height: 60px;
+        line-height: 60px;
+        margin: 0;
+        font-weight: normal;
+    }
+    .hot-pro{
+        width: 100%;
+        height: 315px;
+        img{
+            width: 100%;
+        }
+        .l1{
+            display: flex;
+            justify-content: space-between;
+            padding: 5px;
+            .name{
+                font-size: 16px;
+            }
+            .price{
+                font-size: 14px;
+                color: #ea625b;
+            }
+            .brief{
+                color: rgba(0,0,0,.54);
+                font-size: 12px;
+            }
+            .buybtn{
+                width: 100px;
+                height: 30px;
+                background: #03a9f4;
+                color: #fff;
+                border-radius: 2px;
+                line-height: 30px;
+                text-align: center;
+            }
+        }
+    }
+}

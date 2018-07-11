@@ -1,13 +1,13 @@
 <template>
   <div class="home">
       <Tab />
-      <Slider />
+      <Recommend />
   </div>
 </template>
 
 <script>
 import Tab from '@/components/Tab'
-import Slider from '@/components/Slider'
+import Recommend from '@/pages/Recommend'
 export default {
   name: 'Home',
   data () {
@@ -17,12 +17,7 @@ export default {
   },
   components: {
     Tab,
-    Slider
-  },
-  created () {
-    this.$http.get('/api/goods').then((data) => {
-      console.log(data.body.data)
-    })
+    Recommend
   }
 }
 </script>
