@@ -3,13 +3,13 @@
     <Slider />
     <h3>热销产品</h3>
     <div class="hot-pro">
-        <img :src="hotProImg" />
+        <img :src="hot.img" />
         <div class="l1">
-            <div class="name">红米Note 5 AI双摄</div>
-            <div class="price">￥1099起</div>
+            <div class="name">{{hot.name}}</div>
+            <div class="price">{{hot.price}}起</div>
         </div>
         <div class="l1">
-            <div class="brief">1.4μm大像素 AI双摄</div>
+            <div class="brief">{{hot.brief}}</div>
             <div class="buybtn">立即购买</div>
         </div>
       </div>
@@ -23,7 +23,12 @@ export default {
   data () {
     return {
       msg: '推荐',
-      hotProImg: ''
+      hot: {
+        img: '',
+        name: '',
+        price: '',
+        brief: ''
+      }
     }
   },
   components: {
@@ -32,7 +37,8 @@ export default {
   created () {
     this.$http.get('/api/recommend').then((data) => {
       console.log(data.body.data)
-      this.hotProImg = require('../assets/' + data.body.data[0].hotProImg + '.jpg')
+      this.hot = data.body.data[0]
+      this.hot.img = require('../assets/' + data.body.data[0].hotProImg + '.jpg')
     })
   }
 }
