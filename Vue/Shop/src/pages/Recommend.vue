@@ -12,7 +12,18 @@
             <div class="brief">{{hot.brief}}</div>
             <div class="buybtn">立即购买</div>
         </div>
-      </div>
+    </div>
+    <div class="pro-list">
+      <ul>
+        <li v-for="item in proList" :key="item.name">
+          <img :src="item.img" />
+          <p class="name">{{item.name}}</p>
+          <p class="brief">{{item.brief}}</p>
+          <p class="price">{{item.price}}</p>
+          <p class="buybtn">立即购买</p>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -23,12 +34,8 @@ export default {
   data () {
     return {
       msg: '推荐',
-      hot: {
-        img: '',
-        name: '',
-        price: '',
-        brief: ''
-      }
+      hot: {},
+      proList: []
     }
   },
   components: {
@@ -38,7 +45,11 @@ export default {
     this.$http.get('/api/recommend').then((data) => {
       console.log(data.body.data)
       this.hot = data.body.data[0]
-      this.hot.img = require('../assets/' + data.body.data[0].hotProImg + '.jpg')
+      this.hot.img = require('../assets/' + data.body.data[0].img + '.jpg')
+      this.proList = data.body.data[1].proList
+      for (let i = 0; i < this.proList.length; i++) {
+        this.proList[i].img = require('../assets/' + this.proList[i].img + '.jpg')
+      }
     })
   }
 }

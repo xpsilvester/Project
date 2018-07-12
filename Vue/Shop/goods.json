@@ -25,10 +25,38 @@
     ],
     "recommend": [
         {
-            "hotProImg": "hot_pro",
+            "img": "hot_pro",
             "name": "红米Note 5 AI双摄",
             "price": "￥1099",
             "brief": "1.4μm大像素 AI双摄"
+        },
+        {
+            "proList": [
+                {
+                    "img": "prolist1",
+                    "name": "小米MIX 2S",
+                    "price": "￥3299",
+                    "brief": "骁龙845旗舰处理器，AI双摄"
+                },
+                {
+                    "img": "prolist2",
+                    "name": "红米6",
+                    "price": "￥799",
+                    "brief": "AI双摄，小屏高性能"
+                },
+                {
+                    "img": "prolist3",
+                    "name": "游戏本15.6寸 i7 16GB",
+                    "price": "￥8199",
+                    "brief": "电竞级性能怪兽"
+                },
+                {
+                    "img": "prolist4",
+                    "name": "小米电视4A 50英寸",
+                    "price": "￥1999",
+                    "brief": "4K HDR，人工智能语音系统"
+                }
+            ]
         }
     ]
 }
