@@ -56,7 +56,7 @@ p{
 }
 .child-view {
   width: 100%;
-  transition: all .8s cubic-bezier(.55, 0, .1, 1);
+  transition: all .3s cubic-bezier(.55, 0, .1, 1);
 }
 .slide-leave-active {
   -webkit-transform: translate(-100%, 0);
