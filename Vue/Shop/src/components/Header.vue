@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" v-if="getPath != 'About'">
       <div class="logo">
           <p>SHOP</p>
           <p>官方商城</p>
@@ -22,6 +22,11 @@ export default {
   data () {
     return {
       path: ''
+    }
+  },
+  computed: {
+    getPath: function () {
+      return this.$route.name
     }
   }
 }

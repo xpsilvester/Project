@@ -25,12 +25,14 @@
     ],
     "recommend": [
         {
-            "img": "hot_pro",
-            "name": "红米Note 5 AI双摄",
-            "price": "￥1099",
-            "brief": "1.4μm大像素 AI双摄"
-        },
-        {
+            "hotPro": [
+                {
+                    "img": "hot_pro",
+                    "name": "红米Note 5 AI双摄",
+                    "price": "￥1099",
+                    "brief": "1.4μm大像素 AI双摄"
+                }
+            ],
             "proList": [
                 {
                     "img": "prolist1",
@@ -55,6 +57,46 @@
                     "name": "小米电视4A 50英寸",
                     "price": "￥1999",
                     "brief": "4K HDR，人工智能语音系统"
+                }
+            ]
+        }
+    ],
+    "about": [
+        {
+            "orderListStatus": [
+                {
+                    "tagName": "待付款",
+                    "img": "onpay"
+                },
+                {
+                    "tagName": "待发货",
+                    "img": "onsend"
+                },
+                {
+                    "tagName": "待收货",
+                    "img": "ontake"
+                },
+                {
+                    "tagName": "待评价",
+                    "img": "onreview"
+                },
+                {
+                    "tagName": "退换货",
+                    "img": "refund"
+                }
+            ],
+            "aboutTip":[
+                {
+                    "tipName": "到货通知",
+                    "img": "anotice"
+                },
+                {
+                    "tipName": "我的咨询",
+                    "img": "consult"
+                },
+                {
+                    "tipName": "帮助中心",
+                    "img": "helpcenter"
                 }
             ]
         }

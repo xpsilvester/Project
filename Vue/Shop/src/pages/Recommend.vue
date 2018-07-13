@@ -29,6 +29,7 @@
 
 <script>
 import Slider from '@/components/Slider'
+import utils from '@/lib/utils'
 export default {
   name: 'Recommend',
   data () {
@@ -44,12 +45,9 @@ export default {
   created () {
     this.$http.get('/api/recommend').then((data) => {
       console.log(data.body.data)
-      this.hot = data.body.data[0]
-      this.hot.img = require('../assets/' + data.body.data[0].img + '.jpg')
-      this.proList = data.body.data[1].proList
-      for (let i = 0; i < this.proList.length; i++) {
-        this.proList[i].img = require('../assets/' + this.proList[i].img + '.jpg')
-      }
+      let hot = utils.reSrc(data.body.data[0].hotPro, 'jpg')
+      this.hot = hot[0]
+      this.proList = utils.reSrc(data.body.data[0].proList, 'jpg')
     })
   }
 }

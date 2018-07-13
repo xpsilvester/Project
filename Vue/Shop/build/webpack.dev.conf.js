@@ -18,6 +18,7 @@ var seller = appData.seller
 var goods = appData.goods
 var ratings = appData.ratings
 var recommend = appData.recommend
+var about = appData.about
 var apiRoutes = express.Router()
 app.use('/api', apiRoutes)
 
@@ -74,6 +75,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
           // 这里是你的json内容
           errno: 0,
           data: recommend
+        })
+      }),
+      app.get('/api/about', (req, res) => {
+        res.json({
+          // 这里是你的json内容
+          errno: 0,
+          data: about
         })
       })
     }
