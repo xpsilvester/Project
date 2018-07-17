@@ -1,16 +1,20 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <Header barName="购物车" />
   </div>
 </template>
 
 <script>
+import Header from '@/components/Header'
 export default {
   name: 'Cart',
   data () {
     return {
       msg: '购物车'
     }
+  },
+  components: {
+    Header
   }
 }
 </script>

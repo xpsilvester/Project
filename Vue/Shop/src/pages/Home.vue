@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+      <Header />
       <Tab />
       <Recommend />
   </div>
@@ -8,6 +9,7 @@
 <script>
 import Tab from '@/components/Tab'
 import Recommend from '@/pages/Recommend'
+import Header from '@/components/Header'
 export default {
   name: 'Home',
   data () {
@@ -17,7 +19,8 @@ export default {
   },
   components: {
     Tab,
-    Recommend
+    Recommend,
+    Header
   }
 }
 </script>

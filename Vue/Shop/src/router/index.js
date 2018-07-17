@@ -6,6 +6,7 @@ import Cart from '@/pages/Cart'
 import Category from '@/pages/Category'
 import About from '@/pages/About'
 import Login from '@/pages/Login'
+import Search from '@/pages/Search'
 
 Vue.use(Router)
 
@@ -18,7 +19,7 @@ export default new Router({
       component: Test
     },
     {
-      path: '/home',
+      path: '/',
       name: 'Home',
       component: Home
     },
@@ -41,6 +42,11 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/search',
+      name: 'Search',
+      component: Search
     }
   ]
 })

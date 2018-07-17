@@ -1,6 +1,6 @@
 <template>
   <div class="bottom">
-      <router-link to="Home">
+      <router-link to="/">
         <img v-if="getPath == 'Home'" :src="homeImg[1]">
         <img v-else :src="homeImg[0]">
         <p>首页</p>

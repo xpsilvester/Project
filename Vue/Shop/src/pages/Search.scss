@@ -1,0 +1,20 @@
+.search{
+    .hot{
+        height: 45px;
+        line-height: 45px;
+        text-align: left;
+        font-size: 12.5px;
+        padding-left: 15px;
+    }
+    .search-key{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        p{
+            border: 1px solid #e4e4e4;
+            background: rgba(254, 137, 108, 0.05);
+            padding: 5px;
+            margin:5px 0 5px 10px;
+        }
+    }
+}

@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <Header />
     <div id="container">
       <transition name="slide">
         <keep-alive>
@@ -13,12 +12,10 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
 import Bottom from '@/components/Bottom-bar'
 export default {
   name: 'App',
   components: {
-    Header,
     Bottom
   }
 }

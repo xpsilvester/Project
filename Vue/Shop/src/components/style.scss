@@ -131,3 +131,41 @@ ul{
         width: 100%;
     }
 }
+.header-bar{
+    width: 100%;
+    height: 50px;
+    background: #f2f2f2;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+    .back{
+        background: url('~@/assets/back.png') 0 0 no-repeat;
+        background-size: 100%;
+    }
+    p{
+        width: 100px;
+        text-align: center;
+        line-height: 50px;
+    }
+    .search{
+        background: url('~@/assets/search_icon.png') 0 0 no-repeat;
+        background-size: 100%;
+    }
+    span{
+        width: 30px;
+        height: 30px;
+        margin: 10px 5px;
+        a{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    input{
+        background: #fff;
+        width: 250px;
+        padding: 0 10px;
+        height: 30px;
+        margin-top: 10px;
+    }
+}

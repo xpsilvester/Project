@@ -1,10 +1,11 @@
 <template>
-  <div class="header" v-if="getPath != 'About'">
+  <div>
+    <div class="header" v-if="getPath == 'Home'">
       <div class="logo">
           <p>SHOP</p>
           <p>官方商城</p>
       </div>
-      <div class="search">
+      <div class="search" @click="toSearch">
           <span>
             <img src="../assets/search_icon.png"/>
           </span>
@@ -13,15 +14,35 @@
       <div class="info">
         <img src="../assets/user.png" />
       </div>
+    </div>
+    <div class="header-bar" v-else-if="getPath == 'Search'">
+      <span class="back" @click="back"></span>
+      <input type="text" placeholder="搜索商品名称" autofocus="autofocus"/>
+      <span class="search"></span>
+    </div>
+    <div class="header-bar" v-else>
+      <span class="back" @click="back"></span>
+      <p>{{barName}}</p>
+      <span class="search" @click="toSearch"></span>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Header',
+  props: ['barName'],
   data () {
     return {
       path: ''
+    }
+  },
+  methods: {
+    back: function () {
+      this.$router.go(-1)
+    },
+    toSearch: function () {
+      this.$router.push({ path: '/search' })
     }
   },
   computed: {
