@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="header-container">
     <div class="header" v-if="getPath == 'Home'">
       <div class="logo">
           <p>SHOP</p>

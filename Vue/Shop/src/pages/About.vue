@@ -47,7 +47,6 @@ export default {
   },
   created () {
     this.$http.get('/api/about').then((data) => {
-      console.log(data.body.data)
       this.orderListStatus = utils.reSrc(data.body.data[0].orderListStatus, 'png')
       this.aboutTip = utils.reSrc(data.body.data[0].aboutTip, 'png')
     })

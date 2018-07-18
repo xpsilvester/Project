@@ -1,0 +1,105 @@
+.category{
+    position: relative;
+    .left-side{
+        position: fixed;
+        top: 50px;
+        bottom: 50px;
+        left: 0;
+        width: 80px;
+        border-right: 1px solid #efefef;
+        overflow: hidden;
+        ul{
+            z-index: 90;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: -15px;
+            padding: 10px 15px 10px 0;
+            background: #fefefe;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            li{
+                font-size: 18px;
+                height: 45px;
+                line-height: 45px;
+                overflow: hidden;
+                text-align: center;
+                -webkit-tap-highlight-color: rgba(0,0,0,0);
+                transition: -webkit-transform .1s linear;
+                transition: transform .1s linear;
+                transition: transform .1s linear,-webkit-transform .1s linear;
+                transform-origin: center center;
+                transform: scale(.76);
+                -webkit-transition: -webkit-transform .1s linear;
+                -webkit-transform-origin: center center;
+                -webkit-transform: scale(.76);
+                &.active{
+                    color: #fb7d34;
+                    transform: scale(1);
+                    -webkit-transform: scale(1);
+                }
+            }
+        }
+    }
+    .right-side{
+        position: fixed;
+        left: 80px;
+        right: 0;
+        top: 50px;
+        bottom: 50px;
+        padding: 2px 15px 20px;
+        overflow: auto;
+        .list-item{
+            .item-title{
+                background: #fff;
+                font-size: 15px;
+                text-align: center;
+                font-weight: 400;
+                margin-top: 10px;
+                margin-bottom: -10px;
+                height: 65px;
+                line-height: 65px;
+                overflow: hidden;
+                span{
+                  position: relative;
+                  &::before,&::after{
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    width: 20px;
+                    border-top: 1px solid #e0e0e0;
+                    transform: translate3d(-150%,-50%,0);
+                    -webkit-transform: translate3d(-150%,-50%,0);
+                  }
+                  &::after{
+                    left: auto;
+                    right: 0;
+                    transform: translate3d(150%,-50%,0);
+                    -webkit-transform: translate3d(150%,-50%,0);
+                  }
+                }
+            }
+            ul{
+              width: 100%;
+              display: flex;
+              flex-wrap: wrap;
+              li{
+                width: 33.333%;
+                margin-top:15px;
+                img{
+                  width: 70%;
+                  display: block;
+                  margin: 0 auto;
+                }
+                p{
+                  margin-top:15px;
+                  font-size: 12px;
+                  text-align: center;
+                }
+              }
+            }
+        }
+    }
+}
