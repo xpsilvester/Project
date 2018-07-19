@@ -1,6 +1,10 @@
 <template>
-  <div class="hello">
+  <div class="cart">
     <Header barName="购物车" />
+    <div class="empty">
+      <p>购物车还是空的~</p>
+      <div @click="toHome">去逛逛</div>
+    </div>
   </div>
 </template>
 
@@ -15,6 +19,11 @@ export default {
   },
   components: {
     Header
+  },
+  methods: {
+    toHome: function () {
+      this.$router.push({ path: '/' })
+    }
   }
 }
 </script>
