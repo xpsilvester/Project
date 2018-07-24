@@ -1,6 +1,6 @@
 <template>
   <div class="recommend">
-    <Slider />
+    <Slider :slides="slides" :inv="inv"/>
     <h3>热销产品</h3>
     <div class="hot-pro">
         <img :src="hot.img" />
@@ -36,7 +36,9 @@ export default {
     return {
       msg: '推荐',
       hot: {},
-      proList: []
+      proList: [],
+      slides: [],
+      inv: 5000
     }
   },
   components: {
@@ -47,6 +49,9 @@ export default {
       let hot = utils.reSrc(data.body.data[0].hotPro, 'jpg')
       this.hot = hot[0]
       this.proList = utils.reSrc(data.body.data[0].proList, 'jpg')
+    })
+    this.$http.get('/api/slides').then((data) => {
+      this.slides = utils.reSrc(data.body.data, 'jpg')
     })
   }
 }

@@ -127,8 +127,73 @@ ul{
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     background: #f5f5f5;
-    img{
+    position: relative;
+    height: 187px;
+
+    &-img{
+        position: absolute;
+        left: 0;
         width: 100%;
+        a{
+            display: block;
+            width: 100%;
+            img{
+                width: 100%;
+                position: absolute;
+                left: 0;
+            }
+        }
+    }
+    .slide-trans-enter-active{
+        width: 100%;
+        transition: all .5s cubic-bezier(.55, 0, .1, 1);
+    }
+    .slide-trans-enter{
+        transform: translateX(100%);
+    }
+    .slide-trans-old-leave-active{
+        transition:all .5s;
+        transform:translateX(-100%);
+    }
+    h2{
+        position: absolute;
+        left: 0;
+        top:20px;
+        display: none;
+    }
+    .slides-pages{
+        position: absolute;
+        height: 16px;
+        bottom: 5px;
+        left: 50%;
+        margin-left: -50px;
+        display: flex;
+        z-index: 99;
+        li{
+            font-size: 16px;
+            color: #808080;
+            &.radius{
+                width: 10px;
+                height: 10px;
+                border-radius: 6px;
+                background: #000;
+                opacity: .2;
+                margin: 3px 5px;
+            }
+            &.active{
+                opacity: 1;
+                background: #007aff;
+            }
+            &.prev{
+                margin-right: 5px;
+                display: none;
+            }
+            &.next{
+                margin-left: 5px;
+                display: none;
+            }
+        }
+        
     }
 }
 .header-bar{

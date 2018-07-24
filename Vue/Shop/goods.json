@@ -275,5 +275,27 @@
                 }
             ]
         }
+    ],
+    "slides": [
+        {
+            "img": "slider1",
+            "title": "红米6Pro",
+            "href": "/"
+        },
+        {
+            "img": "slider2",
+            "title": "小米8",
+            "href": "/"
+        },
+        {
+            "img": "slider3",
+            "title": "笔记本",
+            "href": "/"
+        },
+        {
+            "img": "slider4",
+            "title": "T恤",
+            "href": "/"
+        }
     ]
 }
