@@ -37,7 +37,13 @@ export default {
       msg: '推荐',
       hot: {},
       proList: [],
-      slides: [],
+      slides: [
+        {
+          'title': '111',
+          'img': require('@/assets/slider1.jpg'),
+          'href': '/'
+        }
+      ],
       inv: 5000
     }
   },

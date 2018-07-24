@@ -29,9 +29,9 @@ export default {
       default: function () {
         return [
           {
-            'title': '',
-            'img': '',
-            'href': ''
+            'title': '111',
+            'img': require('@/assets/slider1.jpg'),
+            'href': '/'
           }
         ]
       }
