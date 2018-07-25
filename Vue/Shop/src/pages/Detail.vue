@@ -2,6 +2,13 @@
   <div class="detail">
     <Header barName="商品详情" />
     <Slider :slides="slides" :inv="inv"/>
+    <div class="overview">
+      <h3>{{title}}</h3>
+      <p class="brief">{{brief}}</p>
+      <div class="price">
+        <p>{{price}}</p>
+      </div>
+    </div>
   </div>
   </template>
 
@@ -21,7 +28,10 @@ export default {
           'href': '/'
         }
       ],
-      inv: 5000
+      inv: 5000,
+      title: '',
+      brief: '',
+      price: ''
     }
   },
   components: {
@@ -42,6 +52,10 @@ export default {
   created () {
     this.$http.get('/api/detail').then((data) => {
       this.slides = utils.reSrc(data.body.data[0]['slides_1'], 'jpg')
+      this.title = data.body.data[1].title
+      this.brief = data.body.data[1].brief
+      this.price = data.body.data[1].price
+      console.log(data.body.data[1])
     })
   }
 }

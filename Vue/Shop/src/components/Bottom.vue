@@ -23,6 +23,17 @@
         </router-link>
     </div>
     <div class="bottom" v-else>
+      <router-link to="/">
+        <img :src="homeImg[0]">
+        <p>首页</p>
+      </router-link>
+      <router-link to="Cart">
+        <img :src="cartImg[0]">
+        <p>购物车</p>
+      </router-link>
+      <div class="addCart">
+        加入购物车
+      </div>
     </div>
   </div>
 </template>

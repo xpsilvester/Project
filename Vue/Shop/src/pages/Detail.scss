@@ -6,6 +6,41 @@
     overflow-y: auto;
     width: 100%;
     height: 100%;
+    .overview{
+        width: 90%;
+        padding: 10px 5% 0;
+        height: 120px;
+        text-align: left;
+        border-bottom: 4px solid #efefef;
+        h3{
+            font-size: 18px;
+            line-height: 28.125px;
+            margin: 0;
+        }
+        .brief{
+            font-size: 12.5px;
+            line-height: 18.75px;
+            color: rgba(0,0,0,.54);
+        }
+        .price{
+            position: relative;
+            p{
+                font-size: 25px;
+                color: #ff6700;
+                font-weight: 700;
+                padding: 10px 15px;
+                &::before{
+                    content: "\A5";
+                    position: absolute;
+                    left: 0;
+                    top: 10px;
+                    font-size: 25px;
+                    text-decoration: none;
+                }
+            }
+            
+        }
+    }
 }
 .slider{
     height: 415px;
