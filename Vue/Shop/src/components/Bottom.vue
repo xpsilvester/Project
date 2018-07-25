@@ -27,6 +27,7 @@
         <img :src="homeImg[0]">
         <p>首页</p>
       </router-link>
+      <div class="line"></div>
       <router-link to="Cart">
         <img :src="cartImg[0]">
         <p>购物车</p>

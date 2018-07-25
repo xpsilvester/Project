@@ -113,6 +113,12 @@ ul{
             margin-top: 13px;
         }
     }
+    .line{
+        width: 1px;
+        height: 40px;
+        margin: 5px 0;
+        background: #ccc;
+    }
     .addCart{
         width: 50%;
         background: #ff6700;
@@ -212,6 +218,7 @@ ul{
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 99;
     .back{
         background: url('~@/assets/back.png') 0 0 no-repeat;
         background-size: 100%;

@@ -9,8 +9,21 @@
         <p>{{price}}</p>
       </div>
     </div>
+    <div class="product-section">
+      <div class="slice">
+        <p class="chose">已选</p>
+        <p class="type">小米8 SE 4GB+64GB 金色 x1</p>
+        <span class="arrow"></span>
+      </div>
+      <div class="slice">
+        <p class="chose">送至</p>
+        <p class="type">北京市 东城区</p>
+        <span class="hasGoods">有现货</span>
+        <span class="arrow"></span>
+      </div>
+    </div>
   </div>
-  </template>
+</template>
 
 <script>
 import Header from '@/components/Header'
@@ -55,7 +68,6 @@ export default {
       this.title = data.body.data[1].title
       this.brief = data.body.data[1].brief
       this.price = data.body.data[1].price
-      console.log(data.body.data[1])
     })
   }
 }
