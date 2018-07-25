@@ -1,22 +1,32 @@
 <template>
   <div class="detail">
-    <div class="empty">
-      <p>商品详情</p>
-    </div>
+    <Header barName="商品详情" />
+    <Slider :slides="slides" :inv="inv"/>
   </div>
-</template>
+  </template>
 
 <script>
 import Header from '@/components/Header'
+import utils from '@/lib/utils'
+import Slider from '@/components/Slider'
 export default {
   name: 'Detail',
   data () {
     return {
-      msg: '购物车'
+      msg: '商品详情',
+      slides: [
+        {
+          'title': '111',
+          'img': require('@/assets/mi8_1.jpg'),
+          'href': '/'
+        }
+      ],
+      inv: 5000
     }
   },
   components: {
-    Header
+    Header,
+    Slider
   },
   methods: {
     toHome: function () {
@@ -27,7 +37,12 @@ export default {
     }
   },
   mounted () {
-    console.log(this.getPath())
+    // console.log(this.getPath())
+  },
+  created () {
+    this.$http.get('/api/detail').then((data) => {
+      this.slides = utils.reSrc(data.body.data[0]['1'], 'jpg')
+    })
   }
 }
 </script>

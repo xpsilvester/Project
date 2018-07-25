@@ -10,7 +10,7 @@
         </transition>
       </a>
     </div>
-    <h2>{{slides[nowIndex].title}}</h2>
+    <!-- <h2>{{slides[nowIndex].title}}</h2> -->
     <ul class="slides-pages">
       <li class="prev" @click="goto(prevIndex)">&lt;</li>
       <li class="radius" :class="{active: index === nowIndex }" v-for="(item,index) in slides" :key="index" @click="goto(index)">
@@ -39,6 +39,10 @@ export default {
     inv: {
       type: Number,
       default: 1000
+    },
+    itemH: {
+      type: Number,
+      default: 187
     }
   },
   data () {
