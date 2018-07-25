@@ -1,5 +1,5 @@
 <template>
-  <div class="bottom">
+  <div class="bottom" v-if="getPath != 'Detail'">
       <router-link to="/">
         <img v-if="getPath == 'Home'" :src="homeImg[1]">
         <img v-else :src="homeImg[0]">

@@ -7,6 +7,7 @@ import Category from '@/pages/Category'
 import About from '@/pages/About'
 import Login from '@/pages/Login'
 import Search from '@/pages/Search'
+import Detail from '@/pages/Detail'
 
 Vue.use(Router)
 
@@ -47,6 +48,11 @@ export default new Router({
       path: '/search',
       name: 'Search',
       component: Search
+    },
+    {
+      path: '/detail',
+      name: 'Detail',
+      component: Detail
     }
   ]
 })
