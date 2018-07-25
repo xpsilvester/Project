@@ -41,7 +41,7 @@ export default {
   },
   created () {
     this.$http.get('/api/detail').then((data) => {
-      this.slides = utils.reSrc(data.body.data[0]['1'], 'jpg')
+      this.slides = utils.reSrc(data.body.data[0]['slides_1'], 'jpg')
     })
   }
 }

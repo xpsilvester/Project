@@ -10,4 +10,7 @@
 .slider{
     height: 415px;
     margin-top: 50px;
+    height: -moz-calc(100vw * 1.1); 
+    height: -webkit-calc(100vw * 1.1); 
+    height: calc(100vw * 1.1);
 }

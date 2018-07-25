@@ -61,4 +61,7 @@
 }
 .slider{
     height: 187px;
+    height: -moz-calc(100vw * 0.5); 
+    height: -webkit-calc(100vw * 0.5); 
+    height: calc(100vw * 0.5);
 }

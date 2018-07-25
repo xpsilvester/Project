@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Bottom from '@/components/Bottom-bar'
+import Bottom from '@/components/Bottom'
 export default {
   name: 'App',
   components: {
