@@ -42,7 +42,106 @@
         }
     }
     .product-section{
-        
+        width: 90%;
+        padding: 0 5%;
+        border-bottom: 8px solid #efefef;
+        .slice{
+            width: 100%;
+            height: 35px;
+            line-height: 35px;
+            display: flex;
+            justify-content: space-between;
+            text-align: left;
+            .chose{
+                width: 10%;
+                font-size: 12.5px;
+                color: rgba(0,0,0,.54);
+            }
+            .type{
+                width: 75%;
+                font-size: 12.5px;
+                .hasGoods{
+                    color: #f56600;
+                    margin-left: 5px;
+                }
+            }
+            .arrow{
+                width: 10px;
+                height: 15px;
+                margin: 10px 0;
+                background:url('~@/assets/icon_order.png') 0 0 no-repeat;
+                background-size:100px 100px; 
+            }
+            .policy{
+                font-size: 12px;
+                color: rgba(0,0,0,.54);
+                display: flex;
+                span{
+                    width: 10px;
+                    height: 10px;
+                    margin: 12.5px 2px;
+                    background:url('~@/assets/icon_success.png') 0 0 no-repeat;
+                    background-size:100%; 
+                }
+            }
+            .review{
+                width: 30%;
+                font-size: 12.5px;
+                color: rgba(0,0,0,.54);
+            }
+        }
+        .comment-title{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+        .comment-box{
+            width: 100%;
+            padding: 5px 0;
+            font-size: 14px;
+            line-height: 20px;
+            margin-top: 10px;
+            text-align: left;
+        }
+        .comment-reply{
+            width: 95%;
+            padding: 2.5%;
+            background: #efefef;
+            font-size: 14px;
+            text-align: left;
+            span{
+                color: #f56600;
+            }
+            margin-bottom: 10px;
+        }
+    }
+    .description{
+        width: 100%;
+        .tab{
+            height: 50px;
+            display: flex;
+            line-height: 50px;
+            font-size: 14px;
+            .line{
+                height: 30px;
+                margin: 10px 0;
+                width: 1px;
+                background: #efefef;
+            }
+            span{
+                width: 50%;
+                &.active{
+                    color: #f56600;
+                }
+            }
+        }
+        .producShow,.productArgs{
+            width: 100%;
+            img{
+                width: 100%;
+            }
+        }
     }
 }
 .slider{
