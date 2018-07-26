@@ -16,7 +16,7 @@
           <span>{{item.type}}</span>
         </div>
         <ul>
-          <li v-for="item2 in item.list" :key="item2.id">
+          <li v-for="item2 in item.list" :key="item2.id" @click="toDetail">
             <img :src="item2.img"/>
             <p>{{item2.title}}</p>
           </li>
@@ -66,6 +66,9 @@ export default {
       } else if (top >= 840 && top < 901) {
         this.type = 4
       }
+    },
+    toDetail: function () {
+      this.$router.push({ path: '/detail' })
     }
   },
   components: {

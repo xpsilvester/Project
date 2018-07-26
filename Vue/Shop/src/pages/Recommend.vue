@@ -2,7 +2,7 @@
   <div class="recommend">
     <Slider :slides="slides" :inv="inv"/>
     <h3>热销产品</h3>
-    <div class="hot-pro">
+    <div class="hot-pro" @click="toDetail">
         <img :src="hot.img" />
         <div class="l1">
             <div class="name">{{hot.name}}</div>
@@ -15,7 +15,7 @@
     </div>
     <div class="pro-list">
       <ul>
-        <li v-for="item in proList" :key="item.name">
+        <li v-for="item in proList" :key="item.name" @click="toDetail">
           <img :src="item.img" />
           <p class="name">{{item.name}}</p>
           <p class="brief">{{item.brief}}</p>
@@ -45,6 +45,11 @@ export default {
         }
       ],
       inv: 5000
+    }
+  },
+  methods: {
+    toDetail: function () {
+      this.$router.push({ path: '/detail' })
     }
   },
   components: {

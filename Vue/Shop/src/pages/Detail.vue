@@ -12,7 +12,7 @@
     <div class="product-section">
       <div class="slice">
         <p class="chose">已选</p>
-        <p class="type">小米8 SE 4GB+64GB 金色 x1</p>
+        <p class="type">{{type[0].name}}</p>
         <span class="arrow"></span>
       </div>
       <div class="slice">
@@ -28,20 +28,19 @@
     </div>
     <div class="product-section">
       <div class="slice">
-        <p class="review">用户评价(8226)</p>
+        <p class="review">用户评价({{reviewNum}})</p>
         <span class="arrow"></span>
       </div>
       <div class="comment-title">
-        <p class="name">用户A</p>
-        <p class="date">2018-12-30 13:40:21</p>
+        <p class="name">{{comment[0].user}}</p>
+        <p class="date">{{comment[0].date}}</p>
       </div>
       <div class="comment-box">
-        好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！
-        好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！
+        {{comment[0].content}}
       </div>
       <div class="comment-reply">
         <span>官方回复：</span>
-        感谢感谢感谢！ 感谢感谢感谢！ 感谢感谢感谢！ 感谢感谢感谢！ 感谢感谢感谢！ 感谢感谢感谢！ 感谢感谢感谢！ 感谢感谢感谢！
+        {{comment[0].reply}}
       </div>
     </div>
     <div class="description">
@@ -51,14 +50,10 @@
         <span :class="{ active : tabState == false}" @click="changeTab">参数</span>
       </div>
       <div class="producShow" v-if="tabState == true">
-        <img src="@/assets/mi8_des1.jpg" />
-        <img src="@/assets/mi8_des2.jpg" />
-        <img src="@/assets/mi8_des3.jpg" />
+        <img v-for="(item,index) in producShow" :key="index" :src="item.img" />
       </div>
       <div class="productArgs" v-else>
-        <img src="@/assets/mi8_args1.jpg" />
-        <img src="@/assets/mi8_args2.jpg" />
-        <img src="@/assets/mi8_args3.jpg" />
+        <img v-for="(item,index) in productArgs" :key="index" :src="item.img" />
       </div>
     </div>
   </div>
@@ -84,7 +79,23 @@ export default {
       title: '',
       brief: '',
       price: '',
-      tabState: true
+      tabState: true,
+      type: [
+        {
+          name: ''
+        }
+      ],
+      reviewNum: 0,
+      comment: [
+        {
+          'user': '',
+          'date': '',
+          'content': '',
+          'reply': ''
+        }
+      ],
+      producShow: [],
+      productArgs: []
     }
   },
   components: {
@@ -111,6 +122,12 @@ export default {
       this.title = data.body.data[1].title
       this.brief = data.body.data[1].brief
       this.price = data.body.data[1].price
+      this.type = data.body.data[1].type
+      this.reviewNum = data.body.data[1].reviewNum
+      this.comment = data.body.data[1].comment
+      this.producShow = utils.reSrc(data.body.data[1].producShow, 'jpg')
+      this.productArgs = utils.reSrc(data.body.data[1].productArgs, 'jpg')
+      console.log(this.comment)
     })
   }
 }
