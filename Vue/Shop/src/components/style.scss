@@ -126,6 +126,35 @@ ul{
         text-align: center;
         line-height: 50px;
     }
+    .cal{
+        width: 33.33%;
+        padding-top: 7.8px;
+        p{
+            font-size: 13.5px;
+            color: #999;
+            span{
+                color: #ff5722;
+                font-size: 20.83px;
+                font-weight: bolder;
+                margin-right: 6px;
+                margin-top: 3px;
+            }
+        }
+    }
+    .continue{
+        width: 33.33%;
+        background: #f4f4f4;
+        border: 1px solid #f4f4f4;
+        line-height: 50px;
+        font-size: 14.5px;
+    }
+    .buy{
+        width: 33.33%;
+        background: #ff5722;
+        color: #fff;
+        line-height: 50px;
+        font-size: 14.5px;
+    }
     .router-link-active{
         p{
             color: #000;

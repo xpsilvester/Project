@@ -1,6 +1,28 @@
 <template>
   <div>
-    <div class="bottom" v-if="getPath != 'Detail'">
+    <div class="bottom" v-if="getPath == 'Detail'">
+      <router-link to="/">
+        <img :src="homeImg[0]">
+        <p>首页</p>
+      </router-link>
+      <div class="line"></div>
+      <router-link to="Cart">
+        <img :src="cartImg[0]">
+        <p>购物车</p>
+      </router-link>
+      <div class="addCart">
+        加入购物车
+      </div>
+    </div>
+    <div class="bottom" v-else-if="getPath == 'Cart'">
+      <div class="cal">
+        <p>共1件 金额：</p>
+        <p><span>2999</span>元</p>
+      </div>
+      <div class="continue">继续购物</div>
+      <div class="buy">去结算</div>
+    </div>
+    <div class="bottom" v-else>
         <router-link to="/">
           <img v-if="getPath == 'Home'" :src="homeImg[1]">
           <img v-else :src="homeImg[0]">
@@ -21,20 +43,6 @@
           <img v-else :src="aboutImg[0]">
           <p>我的</p>
         </router-link>
-    </div>
-    <div class="bottom" v-else>
-      <router-link to="/">
-        <img :src="homeImg[0]">
-        <p>首页</p>
-      </router-link>
-      <div class="line"></div>
-      <router-link to="Cart">
-        <img :src="cartImg[0]">
-        <p>购物车</p>
-      </router-link>
-      <div class="addCart">
-        加入购物车
-      </div>
     </div>
   </div>
 </template>
