@@ -28,6 +28,8 @@
 
 <script>
 import Header from '@/components/Header'
+import { mapMutations, mapGetters } from 'vuex'
+
 export default {
   name: 'Cart',
   data () {
@@ -38,10 +40,50 @@ export default {
   components: {
     Header
   },
+  computed: {
+    ...mapGetters(['sum']),
+    goodsList: function () {
+      return this.$store.state.goodsList
+    },
+    number: function () {
+      return this.$store.getters.goodsNumber
+    }
+  },
   methods: {
+    ...mapMutations(['deleteGoods', 'updateGoods']),
+    findPosition: function (id) {
+      return this.goodsList.findIndex(item => {
+        return item.id === id
+      })
+    },
+    changeNumber: function (id, val) {
+      let i = this.findPosition(id)
+      let num = this.goodsList[i].number
+      this.updateGoods({
+        index: i,
+        key: 'number',
+        value: num + val <= 0 ? 1 : num + val
+      })
+    },
+    del: function (id) {
+      let i = this.findPosition(id)
+      this.deleteGoods(i)
+    },
+    toggleSelect: function (id) {
+      let i = this.findPosition(id)
+      let select = this.goodsList[i].select
+      this.updateGoods({
+        index: i,
+        key: 'select',
+        value: !select
+      })
+    },
     toHome: function () {
       this.$router.push({ path: '/' })
     }
+  },
+  mounted () {
+    console.log(this.goodsList, this.number)
   }
 }
 </script>
