@@ -16,8 +16,8 @@
     </div>
     <div class="bottom" v-else-if="getPath == 'Cart'">
       <div class="cal">
-        <p>共1件 金额：</p>
-        <p><span>2999</span>元</p>
+        <p>共{{number}}件 金额：</p>
+        <p><span>{{sum}}</span>元</p>
       </div>
       <div class="continue">
         <router-link to="/">
@@ -52,6 +52,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'Bottom',
   data () {
@@ -64,8 +65,12 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['sum']),
     getPath: function () {
       return this.$route.name
+    },
+    number: function () {
+      return this.$store.getters.goodsNumber
     }
   }
 }

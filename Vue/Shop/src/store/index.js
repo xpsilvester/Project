@@ -6,7 +6,8 @@ export const store = new Vuex.Store({
   state: {
     goodsList: localStorage['goodsList'] ? JSON.parse(localStorage['goodsList']) : [
       {
-        'title': '小米8',
+        'id': 1,
+        'title': '小米8 全网通版 6GB内存 128GB 黑色',
         'img': require('../assets/cart_mi8.jpg'),
         'price': 2999,
         'number': 1,

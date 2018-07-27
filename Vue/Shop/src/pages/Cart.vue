@@ -1,25 +1,25 @@
 <template>
   <div class="cart">
     <Header barName="购物车" />
-    <div class="empty">
+    <div class="empty" v-if="goodsList == []">
       <p>购物车还是空的~</p>
       <div @click="toHome">去逛逛</div>
     </div>
-    <div class="product">
-      <div class="choosed"></div>
+    <div class="product" v-for="(item,index) in goodsList" :key="index">
+      <div :class="[{choosed : item.select == true},'choose']" @click="toggleSelect(item.id)"></div>
       <div class="img">
         <img src="@/assets/cart_mi8.jpg" alt="" />
       </div>
       <div class="info">
-        <p class="name">小米8 全网通版 6GB内存 128GB 黑色</p>
-        <p class="price">售价：2999元</p>
+        <p class="name">{{item.title}}</p>
+        <p class="price">售价：{{item.price}}元</p>
         <div class="num">
           <div class="input-number">
-            <div class="input-sub"></div>
-            <div class="input-num">1</div>
-            <div class="input-add"></div>
+            <div class="input-sub" @click="changeNumber(item.id,-1)"></div>
+            <div class="input-num">{{item.number}}</div>
+            <div class="input-add" @click="changeNumber(item.id,1)"></div>
           </div>
-          <div class="delete"></div>
+          <div class="delete" @click="del(item.id)"></div>
         </div>
       </div>
     </div>
