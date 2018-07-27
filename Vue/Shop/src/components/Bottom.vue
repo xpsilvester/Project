@@ -10,7 +10,7 @@
         <img :src="cartImg[0]">
         <p>购物车</p>
       </router-link>
-      <div class="addCart">
+      <div class="addCart" @click="addToCart">
         加入购物车
       </div>
     </div>
@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'Bottom',
   data () {
@@ -71,6 +71,19 @@ export default {
     },
     number: function () {
       return this.$store.getters.goodsNumber
+    }
+  },
+  methods: {
+    ...mapMutations(['addGoods']),
+    addToCart: function () {
+      this.addGoods({
+        'id': 1,
+        'title': '小米8 全网通版 6GB内存 128GB 黑色',
+        'img': require('../assets/cart_mi8.jpg'),
+        'price': 2999,
+        'number': 1,
+        'select': true
+      })
     }
   }
 }

@@ -5,6 +5,7 @@
       <p>购物车还是空的~</p>
       <div @click="toHome">去逛逛</div>
     </div>
+    <div class="pro-top"></div>
     <div class="product" v-for="(item,index) in goodsList" :key="index">
       <div :class="[{choosed : item.select == true},'choose']" @click="toggleSelect(item.id)"></div>
       <div class="img">
