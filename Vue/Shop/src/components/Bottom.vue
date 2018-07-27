@@ -19,7 +19,11 @@
         <p>共1件 金额：</p>
         <p><span>2999</span>元</p>
       </div>
-      <div class="continue">继续购物</div>
+      <div class="continue">
+        <router-link to="/">
+          继续购物
+        </router-link>
+      </div>
       <div class="buy">去结算</div>
     </div>
     <div class="bottom" v-else>
