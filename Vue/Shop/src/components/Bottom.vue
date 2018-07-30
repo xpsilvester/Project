@@ -48,21 +48,28 @@
           <p>我的</p>
         </router-link>
     </div>
+    <Log content="已加入购物车" v-if="added" />
   </div>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
+import Log from '@/components/Log'
 export default {
   name: 'Bottom',
+  added: false,
   data () {
     return {
       path: '',
       homeImg: [require('../assets/home.png'), require('../assets/home_active.png')],
       categoryImg: [require('../assets/category.png'), require('../assets/category_active.png')],
       cartImg: [require('../assets/cart.png'), require('../assets/cart_active.png')],
-      aboutImg: [require('../assets/about.png'), require('../assets/about_active.png')]
+      aboutImg: [require('../assets/about.png'), require('../assets/about_active.png')],
+      added: false
     }
+  },
+  components: {
+    Log
   },
   computed: {
     ...mapGetters(['sum']),
@@ -84,6 +91,10 @@ export default {
         'number': 1,
         'select': true
       })
+      this.added = true
+      setTimeout(() => {
+        this.added = false
+      }, 500)
     }
   }
 }

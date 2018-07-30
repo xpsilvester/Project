@@ -282,3 +282,20 @@ ul{
         margin-top: 10px;
     }
 }
+.log{
+    position: fixed;
+    width: 200px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    top: 50%;
+    margin-top: -25px;
+    left: 50%;
+    margin-left: -100px;
+    border-radius: 5px;
+    p{
+        width: 100%;
+        line-height: 50px;
+        color: #fff;
+    }
+}

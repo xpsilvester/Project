@@ -26,12 +26,25 @@ export const store = new Vuex.Store({
       return total
     },
     goodsNumber: state => {
-      return state.goodsList.length
+      let len = 0
+      state.goodsList.forEach((item) => {
+        len += item.number
+      })
+      return len
     }
   },
   mutations: {
     addGoods: (state, data) => {
-      state.goodsList.push(data)
+      let flag = 0
+      state.goodsList.forEach((item) => {
+        if (item.id === data.id) {
+          flag = 1
+          item.number += data.number
+        }
+      })
+      if (flag === 0) {
+        state.goodsList.push(data)
+      }
       localStorage.setItem('goodsList', JSON.stringify(state.goodsList))
     },
     deleteGoods: (state, index) => {
