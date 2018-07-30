@@ -16,7 +16,7 @@
           <span>{{item.type}}</span>
         </div>
         <ul>
-          <li v-for="item2 in item.list" :key="item2.id" @click="toDetail">
+          <li v-for="item2 in item.list" :key="item2.index" @click="toDetail(item2.id)">
             <img :src="item2.img"/>
             <p>{{item2.title}}</p>
           </li>
@@ -67,8 +67,8 @@ export default {
         this.type = 4
       }
     },
-    toDetail: function () {
-      this.$router.push({ path: '/detail' })
+    toDetail: function (id) {
+      this.$router.push({path: '/detail', query: { id: id }})
     }
   },
   components: {

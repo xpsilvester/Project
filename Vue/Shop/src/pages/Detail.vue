@@ -63,6 +63,7 @@
 import Header from '@/components/Header'
 import utils from '@/lib/utils'
 import Slider from '@/components/Slider'
+import { mapMutations } from 'vuex'
 export default {
   name: 'Detail',
   data () {
@@ -103,31 +104,46 @@ export default {
     Slider
   },
   methods: {
+    ...mapMutations(['updateDetail']),
     toHome: function () {
       this.$router.push({ path: '/' })
     },
     getPath: function () {
       return this.$route.name
     },
+    getId: function () {
+      return this.$route.query.id
+    },
     changeTab: function () {
       this.tabState = !this.tabState
+    },
+    setDetail: function (data) {
+      this.updateDetail(data)
     }
   },
   mounted () {
-    // console.log(this.getPath())
+    // console.log(this.$route.query.id)
   },
   created () {
     this.$http.get('/api/detail').then((data) => {
       this.slides = utils.reSrc(data.body.data[0]['slides_1'], 'jpg')
-      this.title = data.body.data[1].title
-      this.brief = data.body.data[1].brief
-      this.price = data.body.data[1].price
-      this.type = data.body.data[1].type
-      this.reviewNum = data.body.data[1].reviewNum
-      this.comment = data.body.data[1].comment
-      this.producShow = utils.reSrc(data.body.data[1].producShow, 'jpg')
-      this.productArgs = utils.reSrc(data.body.data[1].productArgs, 'jpg')
-      console.log(this.comment)
+      let id = this.getId()
+      this.title = data.body.data[id].title
+      this.brief = data.body.data[id].brief
+      this.price = data.body.data[id].price
+      this.type = data.body.data[id].type
+      this.reviewNum = data.body.data[id].reviewNum
+      this.comment = data.body.data[id].comment
+      this.producShow = utils.reSrc(data.body.data[id].producShow, 'jpg')
+      this.productArgs = utils.reSrc(data.body.data[id].productArgs, 'jpg')
+      this.setDetail({
+        'id': id,
+        'title': this.title,
+        'img': require('../assets/cart_mi8.jpg'),
+        'price': this.price,
+        'number': 1,
+        'select': true
+      })
     })
   }
 }

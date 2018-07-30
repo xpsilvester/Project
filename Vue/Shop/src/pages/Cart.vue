@@ -84,7 +84,7 @@ export default {
     }
   },
   mounted () {
-    console.log(this.goodsList, this.number)
+    // console.log(this.goodsList, this.number)
   }
 }
 </script>

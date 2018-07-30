@@ -13,7 +13,8 @@ export const store = new Vuex.Store({
         'number': 1,
         'select': true
       }
-    ]
+    ],
+    detail: {}
   },
   getters: {
     sum: state => {
@@ -31,6 +32,9 @@ export const store = new Vuex.Store({
         len += item.number
       })
       return len
+    },
+    detail: state => {
+      return state.detail
     }
   },
   mutations: {
@@ -55,6 +59,9 @@ export const store = new Vuex.Store({
       const {index, key, value} = data
       state.goodsList[index][key] = value
       localStorage.setItem('goodsList', JSON.stringify(state.goodsList))
+    },
+    updateDetail: (state, data) => {
+      state.detail = data
     }
   }
 })

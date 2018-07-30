@@ -74,7 +74,7 @@ export default {
     Log
   },
   computed: {
-    ...mapGetters(['sum']),
+    ...mapGetters(['sum', 'detail']),
     getPath: function () {
       return this.$route.name
     },
@@ -85,14 +85,7 @@ export default {
   methods: {
     ...mapMutations(['addGoods']),
     addToCart: function () {
-      this.addGoods({
-        'id': 1,
-        'title': '小米8 全网通版 6GB内存 128GB 黑色',
-        'img': require('../assets/cart_mi8.jpg'),
-        'price': 2999,
-        'number': 1,
-        'select': true
-      })
+      this.addGoods(this.detail)
       this.added = true
       setTimeout(() => {
         this.added = false

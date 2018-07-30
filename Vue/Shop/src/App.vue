@@ -2,9 +2,9 @@
   <div id="app">
     <div id="container">
       <transition name="slide">
-        <keep-alive>
+        <!-- <keep-alive> -->
           <router-view class="child-view"></router-view>
-        </keep-alive>
+        <!-- </keep-alive> -->
       </transition>
     </div>
     <Bottom />
