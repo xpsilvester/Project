@@ -9,6 +9,7 @@
       <router-link to="Cart">
         <img :src="cartImg[0]">
         <p>购物车</p>
+        <span>{{number}}</span>
       </router-link>
       <div class="addCart" @click="addToCart">
         加入购物车
@@ -41,6 +42,7 @@
           <img v-if="getPath == 'Cart'" :src="cartImg[1]">
           <img v-else :src="cartImg[0]">
           <p>购物车</p>
+          <span>{{number}}</span>
         </router-link>
         <router-link to="About">
           <img v-if="getPath == 'About'" :src="aboutImg[1]">

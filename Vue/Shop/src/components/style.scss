@@ -102,6 +102,7 @@ ul{
     a{
         text-decoration: none;
         width: 25%;
+        position: relative;
         img{
             width: 30px;
             height: 30px;
@@ -111,6 +112,18 @@ ul{
             font-size: 12px;
             color: #000;
             margin-top: 13px;
+        }
+        span{
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            line-height: 16px;
+            border-radius: 8px;
+            color: #fff;
+            background: red;
+            top: 5px;
+            right: 25px;
+            font-size: 12px;
         }
     }
     .line{
