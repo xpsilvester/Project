@@ -20,14 +20,20 @@
     <br>
     <input v-model="site">
     <h1>用过滤器把首字母变大写：{{ site | capitalize }}</h1>
+    <Test @aaa="alexa += 1" />
+    <Test @bbb="alexa -= 1" />
   </div>
 </template>
 
 <script>
+import Test from '@/components/Test'
 export default {
   name: 'HelloWorld',
+  components: {
+    Test
+  },
   data () {
-    var data = { msg: '<h1>Welcome to Vue.js</h1>', site: '学习vue', url: 'www.xpsilvester.com', alexa: '10000', class1: false, seen: true }
+    var data = { msg: '<h1>Welcome to Vue.js</h1>', site: '学习vue', url: 'www.xpsilvester.com', alexa: 10000, class1: false, seen: true }
     return data
   },
   methods: {
