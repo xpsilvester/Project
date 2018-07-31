@@ -2,7 +2,9 @@
   <div class="home">
       <Header />
       <Tab />
-      <Recommend />
+      <keep-alive>
+        <router-view class="home-child"></router-view>
+      </keep-alive>
   </div>
 </template>
 

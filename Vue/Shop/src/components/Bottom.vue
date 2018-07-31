@@ -29,7 +29,7 @@
     </div>
     <div class="bottom" v-else>
         <router-link to="/">
-          <img v-if="getPath == 'Home'" :src="homeImg[1]">
+          <img v-if="getPath == 'computer' | getPath == 'recommend' | getPath == 'router' | getPath == 'phone' | getPath == 'television'" :src="homeImg[1]">
           <img v-else :src="homeImg[0]">
           <p>首页</p>
         </router-link>

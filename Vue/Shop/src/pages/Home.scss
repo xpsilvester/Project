@@ -6,4 +6,17 @@
     overflow-y: auto;
     width: 100%;
     height: 100%;
+    .home-child {
+        width: 100%;
+        transition: all .3s cubic-bezier(.55, 0, .1, 1);
+    }
+    .slide-leave-active {
+        -webkit-transform: translate(-100%, 0);
+        transform: translate(-100%, 0);
+        position: absolute;
+    }
+    .slide-enter{
+        -webkit-transform: translate(100%, 0);
+        transform: translate(100%, 0);
+    }
 }

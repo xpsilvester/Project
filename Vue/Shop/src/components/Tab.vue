@@ -1,12 +1,12 @@
 <template>
   <div class="tab">
-      <ul>
-          <li class="active">推荐</li>
-          <li>手机</li>
-          <li>电脑</li>
-          <li>路由器</li>
-          <li>电器</li>
-      </ul>
+      <div class="tabUl">
+          <router-link to="/">推荐</router-link>
+          <router-link to="/phone">手机</router-link>
+          <router-link to="/computer">电脑</router-link>
+          <router-link to="/router">路由器</router-link>
+          <router-link to="/television">电器</router-link>
+      </div>
   </div>
 </template>
 

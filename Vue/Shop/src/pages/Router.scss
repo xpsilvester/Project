@@ -1,0 +1,67 @@
+.router{
+    padding-bottom: 50px;
+    h3{
+        font-size: 18px;
+        width: 100%;
+        text-align: center;
+        color: #7f7f7f;
+        height: 60px;
+        line-height: 60px;
+        margin: 0;
+        font-weight: normal;
+    }
+    img{
+        width: 100%;
+    }
+    .name{
+        font-size: 16px;
+    }
+    .price{
+        font-size: 14px;
+        color: #ea625b;
+    }
+    .brief{
+        color: rgba(0,0,0,.54);
+        font-size: 12px;
+    }
+    .buybtn{
+        width: 100px;
+        height: 30px;
+        background: #03a9f4;
+        color: #fff;
+        border-radius: 2px;
+        line-height: 30px;
+        text-align: center;
+    }
+    .hot-pro{
+        width: 100%;
+        .l1{
+            display: flex;
+            justify-content: space-between;
+            padding: 5px;
+        }
+    }
+    .pro-list{
+        padding: 5px;
+        ul{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            li{
+                width: 49%;
+                margin-top: 5px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+            }
+        }
+    }
+}
+.slider{
+    height: 187px;
+    height: -moz-calc(100vw * 0.5); 
+    height: -webkit-calc(100vw * 0.5); 
+    height: calc(100vw * 0.5);
+}

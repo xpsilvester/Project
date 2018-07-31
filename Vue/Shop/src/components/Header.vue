@@ -1,6 +1,6 @@
 <template>
   <div class="header-container">
-    <div class="header" v-if="getPath == 'Home'">
+    <div class="header" v-if="barName == 'Home'">
       <div class="logo">
           <p>SHOP</p>
           <p>官方商城</p>
@@ -31,7 +31,12 @@
 <script>
 export default {
   name: 'Header',
-  props: ['barName'],
+  props: {
+    barName: {
+      type: String,
+      default: 'Home'
+    }
+  },
   data () {
     return {
       path: ''

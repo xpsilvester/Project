@@ -8,6 +8,11 @@ import About from '@/pages/About'
 import Login from '@/pages/Login'
 import Search from '@/pages/Search'
 import Detail from '@/pages/Detail'
+import Recommend from '@/pages/Recommend'
+import Computer from '@/pages/Computer'
+import Phone from '@/pages/Phone'
+import Router1 from '@/pages/Router'
+import Television from '@/pages/Television'
 
 Vue.use(Router)
 
@@ -22,7 +27,34 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: Home,
+      children: [
+        {
+          path: '',
+          name: 'recommend',
+          component: Recommend
+        },
+        {
+          path: 'computer',
+          name: 'computer',
+          component: Computer
+        },
+        {
+          path: 'phone',
+          name: 'phone',
+          component: Phone
+        },
+        {
+          path: 'router',
+          name: 'router',
+          component: Router1
+        },
+        {
+          path: 'television',
+          name: 'television',
+          component: Television
+        }
+      ]
     },
     {
       path: '/cart',
