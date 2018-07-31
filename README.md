@@ -17,6 +17,9 @@
 ##### 2.TableList
 基于Vue.js的表格
 
+##### 3.Shop
+用Vue写的电商项目
+
 ### 三、Web
 ##### 1.WebMoblie
 移动web开发与适配
