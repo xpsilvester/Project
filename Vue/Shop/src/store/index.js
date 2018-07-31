@@ -29,7 +29,9 @@ export const store = new Vuex.Store({
     goodsNumber: state => {
       let len = 0
       state.goodsList.forEach((item) => {
-        len += item.number
+        if (item.select) {
+          len += item.number
+        }
       })
       return len
     },
