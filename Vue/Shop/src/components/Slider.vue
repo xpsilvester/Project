@@ -2,10 +2,10 @@
   <div class="slider" @mouseover="clearInv" @mouseout="runInv">
     <div class="slider-img">
       <a href="#">
-        <transition name="slide-trans">
+        <transition :name="transform == 0 ? 'slide-trans' : 'slide1-trans'">
           <img v-if="isShow" :src="slides[nowIndex].img">
         </transition>
-        <transition name="slide-trans-old">
+        <transition :name="transform == 0 ? 'slide-trans-old' : 'slide1-trans-old'">
           <img v-if="!isShow" :src="slides[nowIndex].img">
         </transition>
       </a>
@@ -48,7 +48,8 @@ export default {
   data () {
     return {
       nowIndex: 0,
-      isShow: true
+      isShow: true,
+      transform: 0
     }
   },
   computed: {
@@ -70,6 +71,11 @@ export default {
   methods: {
     goto (index) {
       this.isShow = false
+      if (index > this.nowIndex) {
+        this.transform = 0
+      } else {
+        this.transform = 1
+      }
       setTimeout(() => {
         this.isShow = true
         this.nowIndex = index

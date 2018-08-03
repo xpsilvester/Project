@@ -214,6 +214,17 @@ ul{
         transition:all .5s;
         transform:translateX(-100%);
     }
+    .slide1-trans-enter-active{
+        width: 100%;
+        transition: all .5s cubic-bezier(.55, 0, .1, 1);
+    }
+    .slide1-trans-enter{
+        transform: translateX(-100%);
+    }
+    .slide1-trans-old-leave-active{
+        transition:all .5s;
+        transform:translateX(100%);
+    }
     h2{
         position: absolute;
         left: 0;
