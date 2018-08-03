@@ -76,10 +76,12 @@ export default {
       } else {
         this.transform = 1
       }
-      setTimeout(() => {
-        this.isShow = true
-        this.nowIndex = index
-      }, 10)
+      if (index !== this.nowIndex) {
+        setTimeout(() => {
+          this.isShow = true
+          this.nowIndex = index
+        }, 10)
+      }
     },
     runInv () {
       this.invId = setInterval(() => {
