@@ -1,27 +1,175 @@
 {
-    "goods": [
-        { "price": "69.9", "title": "德芙", "img": "http://m.360buyimg.com/babel/s211x211_jfs/t3688/270/776223567/128582/fa074fb3/58170f6dN6b9a12bf.jpg!q50.jpg.webp" },
-        { "price": "63", "title": "费列罗", "img": "http://m.360buyimg.com/babel/s211x211_jfs/t613/100/1264998035/221234/1a29d51f/54c34525Nb4f6581c.jpg!q50.jpg.webp"},
-        { "price": "29.9", "title": "大米", "img": "http://m.360buyimg.com/babel/s211x211_jfs/t1258/40/17387560/108696/aced445f/54e011deN3ae867ae.jpg!q50.jpg.webp"},
-        { "price": "54.9", "title": "安慕希", "img": "http://m.360buyimg.com/babel/s211x211_jfs/t2734/15/680373407/215934/3abaa748/572057daNc09b5da7.jpg!q50.jpg.webp"},
-        { "price": "58", "title": "金典", "img": "http://m.360buyimg.com/babel/s211x211_jfs/t2482/145/1424008556/91991/d62f5454/569f47a2N3f763060.jpg!q50.jpg.webp"},
-        { "price": "60", "title": "味可滋", "img": "http://m.360buyimg.com/babel/s211x211_jfs/t2368/3/874563950/70786/7b5e8edd/563074c8N4d535db4.jpg!q50.jpg.webp" },
-        { "price": "248.00", "title": "泸州老窖", "img": "http://m.360buyimg.com/babel/s211x211_jfs/t283/166/1424018055/189580/7c0792b7/543b4958N05fa2feb.jpg!q50.jpg.webp"},
-        { "price": "328.8", "title": "剑南春", "img": "http://m.360buyimg.com/babel/s350x350_g15/M05/1A/0A/rBEhWlNeLAwIAAAAAAHyok3PZY0AAMl8gO8My0AAfK6307.jpg!q50.jpg.webp"},
-        { "price": "49.00", "title": "蓝莓", "img": "http://m.360buyimg.com/babel/s211x211_jfs/t2332/148/2952098628/94387/e64654e2/56f8d76aNb088c2ab.jpg!q50.jpg.webp" },
-        { "price": "68", "title": "芒果", "img": "http://m.360buyimg.com/n0/jfs/t3709/334/1378702984/206759/5c100ab5/58253588Naaa05c5c.jpg!q70.jpg"}
+    "phone": [
+        {
+            "hotPro": [
+                {
+                    "id": 2,
+                    "img": "hot_pro",
+                    "name": "红米Note 5 AI双摄",
+                    "price": "￥1099",
+                    "brief": "1.4μm大像素 AI双摄"
+                }
+            ],
+            "proList": [
+                {
+                    "id": 3,
+                    "img": "prolist1",
+                    "name": "小米MIX 2S",
+                    "price": "￥3299",
+                    "brief": "骁龙845旗舰处理器，AI双摄"
+                },
+                {
+                    "id": 4,
+                    "img": "prolist2",
+                    "name": "红米6",
+                    "price": "￥799",
+                    "brief": "AI双摄，小屏高性能"
+                },
+                {
+                    "id": 5,
+                    "img": "prolist3",
+                    "name": "游戏本15.6寸 i7 16GB",
+                    "price": "￥8199",
+                    "brief": "电竞级性能怪兽"
+                },
+                {
+                    "id": 6,
+                    "img": "prolist4",
+                    "name": "小米电视4A 50英寸",
+                    "price": "￥1999",
+                    "brief": "4K HDR，人工智能语音系统"
+                }
+            ]
+        }
     ],
-    "ratings": [
-        { "price": "700", "title": "德芙", "img": "http://m.360buyimg.com/babel/s211x211_jfs/t3688/270/776223567/128582/fa074fb3/58170f6dN6b9a12bf.jpg!q50.jpg.webp" },
-        { "price": "63", "title": "费列罗", "img": "http://m.360buyimg.com/babel/s211x211_jfs/t613/100/1264998035/221234/1a29d51f/54c34525Nb4f6581c.jpg!q50.jpg.webp"},
-        { "price": "29.9", "title": "大米", "img": "http://m.360buyimg.com/babel/s211x211_jfs/t1258/40/17387560/108696/aced445f/54e011deN3ae867ae.jpg!q50.jpg.webp"},
-        { "price": "54.9", "title": "安慕希", "img": "http://m.360buyimg.com/babel/s211x211_jfs/t2734/15/680373407/215934/3abaa748/572057daNc09b5da7.jpg!q50.jpg.webp"},
-        { "price": "58", "title": "金典", "img": "http://m.360buyimg.com/babel/s211x211_jfs/t2482/145/1424008556/91991/d62f5454/569f47a2N3f763060.jpg!q50.jpg.webp"},
-        { "price": "60", "title": "味可滋", "img": "http://m.360buyimg.com/babel/s211x211_jfs/t2368/3/874563950/70786/7b5e8edd/563074c8N4d535db4.jpg!q50.jpg.webp" },
-        { "price": "248.00", "title": "泸州老窖", "img": "http://m.360buyimg.com/babel/s211x211_jfs/t283/166/1424018055/189580/7c0792b7/543b4958N05fa2feb.jpg!q50.jpg.webp"},
-        { "price": "328.8", "title": "剑南春", "img": "http://m.360buyimg.com/babel/s350x350_g15/M05/1A/0A/rBEhWlNeLAwIAAAAAAHyok3PZY0AAMl8gO8My0AAfK6307.jpg!q50.jpg.webp"},
-        { "price": "49.00", "title": "蓝莓", "img": "http://m.360buyimg.com/babel/s211x211_jfs/t2332/148/2952098628/94387/e64654e2/56f8d76aNb088c2ab.jpg!q50.jpg.webp" },
-        { "price": "68", "title": "芒果", "img": "http://m.360buyimg.com/n0/jfs/t3709/334/1378702984/206759/5c100ab5/58253588Naaa05c5c.jpg!q70.jpg"}
+    "computer": [
+        {
+            "hotPro": [
+                {
+                    "id": 2,
+                    "img": "hot_pro",
+                    "name": "红米Note 5 AI双摄",
+                    "price": "￥1099",
+                    "brief": "1.4μm大像素 AI双摄"
+                }
+            ],
+            "proList": [
+                {
+                    "id": 3,
+                    "img": "prolist1",
+                    "name": "小米MIX 2S",
+                    "price": "￥3299",
+                    "brief": "骁龙845旗舰处理器，AI双摄"
+                },
+                {
+                    "id": 4,
+                    "img": "prolist2",
+                    "name": "红米6",
+                    "price": "￥799",
+                    "brief": "AI双摄，小屏高性能"
+                },
+                {
+                    "id": 5,
+                    "img": "prolist3",
+                    "name": "游戏本15.6寸 i7 16GB",
+                    "price": "￥8199",
+                    "brief": "电竞级性能怪兽"
+                },
+                {
+                    "id": 6,
+                    "img": "prolist4",
+                    "name": "小米电视4A 50英寸",
+                    "price": "￥1999",
+                    "brief": "4K HDR，人工智能语音系统"
+                }
+            ]
+        }
+    ],
+    "router": [
+        {
+            "hotPro": [
+                {
+                    "id": 2,
+                    "img": "hot_pro",
+                    "name": "红米Note 5 AI双摄",
+                    "price": "￥1099",
+                    "brief": "1.4μm大像素 AI双摄"
+                }
+            ],
+            "proList": [
+                {
+                    "id": 3,
+                    "img": "prolist1",
+                    "name": "小米MIX 2S",
+                    "price": "￥3299",
+                    "brief": "骁龙845旗舰处理器，AI双摄"
+                },
+                {
+                    "id": 4,
+                    "img": "prolist2",
+                    "name": "红米6",
+                    "price": "￥799",
+                    "brief": "AI双摄，小屏高性能"
+                },
+                {
+                    "id": 5,
+                    "img": "prolist3",
+                    "name": "游戏本15.6寸 i7 16GB",
+                    "price": "￥8199",
+                    "brief": "电竞级性能怪兽"
+                },
+                {
+                    "id": 6,
+                    "img": "prolist4",
+                    "name": "小米电视4A 50英寸",
+                    "price": "￥1999",
+                    "brief": "4K HDR，人工智能语音系统"
+                }
+            ]
+        }
+    ],
+    "tv": [
+        {
+            "hotPro": [
+                {
+                    "id": 7,
+                    "img": "hot_pro2",
+                    "name": "米家扫地机器人",
+                    "price": "￥1699",
+                    "brief": "远程智能控制 ，定时清扫"
+                }
+            ],
+            "proList": [
+                {
+                    "id": 3,
+                    "img": "prolist1",
+                    "name": "小米MIX 2S",
+                    "price": "￥3299",
+                    "brief": "骁龙845旗舰处理器，AI双摄"
+                },
+                {
+                    "id": 4,
+                    "img": "prolist2",
+                    "name": "红米6",
+                    "price": "￥799",
+                    "brief": "AI双摄，小屏高性能"
+                },
+                {
+                    "id": 5,
+                    "img": "prolist3",
+                    "name": "游戏本15.6寸 i7 16GB",
+                    "price": "￥8199",
+                    "brief": "电竞级性能怪兽"
+                },
+                {
+                    "id": 6,
+                    "img": "prolist4",
+                    "name": "小米电视4A 50英寸",
+                    "price": "￥1999",
+                    "brief": "4K HDR，人工智能语音系统"
+                }
+            ]
+        }
     ],
     "recommend": [
         {
@@ -590,6 +738,40 @@
             },
             {
                 "img": "mi8_args3"
+            }
+        ]
+    },{
+        "title": "米家扫地机器人",
+        "brief": "高精度激光测距，智能规划路径 / 1800Pa 大风压澎湃吸力 / 远程智能控制 ，定时清扫 / 大电池持久清扫",
+        "price": "1699",
+        "type": [
+            {"name": "米家扫地机器人 x1"},
+            {"name": "小米8 SE 6GB+128GB 金色 x1"},
+            {"name": "小米8 SE 6GB+128GB 黑色 x1"}
+        ],
+        "reviewNum": 10101,
+        "comment": [
+            {
+                "user": "用户A",
+                "date": "2018-12-30 13:40:21",
+                "content": "好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！好评好评好评！",
+                "reply": "感谢感谢感谢！ 感谢感谢感谢！ 感谢感谢感谢！ 感谢感谢感谢！ 感谢感谢感谢！ 感谢感谢感谢！ 感谢感谢感谢！ 感谢感谢感谢！"
+            }
+        ],
+        "producShow": [
+            {
+                "img": "robot1"
+            },
+            {
+                "img": "robot2"
+            }
+        ],
+        "productArgs": [
+            {
+                "img": "robot_args1"
+            },
+            {
+                "img": "robot_args2"
             }
         ]
     }]

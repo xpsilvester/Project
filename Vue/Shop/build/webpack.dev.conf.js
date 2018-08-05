@@ -14,9 +14,10 @@ const portfinder = require('portfinder')
 const express = require('express')
 const app = express()
 var appData = require('../goods.json')
-var seller = appData.seller
-var goods = appData.goods
-var ratings = appData.ratings
+var router = appData.router
+var phone = appData.phone
+var tv = appData.tv
+var computer = appData.computer
 var recommend = appData.recommend
 var about = appData.about
 var category = appData.category
@@ -59,18 +60,32 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       poll: config.dev.poll,
     },
     before(app) {
-      app.get('/api/goods', (req, res) => {
+      app.get('/api/phone', (req, res) => {
         res.json({
           // 这里是你的json内容
           errno: 0,
-          data: goods
+          data: phone
         })
       }),
-      app.get('/api/ratings', (req, res) => {
+      app.get('/api/computer', (req, res) => {
         res.json({
           // 这里是你的json内容
           errno: 0,
-          data: ratings
+          data: computer
+        })
+      }),
+      app.get('/api/router', (req, res) => {
+        res.json({
+          // 这里是你的json内容
+          errno: 0,
+          data: router
+        })
+      }),
+      app.get('/api/tv', (req, res) => {
+        res.json({
+          // 这里是你的json内容
+          errno: 0,
+          data: tv
         })
       }),
       app.get('/api/recommend', (req, res) => {

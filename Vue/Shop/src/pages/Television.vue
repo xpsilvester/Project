@@ -56,7 +56,7 @@ export default {
     Slider
   },
   created () {
-    this.$http.get('/api/recommend').then((data) => {
+    this.$http.get('/api/tv').then((data) => {
       let hot = utils.reSrc(data.body.data[0].hotPro, 'jpg')
       this.hot = hot[0]
       this.proList = utils.reSrc(data.body.data[0].proList, 'jpg')
