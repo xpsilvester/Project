@@ -60,9 +60,7 @@ export default {
       let hot = utils.reSrc(data.body.data[0].hotPro, 'jpg')
       this.hot = hot[0]
       this.proList = utils.reSrc(data.body.data[0].proList, 'jpg')
-    })
-    this.$http.get('/api/slides').then((data) => {
-      this.slides = utils.reSrc(data.body.data, 'jpg')
+      this.slides = utils.reSrc(data.body.data[0].slides, 'jpg')
     })
   }
 }
