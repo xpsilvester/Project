@@ -4,20 +4,13 @@
             "hotPro": [
                 {
                     "id": 2,
-                    "img": "hot_pro",
-                    "name": "红米Note 5 AI双摄",
-                    "price": "￥1099",
-                    "brief": "1.4μm大像素 AI双摄"
+                    "img": "hot_phone",
+                    "name": "红米6 Pro",
+                    "price": "￥969",
+                    "brief": "高颜值大电量 红米旗舰"
                 }
             ],
             "proList": [
-                {
-                    "id": 3,
-                    "img": "prolist1",
-                    "name": "小米MIX 2S",
-                    "price": "￥3299",
-                    "brief": "骁龙845旗舰处理器，AI双摄"
-                },
                 {
                     "id": 4,
                     "img": "prolist2",
@@ -26,39 +19,36 @@
                     "brief": "AI双摄，小屏高性能"
                 },
                 {
-                    "id": 5,
-                    "img": "prolist3",
-                    "name": "游戏本15.6寸 i7 16GB",
-                    "price": "￥8199",
-                    "brief": "电竞级性能怪兽"
+                    "id": 3,
+                    "img": "prolist1",
+                    "name": "小米MIX 2S",
+                    "price": "￥3299",
+                    "brief": "骁龙845旗舰处理器，AI双摄"
                 },
                 {
-                    "id": 6,
-                    "img": "prolist4",
-                    "name": "小米电视4A 50英寸",
-                    "price": "￥1999",
-                    "brief": "4K HDR，人工智能语音系统"
+                    "id": 2,
+                    "img": "phoneList3",
+                    "name": "红米Note 5 AI双摄",
+                    "price": "￥1099",
+                    "brief": "1.4μm大像素 AI双摄"
+                },
+                {
+                    "id": 4,
+                    "img": "phoneList4",
+                    "name": "红米6A",
+                    "price": "￥579",
+                    "brief": "好用好看不贵"
                 }
             ],
             "slides": [
                 {
-                    "img": "slider1",
-                    "title": "红米6Pro",
-                    "href": "/"
-                },
-                {
-                    "img": "slider2",
+                    "img": "phoneSlider1",
                     "title": "小米8",
                     "href": "/"
                 },
                 {
-                    "img": "slider3",
-                    "title": "笔记本",
-                    "href": "/"
-                },
-                {
-                    "img": "slider4",
-                    "title": "T恤",
+                    "img": "phoneSlider1",
+                    "title": "小米Max3",
                     "href": "/"
                 }
             ]
