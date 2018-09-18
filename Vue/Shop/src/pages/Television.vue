@@ -1,7 +1,7 @@
 <template>
   <div class="television">
     <Slider :slides="slides" :inv="inv"/>
-    <h3>热销产品</h3>
+    <h3>热销电视</h3>
     <div class="hot-pro" @click="toDetail(hot.id)">
         <img :src="hot.img" />
         <div class="l1">
