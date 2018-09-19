@@ -3,6 +3,13 @@
 > vue shop project
 ## 目录结构
 ```
+│  .babelrc                  #ES6语法编译配置
+│  .editorconfig             #定义代码格式                   
+│  .postcssrc.js             #postcss配置文件
+│  goods.json                #模拟数据json文件
+│  index.html                #入口页面
+│  package.json              #项目基本信息,包依赖信息等
+│  
 ├─build
 │      build.js              #项目构建(webpack)相关代码
 │      check-versions.js     #检查node、npm等版本
@@ -25,58 +32,58 @@
 │  └─static/                 #打包后的静态资源文件夹
 │   
 │
-├─src                        #源码目录
-│  │  App.vue                #页面入口文件
-│  │  main.js                #程序入口文件，加载各种公共组件
-│  │
-│  ├─assets/                 #打包前的资源文件夹
-│  │
-│  │
-│  ├─components              #vue公共组件目录
-│  │  │  Bottom.vue          #底部导航条
-│  │  │  Header.vue          #顶部栏
-│  │  │  Log.vue             #预留打印组件
-│  │  │  Slider.vue          #轮播图组件
-│  │  │  style.scss          #组件样式scss
-│  │  │  Tab.vue             #首页tab切换组件
-│  │  │
-│  │  └─Test                 #单元测试
-│  │      └─ Test.scss     
-│  │         Test.vue
-│  │
-│  ├─lib
-│  │      utils.js           #通用工具方法
-│  │
-│  ├─pages                   #页面目录
-│  │    └─About.scss         
-│  │      About.vue          #关于我
-│  │      Cart.scss          
-│  │      Cart.vue           #购物车
-│  │      Category.scss      
-│  │      Category.vue       #商品分类
-│  │      Computer.scss      
-│  │      Computer.vue       #电脑列表
-│  │      Detail.scss        
-│  │      Detail.vue         #商品详情
-│  │      Home.scss
-│  │      Home.vue           #主页面框架
-│  │      Login.scss
-│  │      Login.vue          #登陆页
-│  │      Phone.scss
-│  │      Phone.vue          #手机列表页
-│  │      Recommend.scss
-│  │      Recommend.vue      #推荐页
-│  │      Router.scss
-│  │      Router.vue         #路由器列表页
-│  │      Search.scss
-│  │      Search.vue         #搜索页
-│  │      Television.scss
-│  │      Television.vue     #电视列表页
-│  │
-│  ├─router
-│  │    └─ index.js           #路由配置
-│  │
-│  └─store
+└─src                        #源码目录
+   │  App.vue                #页面入口文件
+   │  main.js                #程序入口文件，加载各种公共组件
+   │
+   ├─assets/                 #打包前的资源文件夹
+   │
+   │
+   ├─components              #vue公共组件目录
+   │  │  Bottom.vue          #底部导航条
+   │  │  Header.vue          #顶部栏
+   │  │  Log.vue             #预留打印组件
+   │  │  Slider.vue          #轮播图组件
+   │  │  style.scss          #组件样式scss
+   │  │  Tab.vue             #首页tab切换组件
+   │  │
+   │  └─Test                 #单元测试
+   │      └─ Test.scss     
+   │         Test.vue
+   │
+   ├─lib
+   │      utils.js           #通用工具方法
+   │
+   ├─pages                   #页面目录
+   │    └─About.scss         
+   │      About.vue          #关于我
+   │      Cart.scss          
+   │      Cart.vue           #购物车
+   │      Category.scss      
+   │      Category.vue       #商品分类
+   │      Computer.scss      
+   │      Computer.vue       #电脑列表
+   │      Detail.scss        
+   │      Detail.vue         #商品详情
+   │      Home.scss
+   │      Home.vue           #主页面框架
+   │      Login.scss
+   │      Login.vue          #登陆页
+   │      Phone.scss
+   │      Phone.vue          #手机列表页
+   │      Recommend.scss
+   │      Recommend.vue      #推荐页
+   │      Router.scss
+   │      Router.vue         #路由器列表页
+   │      Search.scss
+   │      Search.vue         #搜索页
+   │      Television.scss
+   │      Television.vue     #电视列表页
+   │
+   ├─router
+   │    └─ index.js           #路由配置
+   │
+   └─store
       └─ index.js          #Vuex的Store状态管理组件
 
 ```
