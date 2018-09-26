@@ -92,10 +92,8 @@ window.onload = function(){
             }
             qqb.lineTo(tangramArray[i].start[0],tangramArray[i].start[1]); //闭合图形
             qqb.fillStyle = tangramArray[i].color;//填充颜色
-            qqb.fill(); //填充闭合区域。如果path没有闭合，则fill会自动闭合路径
-            qqb.stroke(); //描边。stroke不会自动closePath()
+            qqb.fill(); //填充闭合区域。如果path没有闭合，则fill会自动闭合路径   
         }
-        
         /**七巧板（2）end**/
 
         /**棋盘（3）begin**/
@@ -109,7 +107,6 @@ window.onload = function(){
                 //竖线
                 cb.moveTo(cbStart+j*long,cbStart);
                 cb.lineTo(cbStart+j*long,cbStart+(line-1)*long);
-                cb.stroke();//描边
             }
             cb.stroke();//描边
         }
