@@ -95,7 +95,7 @@ window.onload = function(){
             qqb.fill(); //填充闭合区域。如果path没有闭合，则fill会自动闭合路径
             qqb.stroke(); //描边。stroke不会自动closePath()
         }
-
+        
         /**七巧板（2）end**/
 
         /**棋盘（3）begin**/
@@ -111,6 +111,7 @@ window.onload = function(){
                 cb.lineTo(cbStart+j*long,cbStart+(line-1)*long);
                 cb.stroke();//描边
             }
+            cb.stroke();//描边
         }
         chessboardDraw(19,25);
         
