@@ -1,9 +1,10 @@
 window.onload = function(){
-    var canvas = document.getElementById('tutorial');
-    var tangram = document.getElementById('tangram');
+    var canvas = document.getElementById('tutorial');//第一个canvas
+    var tangram = document.getElementById('tangram');//第二个canvas
+    var chessboard = document.getElementById('chessboard');//第三个canvas
     if(canvas.getContext){
 
-        /**画板练习（左）**/
+        /**画板练习（1）begin**/
         var ctx = canvas.getContext('2d');
         //两个矩形
         ctx.fillStyle = "rgb(200,0,0)";
@@ -39,7 +40,10 @@ window.onload = function(){
         ctx.closePath();//闭合路径
         ctx.stroke();
 
-        /**七巧板（右）**/
+        /**画板练习（1）end**/
+
+
+        /**七巧板（2）begin**/
         var qqb = tangram.getContext('2d');
 
         var tangramArray = [
@@ -91,6 +95,26 @@ window.onload = function(){
             qqb.fill(); //填充闭合区域。如果path没有闭合，则fill会自动闭合路径
             qqb.stroke(); //描边。stroke不会自动closePath()
         }
+
+        /**七巧板（2）end**/
+
+        /**棋盘（3）begin**/
+        var chessboardDraw = function(line,long){//line:棋盘线数,long:格子间距
+            var cb = chessboard.getContext('2d');
+            var cbStart = (500 - (line-1)*long)/2; //起始线位置
+            for(var j=0;j<line;j++){
+                //横线
+                cb.moveTo(cbStart,cbStart+j*long);
+                cb.lineTo(cbStart+(line-1)*long,cbStart+j*long);
+                //竖线
+                cb.moveTo(cbStart+j*long,cbStart);
+                cb.lineTo(cbStart+j*long,cbStart+(line-1)*long);
+                cb.stroke();//描边
+            }
+        }
+        chessboardDraw(19,25);
+        
+
     }else{
         console.log('不支持Canvas');
     }
