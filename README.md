@@ -8,7 +8,10 @@
 基于.net MVC的内容管理系统，ado实体类模型生成SQL SERVER entities实体类，UnitOfWork通过context对sql增删改查进行封装，并产生数据表仓库上下文repository
 
 ### 二、JavaScript
+##### 1.Demo
 根据《JavaScript 高级编程》、《精通正则表达式》写的练习DEMO
+##### 2.Canvas
+用Canvas绘制的一些图案，七巧板、棋盘...
 
 ### 三、Vue
 ##### 1.Demo
