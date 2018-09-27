@@ -97,8 +97,8 @@ window.onload = function(){
         /**七巧板（2）end**/
 
         /**棋盘（3）begin**/
+        var cb = chessboard.getContext('2d');
         var chessboardDraw = function(line,long){//line:棋盘线数,long:格子间距
-            var cb = chessboard.getContext('2d');
             var cbStart = (500 - (line-1)*long)/2; //起始线位置
             for(var j=0;j<line;j++){
                 //横线
@@ -111,7 +111,24 @@ window.onload = function(){
             cb.stroke();//描边
         }
         chessboardDraw(19,25);
-        
+
+        /**棋盘（3）end**/
+
+        /**棋子（3）begin**/
+        var chesses = function(x,y,r,color){//x:x坐标，y:y坐标，color:颜色
+            cb.beginPath();
+            //arc(x, y, r, startAngle, endAngle, anticlockwise) 以(x, y)为圆心，以r为半径，
+            //从 startAngle弧度开始到endAngle弧度结束。anticlosewise是布尔值，true表示逆时针，false表示顺时针。(默认是顺时针)
+            cb.arc(x, y, r, 0, Math.PI * 2, false); 
+            cb.fillStyle = color;//填充颜色
+            cb.fill();
+            cb.closePath();//闭合路径
+            cb.stroke();
+        }
+        chesses(200,50,11,'#000');
+        chesses(225,50,11,'#fff');
+        chesses(225,75,11,'#000');
+        /**棋子（3）end**/
 
     }else{
         console.log('不支持Canvas');
