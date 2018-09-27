@@ -144,7 +144,7 @@ window.onload = function(){
                 [1,0,0,0,0,0,1],
                 [1,0,0,0,0,0,1],
                 [1,0,0,0,0,0,1],
-                [1,,0,0,0,0,1],
+                [1,0,0,0,0,0,1],
                 [0,1,1,1,1,1,0]
             ],
             //1
@@ -252,7 +252,7 @@ window.onload = function(){
                 [1,0,0,0,0,0,1],
                 [1,0,0,0,0,0,1],
                 [1,0,0,0,0,0,1],
-                [0,1,1,1,1,1,0],
+                [1,1,1,1,1,1,1],
                 [1,0,0,0,0,0,1],
                 [1,0,0,0,0,0,1],
                 [1,0,0,0,0,0,1],
@@ -287,7 +287,24 @@ window.onload = function(){
             }
         }
         numDraw(8);
+        
         /**点阵数字（3）end**/
+
+        /**倒计时（3）begin**/
+
+        var countDown = function(){
+            var time = 10;
+            setInterval(function(){
+                time = time == 0 ? 9 : time-1; 
+                cb.clearRect(0,0,500,500);
+                chessboardDraw(19,25);
+                numDraw(time);
+            },1000);
+        }
+        countDown();
+
+        /**倒计时（3）end**/
+
 
     }else{
         console.log('不支持Canvas');
