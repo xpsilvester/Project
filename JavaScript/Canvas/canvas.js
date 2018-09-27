@@ -121,9 +121,9 @@ window.onload = function(){
             //从 startAngle弧度开始到endAngle弧度结束。anticlosewise是布尔值，true表示逆时针，false表示顺时针。(默认是顺时针)
             cb.arc(x, y, r, 0, Math.PI * 2, false); 
             cb.fillStyle = color;//填充颜色
-            cb.fill();
             cb.closePath();//闭合路径
             cb.stroke();
+            cb.fill();
         }
         chesses(200,50,11,'#000');
         chesses(225,50,11,'#fff');
@@ -163,8 +163,8 @@ window.onload = function(){
             ],
             //2
             [
-                [0,0,1,1,1,1,0],
-                [0,1,0,0,0,0,1],
+                [0,1,1,1,1,1,0],
+                [1,0,0,0,0,0,1],
                 [1,0,0,0,0,0,1],
                 [0,0,0,0,0,0,1],
                 [0,0,0,0,0,1,0],
@@ -286,16 +286,16 @@ window.onload = function(){
                 }
             }
         }
-        numDraw(8);
+        numDraw(9);
         
         /**点阵数字（3）end**/
 
         /**倒计时（3）begin**/
-
+        //bug，1，6，7有白点
         var countDown = function(){
             var time = 10;
             setInterval(function(){
-                time = time == 0 ? 9 : time-1; 
+                time = time == 0 ? 9 : time-1;
                 cb.clearRect(0,0,500,500);
                 chessboardDraw(19,25);
                 numDraw(time);
