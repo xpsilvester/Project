@@ -98,6 +98,11 @@ window.onload = function(){
 
         /**棋盘（3）begin**/
         var cb = chessboard.getContext('2d');
+        var lineNum = 19, //棋盘线数
+            lineLong = 25,//格子间距
+            chessSize = parseInt(lineLong/2)-1;//棋子大小
+
+        //棋盘绘制
         var chessboardDraw = function(line,long){//line:棋盘线数,long:格子间距
             var cbStart = (500 - (line-1)*long)/2; //起始线位置
             for(var j=0;j<line;j++){
@@ -110,24 +115,24 @@ window.onload = function(){
             }
             cb.stroke();//描边
         }
-        chessboardDraw(19,25);
+        chessboardDraw(lineNum,lineLong);
 
         /**棋盘（3）end**/
 
         /**棋子（3）begin**/
-        var chesses = function(x,y,r,color){//x:x坐标，y:y坐标，color:颜色
+        var chesses = function(x,y,color){//x:x坐标，y:y坐标，color:颜色
             cb.beginPath();
             //arc(x, y, r, startAngle, endAngle, anticlockwise) 以(x, y)为圆心，以r为半径，
             //从 startAngle弧度开始到endAngle弧度结束。anticlosewise是布尔值，true表示逆时针，false表示顺时针。(默认是顺时针)
-            cb.arc(x, y, r, 0, Math.PI * 2, false); 
+            cb.arc(x, y, chessSize , 0, Math.PI * 2, false); 
             cb.fillStyle = color;//填充颜色
             cb.closePath();//闭合路径
             cb.stroke();
             cb.fill();
         }
-        chesses(200,50,11,'#000');
-        chesses(225,50,11,'#fff');
-        chesses(225,75,11,'#000');
+        chesses(200,50,'#000');
+        chesses(225,50,'#fff');
+        chesses(225,75,'#000');
         /**棋子（3）end**/
 
         /**点阵数字（3）begin**/
@@ -275,13 +280,14 @@ window.onload = function(){
             ]
         ]
         //绘制数字
+
         var numDraw = function(num){//num:要绘制的数字 0-9
             if(num>9){
                 return;
             }else{
                 for(var q=0;q<numArr[num].length;q++){
                     for(var w=0;w<numArr[num][q].length;w++){
-                        numArr[num][q][w] == 1 ? chesses(175+w*25,125+q*25,11,'#000'):'';
+                        numArr[num][q][w] == 1 ? chesses(175+w*lineLong , 125+q*lineLong ,'#000'):'';
                     }
                 }
             }
@@ -300,7 +306,7 @@ window.onload = function(){
                 cb.beginPath();
                 cb.fillRect(0,0,500,500);
                 cb.closePath();
-                chessboardDraw(19,25);
+                chessboardDraw(lineNum,lineLong);
                 numDraw(time);
             },1000);
         }
