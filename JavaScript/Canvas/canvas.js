@@ -36,7 +36,12 @@ window.onload = function(){
         ctx.beginPath();
         //arc(x, y, r, startAngle, endAngle, anticlockwise) 以(x, y)为圆心，以r为半径，
         //从 startAngle弧度开始到endAngle弧度结束。anticlosewise是布尔值，true表示逆时针，false表示顺时针。(默认是顺时针)
-        ctx.arc(250, 50, 40, 0, Math.PI / 2, false); 
+        ctx.arc(250, 50, 40, 0, Math.PI * 2, false); 
+        var grd1=ctx.createRadialGradient(245,45,40,245,40,0);
+        grd1.addColorStop(0,"red");
+        grd1.addColorStop(1,"white");
+        ctx.fillStyle = grd1;
+        ctx.fill();
         ctx.closePath();//闭合路径
         ctx.stroke();
 
@@ -124,10 +129,18 @@ window.onload = function(){
             //arc(x, y, r, startAngle, endAngle, anticlockwise) 以(x, y)为圆心，以r为半径，
             //从 startAngle弧度开始到endAngle弧度结束。anticlosewise是布尔值，true表示逆时针，false表示顺时针。(默认是顺时针)
             cb.arc(x, y, chessSize , 0, Math.PI * 2, false); 
-            cb.fillStyle = color;//填充颜色
+            var grd=ctx.createRadialGradient(x,y,chessSize,x,y-2,0);
+            if(color=='#fff'){
+                grd.addColorStop(0,'#fff');
+                grd.addColorStop(1,'#e6e6e6');
+            }else{
+                grd.addColorStop(0,color);
+                grd.addColorStop(1,'#fff');
+            }
+            cb.fillStyle = grd;//填充颜色
+            cb.fill();
             cb.closePath();//闭合路径
             cb.stroke();
-            cb.fill();
         }
         chesses(200,50,'#000');
         chesses(225,50,'#fff');
