@@ -291,12 +291,15 @@ window.onload = function(){
         /**点阵数字（3）end**/
 
         /**倒计时（3）begin**/
-        //bug，1，6，7有白点
         var countDown = function(){
             var time = 10;
             setInterval(function(){
                 time = time == 0 ? 9 : time-1;
-                cb.clearRect(0,0,500,500);
+                //cb.clearRect(0,0,500,500); //这种方法清除画布有bug，1，6，7白点待解决
+                cb.fillStyle="#fff";
+                cb.beginPath();
+                cb.fillRect(0,0,500,500);
+                cb.closePath();
                 chessboardDraw(19,25);
                 numDraw(time);
             },1000);
