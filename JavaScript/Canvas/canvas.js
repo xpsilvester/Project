@@ -100,22 +100,21 @@ window.onload = function(){
         var cb = chessboard.getContext('2d');
         var lineNum = 19, //棋盘线数
             lineLong = 25,//格子间距
-            chessSize = parseInt(lineLong/2)-1;//棋子大小
-
+            chessSize = parseInt(lineLong/2)-1,//棋子大小
+            cbStart = (500 - (lineNum-1)*lineLong)/2; //棋盘起始线位置
         //棋盘绘制
-        var chessboardDraw = function(line,long){//line:棋盘线数,long:格子间距
-            var cbStart = (500 - (line-1)*long)/2; //起始线位置
-            for(var j=0;j<line;j++){
+        var chessboardDraw = function(){ 
+            for(var j=0;j<lineNum;j++){
                 //横线
-                cb.moveTo(cbStart,cbStart+j*long);
-                cb.lineTo(cbStart+(line-1)*long,cbStart+j*long);
+                cb.moveTo(cbStart,cbStart+j*lineLong);
+                cb.lineTo(cbStart+(lineNum-1)*lineLong,cbStart+j*lineLong);
                 //竖线
-                cb.moveTo(cbStart+j*long,cbStart);
-                cb.lineTo(cbStart+j*long,cbStart+(line-1)*long);
+                cb.moveTo(cbStart+j*lineLong,cbStart);
+                cb.lineTo(cbStart+j*lineLong,cbStart+(lineNum-1)*lineLong);
             }
             cb.stroke();//描边
         }
-        chessboardDraw(lineNum,lineLong);
+        chessboardDraw();
 
         /**棋盘（3）end**/
 
@@ -282,12 +281,14 @@ window.onload = function(){
         //绘制数字
 
         var numDraw = function(num){//num:要绘制的数字 0-9
+            var leftMove = parseInt((lineNum - 7)/2),//左偏移量
+                topMove = parseInt((lineNum-10)/2);//上偏移量
             if(num>9){
                 return;
             }else{
-                for(var q=0;q<numArr[num].length;q++){
+                for(var q=0;q<numArr[num].length;q++){ //q:竖格,w:横个
                     for(var w=0;w<numArr[num][q].length;w++){
-                        numArr[num][q][w] == 1 ? chesses(175+w*lineLong , 125+q*lineLong ,'#000'):'';
+                        numArr[num][q][w] == 1 ? chesses(cbStart+(leftMove+w)*lineLong , cbStart+(q+topMove)*lineLong ,'#000'):'';
                     }
                 }
             }
