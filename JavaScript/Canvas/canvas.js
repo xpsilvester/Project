@@ -332,17 +332,23 @@ window.onload = function(){
         /**运动（4）begin**/
         var mv = move.getContext('2d');
         mv.fillStyle='#d9d9d9';
-        var speed = 7,
-            startPoint = 30;
+        var speedX = 5,
+            speedY = 7,
+            startPointX = 30,
+            startPointY = 30;
         var run = function(runItem){
             runItem.clearRect(0,0,500,500);
             //匀速直线来回运动
-            if(startPoint > 470 || startPoint < 30){
-                speed = -speed;
+            if(startPointX > 470 || startPointX < 30){
+                speedX = -speedX;
             }
-            startPoint+=speed;
+            if(startPointY > 470 || startPointY < 30){
+                speedY = -speedY;
+            }
+            startPointX+=speedX;
+            startPointY+=speedY;
             runItem.beginPath();
-            runItem.arc(startPoint,30,30,0,2*Math.PI,true);
+            runItem.arc(startPointX,startPointY,30,0,2*Math.PI,true);
             runItem.closePath();
             runItem.fill();
             requestAnimationFrame(function(){run(mv)});
