@@ -2,6 +2,7 @@ window.onload = function(){
     var canvas = document.getElementById('tutorial');//第一个canvas
     var tangram = document.getElementById('tangram');//第二个canvas
     var chessboard = document.getElementById('chessboard');//第三个canvas
+    var move = document.getElementById('move');//第四个canvas
     if(canvas.getContext){
 
         /**画板练习（1）begin**/
@@ -327,6 +328,30 @@ window.onload = function(){
         countDown();
 
         /**倒计时（3）end**/
+
+        /**运动（4）begin**/
+        var mv = move.getContext('2d');
+        mv.fillStyle='#d9d9d9';
+        mv.beginPath();
+        mv.arc(30,30,30,0,2*Math.PI,true);
+        mv.closePath();
+        mv.fill();
+        var speed = 7,
+            startPoint = 30;
+        var run = function(runItem){
+            runItem.clearRect(0,0,500,500);
+            if(startPoint > 470 || startPoint < 30){
+                speed = -speed;
+            }
+            startPoint+=speed;
+            runItem.beginPath();
+            runItem.arc(startPoint,30,30,0,2*Math.PI,true);
+            runItem.closePath();
+            runItem.fill();
+            requestAnimationFrame(function(){run(mv)});
+        }
+        run(mv);
+        /**运动（4）end**/
 
 
     }else{
