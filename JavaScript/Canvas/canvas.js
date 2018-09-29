@@ -329,17 +329,16 @@ window.onload = function(){
 
         /**倒计时（3）end**/
 
-        /**运动（4）begin**/
+        /**匀速直线来回运动（4）begin**/
         var mv = move.getContext('2d');
-        mv.fillStyle='#d9d9d9';
-        var speedX = 5,
-            speedY = 7,
-            startPointX = 30,
-            startPointY = 30;
+        var speedX = 5, //x轴速度
+            speedY = 7, //y轴速度
+            startPointX = 30, //x坐标
+            startPointY = 30; //y坐标
         var run = function(runItem){
             runItem.clearRect(0,0,500,500);
-            //匀速直线来回运动
-            if(startPointX > 470 || startPointX < 30){
+            //判断是否碰壁
+            if(startPointX > 470 || startPointX < 30 ){
                 speedX = -speedX;
             }
             if(startPointY > 470 || startPointY < 30){
@@ -349,12 +348,13 @@ window.onload = function(){
             startPointY+=speedY;
             runItem.beginPath();
             runItem.arc(startPointX,startPointY,30,0,2*Math.PI,true);
+            mv.fillStyle='#d9d9d9';
             runItem.closePath();
             runItem.fill();
             requestAnimationFrame(function(){run(mv)});
         }
         run(mv);
-        /**运动（4）end**/
+        /**匀速直线来回运动（4）end**/
 
 
     }else{
