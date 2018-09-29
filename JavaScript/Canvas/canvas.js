@@ -332,14 +332,11 @@ window.onload = function(){
         /**运动（4）begin**/
         var mv = move.getContext('2d');
         mv.fillStyle='#d9d9d9';
-        mv.beginPath();
-        mv.arc(30,30,30,0,2*Math.PI,true);
-        mv.closePath();
-        mv.fill();
         var speed = 7,
             startPoint = 30;
         var run = function(runItem){
             runItem.clearRect(0,0,500,500);
+            //匀速直线来回运动
             if(startPoint > 470 || startPoint < 30){
                 speed = -speed;
             }
