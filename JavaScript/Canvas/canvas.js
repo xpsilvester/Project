@@ -4,6 +4,7 @@ window.onload = function(){
     var chessboard = document.getElementById('chessboard');//第三个canvas
     var move = document.getElementById('move');//第四个canvas
     var spin = document.getElementById('spin');//第五个canvas
+    var ellipse = document.getElementById('ellipse');//第六个canvas
     if(canvas.getContext){
 
         /**画板练习（1）begin**/
@@ -388,8 +389,67 @@ window.onload = function(){
             sp.stroke();
         }
         spRun();
-
         /**匀速圆周运动（5）end**/
+
+        /**椭圆运动（6）begin**/
+
+        //假设原点O(250，250)，绕椭圆运动的物体为圆形半径为30，
+        //其中长半轴长a=200,短半轴长为b=100，每次重新获取物体的运动后的移动位置的时候，
+        //x都会变化一个单位，旋转为顺时针旋转，开始位置为原点的正左边的端点，
+        //最后原点我们以一个黑色且半径为10的小球表示。
+        //注意：上述的数据可以自行定义，但是要注意这个前提是必须保证a>b,如果a<b那么就不是这个公式了
+        var ec = ellipse.getContext('2d');
+        var ecA = 200,
+            ecB = 100,
+            radius = 30,
+            ecTime = 0;
+        centerPoint();
+        arcRoute(250,250,ecA,ecB,radius);
+        setInterval(function(){
+            arcRoute(250,250,ecA,ecB,radius);
+        }, 70);
+        //绘制原点
+        function centerPoint(){
+            ec.fillStyle="black";
+            ec.beginPath();
+            ec.arc(250,250,10,0,2*Math.PI,true)
+            ec.closePath();
+            ec.fill();
+        }
+        //椭圆路线绘制
+        function route(x,y,a,b){
+            var step = (a > b) ? 1 / a : 1 / b;
+            ec.beginPath();
+            ec.moveTo(x + a, y); //从椭圆的左端点开始绘制
+            for (var i = 0; i < 2 * Math.PI; i += step)
+            {
+                ec.lineTo(x + a * Math.cos(i), y + b * Math.sin(i));
+            }
+            ec.closePath();
+            ec.stroke();
+        }
+
+        //椭圆上小球运动的实现
+        function arcRoute(x,y,a,b,r){
+            ec.clearRect(0,0,500,500);
+            route(x,x,a,b);
+            centerPoint(ec);
+            ec.fillStyle="red";
+            if(ecTime==0){
+                ec.beginPath();
+                ec.arc(x,y,r,0,2*Math.PI,true);
+                ec.closePath();
+                ec.fill();
+            }else{
+                ec.beginPath();
+                ec.arc(x+a*Math.cos(ecTime),y+b*Math.sin(ecTime),r,0,2*Math.PI,true);
+                ec.closePath();
+                ec.fill();
+            }
+            ecTime+=1;
+        }
+
+        /**椭圆运动（6）end**/
 
 
     }else{
