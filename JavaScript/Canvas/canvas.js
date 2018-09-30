@@ -3,6 +3,7 @@ window.onload = function(){
     var tangram = document.getElementById('tangram');//第二个canvas
     var chessboard = document.getElementById('chessboard');//第三个canvas
     var move = document.getElementById('move');//第四个canvas
+    var spin = document.getElementById('spin');//第五个canvas
     if(canvas.getContext){
 
         /**画板练习（1）begin**/
@@ -355,6 +356,40 @@ window.onload = function(){
         }
         run(mv);
         /**匀速直线来回运动（4）end**/
+
+        /**匀速圆周运动（5）begin**/
+        var sp = spin.getContext('2d');
+        var spTime = 0; //定义运动的执行次数
+        //旋转函数
+        function spRun(){
+            sp.clearRect(0,0,500,500);   
+            drawNotChange();
+            sp.save();//将当前以左上角坐标为(0,0)的上下文环境进行保存，这样是为了在接下来中要进行画布偏移后，可以进行还原当前的环境
+            sp.translate(250,250);
+            sp.rotate(spTime*8*Math.PI/180);//设定每次旋转的度数
+            sp.fillStyle='blue';
+            sp.beginPath();
+            sp.arc(0,150,30,0,2*Math.PI,false);
+            sp.closePath();
+            sp.fill();
+            sp.restore();//将当前为(500,400)的点还原为（0,0）,其实在save中就是将上下文环境保存到栈中，在restore下面对其进行还原
+            spTime+=1;
+            requestAnimationFrame(spRun);
+        }
+        function drawNotChange(){
+            sp.fillStyle='red';
+            sp.beginPath();
+            sp.arc(250,250,30,0,2*Math.PI,true);
+            sp.closePath();
+            sp.fill();
+            sp.beginPath();
+            sp.arc(250,250,150,0,2*Math.PI,true);
+            sp.closePath();
+            sp.stroke();
+        }
+        spRun();
+
+        /**匀速圆周运动（5）end**/
 
 
     }else{
