@@ -454,7 +454,8 @@ window.onload = function(){
 
         /**弹球综合例子（7）begin**/
         var bc = bouncing.getContext('2d');
-        var width = bouncing.width = parseInt(window.innerWidth/500)*500+8;
+        var width = bouncing.width = ~~(window.innerWidth/500)*500+(~~(window.innerWidth/500)-1)*8;
+        console.log(width);
         var height = bouncing.height = 500;
 
         // 这个函数将两个数字作为参数传入，并且返回一个这两个数字之间的一个随机数。
