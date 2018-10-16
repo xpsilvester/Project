@@ -12,7 +12,7 @@
 
 ☑  1.7 版发布，抽象出回调对象，提供了强大的的方式来管理回调函数列表。
 
-### 二、jquery3.0 新特性
+### 二、jQuery3.0 新特性
 1.移除旧的IE工作区
 
 新的最终版最主要的目标是更加快速，更加时尚，因此，那些支持早于IE9版本的相关技术与工作区都被移除了。这意味着如果你想要或者需要支持IE6-8，你必须用回1.12版本，因为甚至是2.X版本都无法完整支持早于IE9的浏览器。
@@ -187,8 +187,118 @@ ajQuery.fn.init.prototype = ajQuery.fn
 ![此处输入图片的描述][1]
 通过原型传递解决问题，把jQuery的原型传递给jQuery.prototype.init.prototype。换句话说jQuery的原型对象覆盖了init构造器的原型对象，因为是引用传递所以不需要担心这个循环引用的性能问题。
 
+### 五、仿栈与队列的操作
+jQuery既然是模仿的数组结构，那么肯定会实现一套类数组的处理方法，比如常见的栈与队列操作push、pop、shift、unshift、求和、循环遍历each、排序及筛选等一系列的扩展方法。
 
-#### 参考文章: https://www.cnblogs.com/hrw3c/p/5304849.html
+jQuery对象栈是一个便于DOM查找提供的一系列方法，jQuery可以是集合元素，提供了.get()、:index()、:lt()、:gt()、:even()及:odd()这类索引相关的选择器，作用是过滤他们前面的匹配表达式的集合元素，筛选的依据就是这个元素在原先匹配集合中的顺序。
+
+get方法：通过检索匹配jQuery对象得到对应的DOM元素，实现如下：
+```
+get: function(num) {
+  return num != null ? 
+  // Return just the one element from the set
+  (num < 0 ? this[num+this.length] : this[num]) :
+  // Return all the elements in a clean array
+  slice.call(this);
+}
+```
+原理为jQuery查询出来的是一个数组的DOM集合，所以就可以按照数组的方法通过下标的索引取值，当然如果num的值超出范围，比如小于元素数量的负数或等于或大于元素的数量的数，那么它将返回undefined。假如页面上有一个简单的无序列表，如下代码：
+```
+<ul>
+  <li id="foo">foo</li>
+  <li id="bar">bar</li>
+</ul>
+```
+如果指定了index参数，.get()则会获取单个元素，如下代码：
+```
+console.log( $("li").get(0) );
+```
+由于索引index是0,开始计数，所以上面代码返回了第一个列表项```<li id="foo">foo</li>```、
+然而，这种语法缺少某些.get()所具有的附加功能，比如可以指定索引值为负值：
+```
+console.log( $("li").get(-1) );
+```
+负的索引值表示从匹配的集合中从末尾开始倒数，所以，上面这个例子将会返回列表中最后一项：```<li id="bar">bar</li>```。
+由于是数组的关系，所以我们有几个快捷的方法，如头跟尾的取值：
+```
+first: function() {
+  return this.eq(0);
+},
+last: function() {
+  return this.eq(-1);
+}
+```
+
+模拟实现:
+```
+var $$ = ajQuery = function(selector) {
+    return new ajQuery.fn.init(selector);
+}
+
+ajQuery.fn = ajQuery.prototype = {
+    init: function(selector) {
+		this.selector = selector;
+		//模拟出数组格式
+		var results = document.querySelectorAll(selector);
+		for (var i = 0; i < results.length; i++) {
+			this[i] = results[i];
+		}
+		return this;
+	},
+	constructor: ajQuery
+}
+
+ajQuery.fn.init.prototype = ajQuery.fn
+
+ajQuery.extend = ajQuery.fn.extend = function() {
+	var options, src, copy,
+		target = arguments[0] || {},
+		i = 1,
+		length = arguments.length;
+
+	//只有一个参数，就是对jQuery自身的扩展处理
+	//extend,fn.extend
+	if (i === length) {
+		target = this; //调用的上下文对象jQuery/或者实例
+		i--;
+	}
+	for (; i < length; i++) {
+		//从i开始取参数,不为空开始遍历
+		if ((options = arguments[i]) != null) {
+			for (name in options) {
+				copy = options[name];
+				//覆盖拷贝
+				target[name] = copy;
+			}
+		}
+	}
+	return target;
+}
+
+ajQuery.fn.extend({
+	get: function(num) {
+		if (num != null) {
+			return (num < 0 ? this[num + this.length] : this[num])
+		} else {
+			return [].slice.call(this);
+		}
+	},
+	setName: function(myName) {
+		this.myName = myName
+		return this;
+	},
+	getName: function() {
+		$("#aaron").html(this.myName)
+		return this;
+	}
+})
+
+$("#aaron").html(  $$("li").get(1)  )
+```
+
+#### 参考文章
+1.https://www.cnblogs.com/hrw3c/p/5304849.html
+2.https://blog.csdn.net/blog_szhao/article/details/48825191
 
 [1]: https://img1.sycdn.imooc.com/540905880001daac05540230.jpg
 
