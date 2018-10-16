@@ -12,6 +12,8 @@
 根据《JavaScript 高级编程》、《精通正则表达式》写的练习DEMO
 ##### 2.Canvas
 用Canvas绘制的一些图案，七巧板、棋盘、数字点阵、球体运动...
+##### 3.jQuery
+jQuery源码分析
 
 ### 三、Vue
 ##### 1.Demo
