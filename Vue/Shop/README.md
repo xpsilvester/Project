@@ -97,7 +97,9 @@ npm install
 npm start
 
 ```
-##### 最近用Vue做了关于电商类的项目，以下就是修改过的demo，[演示地址](http://www.xpsilvester.tk)
+##### 最近用Vue做了关于电商类的项目，以下就是修改过的demo
+##### [演示地址](http://www.xpsilvester.tk) ,二维码如下
+![二维码][8]
 ##### 博客地址：https://www.xpsilvester.com/2018/09/18/VueProject/
 ##### 欢迎大家踊跃 提出建议 点个Star或者Fork支持一下~ 
 
@@ -139,3 +141,4 @@ npm start
   [5]: https://raw.githubusercontent.com/xpsilvester/Project/master/images/shopSearch.png
   [6]: https://raw.githubusercontent.com/xpsilvester/Project/master/images/shopAbout.png
   [7]: https://raw.githubusercontent.com/xpsilvester/Project/master/images/shopMovie2.gif
+  [8]: https://raw.githubusercontent.com/xpsilvester/Project/master/images/qcode.png
