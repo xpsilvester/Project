@@ -98,7 +98,7 @@ npm start
 
 ```
 ##### 最近用Vue做了关于电商类的项目，以下就是修改过的demo
-##### [演示地址](http://www.xpsilvester.tk) ,二维码如下
+##### 演示地址二维码如下
 ![二维码][8]
 ##### 博客地址：https://www.xpsilvester.com/2018/09/18/VueProject/
 ##### 欢迎大家踊跃 提出建议 点个Star或者Fork支持一下~ 
