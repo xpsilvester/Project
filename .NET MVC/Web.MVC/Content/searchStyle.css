@@ -1,0 +1,107 @@
+/*!
+ * WeUI v1.1.2 (https://github.com/weui/weui)
+ * Copyright 2017 Tencent, Inc.
+ * Licensed under the MIT license
+ */
+html {
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%
+}
+body {
+	line-height: 1.6;
+	font-family: -apple-system-font, Helvetica Neue, sans-serif;
+}
+
+body, html,p,h1,h2{
+	margin: 0;
+	padding: 0;
+}
+input,textarea,select,button,a:focus {
+    outline: none;
+}
+input::-webkit-input-placeholder {
+	/* placeholder颜色  */
+	color: #aab2bd;
+	/* placeholder字体大小  */
+	font-size: 14px;
+	/* placeholder位置  */
+	text-align: left;
+}
+.content{
+	padding: 20px 4% 20px;
+	width: 92%;
+}/*全局*/
+
+header h2{
+    line-height: 1.4;
+    font-weight: 400;
+    font-size: 24px;
+}
+	
+header p{
+	font-size: 17px;
+	font-family: Arial;
+	color: #8c8c8c;
+	margin-top: 10px;
+}
+header p a{
+	font-size: 17px;
+	font-family: Arial;
+	color: #698ac4;
+	margin-top: 10px;
+	text-decoration: none;
+}/*标题*/
+
+input::-webkit-inner-spin-button, input::-webkit-outer-spin-button  {
+         -webkit-appearance: none!important; 
+   }/*去除框框中的上下按钮*/
+   
+p{
+	font-size: 16px;
+	padding: 0;	
+	margin: 10px 0;
+}
+
+#ip-city{
+	margin-top: -5px;
+	display: block;
+	border: none;
+	border-bottom: 1px dashed #000;
+}
+.ip-addr-input{
+	width: 100%;
+	height: 30px;
+}
+
+.ipInput{
+	float: left;
+	width: 35px;
+	border: 1px solid #000;
+}
+.macInput{
+	width: 35px;
+	float: left;
+}
+
+.ip-addr-input span{
+	float: left;
+	line-height: 20px;
+}
+
+
+/* 查询 */
+.caculate{
+	clear: both;
+	margin-top: 10px;
+}
+.caculate button{
+	width: 100%;
+	height: 40px;
+	background: #009688;
+	border-radius: 5px;
+	padding: 0;
+	border: none;
+	color: #fff;
+	font-size: 16px;
+}
+
