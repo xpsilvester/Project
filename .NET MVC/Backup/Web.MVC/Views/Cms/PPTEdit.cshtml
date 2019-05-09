@@ -1,0 +1,13 @@
+﻿@using Web.Mvc.Model
+@{
+    ViewBag.Title = "PPTEdit";
+    List<PPTClass> classList = ViewData["classList"] as List<PPTClass>;
+}
+
+<h2>PPTEdit</h2>
+<div>
+@foreach (PPTClass ap in classList)
+{
+    @:<p>@ap.className</p> 
+}         
+</div>

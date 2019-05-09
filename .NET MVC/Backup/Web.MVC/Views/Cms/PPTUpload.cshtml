@@ -1,0 +1,76 @@
+﻿@{
+    Layout = null;
+    string state = ViewData["state"].ToString();
+    List<string> uploadErrors = ViewData["uploadErrors"] as List<String>;
+    List<string> fileInfo = ViewData["fileInfo"] as List<string>;
+}
+
+<style type="text/css"> 
+
+body, table, td {
+	font-size:12px;
+}
+
+</style>
+<script type="text/javascript">
+    function uploadok() {
+        opener.document.form1.title.value = document.uploadform.showname.value;
+        //opener.document.form1.filesize.value = document.uploadform.sizename.value;
+        opener.document.form1.pptSrc.value = document.uploadform.filename.value;
+        window.close();
+    }
+</script>
+<body>
+@{
+    if (uploadErrors.Count > 0)
+    {
+      Response.Write("上传的文件存在以下错误，请修改后再次尝试上传：<ul style=\"color:#FF0000\">");
+      foreach (string strError in uploadErrors)
+      {
+          Response.Write("<li>" + strError + "</li>");
+      }
+      Response.Write("</ul>");
+    }
+  }
+<form name="uploadform" method="post" enctype="multipart/form-data" action="uploadSavePPT">
+<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+      <td colspan="2">文件上传<br/>
+        <hr/>
+        提示：</td>
+    </tr>
+    <tr>
+      <td width="79%"> 1、点“<font color="#FF0000">浏览</font>”按钮，找到您所要粘贴的附件文件：
+        <input type="file" name="file1" />
+        (<font color="#FF0000">注意</font>：上传的文件名请不要带有空格) </td>
+      <td width="21%"></td>
+    </tr>
+    <tr>
+      <td>2、选定一个文件后，点“<font color="#FF0000">开始上传</font>”按钮，将该文件上传到服务器</td>
+      <td><input type="submit" name="submit" value="开始上传" /></td>
+    </tr>
+    @{  if(state=="success")
+    {
+    <tr>
+      <td><font style="color:#FF0000;font-size:16px;font-weight:bold">文件上传完成！请点击“完成”按钮将文件信息粘贴到原页面</font></td>
+      <td>&nbsp;</td>
+    </tr>
+        }
+        }
+        <tr>
+      <td>3、附件上传完毕后，点“<font color="#FF0000">完成</font>”按钮返回。
+      @{
+          if(state=="success")
+          {
+        <input type="hidden" name="filename" value="@fileInfo[0]" />
+        <input type="hidden" name="sizename" value="@fileInfo[1]" />
+        <input type="hidden" name="showname" value="@fileInfo[2]" />
+          }
+          }</td>
+      <td><input type="button" value="完成" onclick="uploadok()" /></td>
+    </tr>
+</table>
+</form>
+</body>
+
+

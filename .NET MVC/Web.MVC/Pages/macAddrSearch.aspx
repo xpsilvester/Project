@@ -17,7 +17,10 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         string macKey = (null == Request.QueryString["mackey"] || Request.QueryString["mackey"].ToString().Length <= 6) ? string.Empty : Request.QueryString["mackey"].ToString().Substring(0, 6);
-
+        if (string.IsNullOrEmpty(macKey))
+        {
+            return; 
+        }
         comKey = null == Request.QueryString["mackey"] ? "" : Request.QueryString["mackey"].ToString();
         
         if (null == Application["macList"])
@@ -28,14 +31,21 @@
         context = Application["macList"] as Dictionary<string, string>;
         try
         {
-            macCompany = context[macKey].ToString().Split(new char[1] { '|' })[0];
-            macCompanyAddr1 = context[macKey].ToString().Split(new char[1] { '|' })[1];
-            macCompanyAddr2 = context[macKey].ToString().Split(new char[1] { '|' })[2];
-            macCompanyAddr3 = context[macKey].ToString().Split(new char[1] { '|' })[3];
+            if (context.Keys.Contains(macKey))
+            {
+                macCompany = context[macKey].ToString().Split(new char[1] { '|' })[0];
+                macCompanyAddr1 = context[macKey].ToString().Split(new char[1] { '|' })[1];
+                macCompanyAddr2 = context[macKey].ToString().Split(new char[1] { '|' })[2];
+                macCompanyAddr3 = context[macKey].ToString().Split(new char[1] { '|' })[3];
+            }
+            else
+            {
+                macCompany = "<font color=\"red\">未找到相关记录</font>";
+            }
         }
         catch
         {
-            
+            macCompany = "<font color=\"red\">未找到相关记录</font>";
         }
         
         //return "";
@@ -43,7 +53,7 @@
 
     public static Dictionary<string, string> ReaderFile()
     {
-        string path = "/Content/mac_addr.txt";
+        string path = HttpContext.Current.Server.MapPath("/Content/mac_addr.txt");
         string fileData = string.Empty;
         Dictionary<string, string> dictionary = new Dictionary<string, string>();
         
@@ -79,9 +89,8 @@
         }
         catch (Exception ex)
         {
-            throw new Exception(ex.Message,ex);   
-            
-        }  ///抛出异常      
+            dictionary.Add("err", "服务器内部错误");     
+        }      
         return dictionary;
     }
 </script>
