@@ -19,7 +19,4 @@ E:\test\Project\.NET MVC\Web.MVC\bin\System.Web.WebPages.Razor.xml
 E:\test\Project\.NET MVC\Web.MVC\bin\zh-Hans\System.Web.Providers.resources.dll
 E:\test\Project\.NET MVC\Web.MVC\obj\Debug\Web.MVC.dll
 E:\test\Project\.NET MVC\Web.MVC\obj\Debug\Web.MVC.pdb
-E:\test\Project\.NET MVC\Web.MVC\bin\Web.MVC.dll.config
-E:\test\Project\.NET MVC\Web.MVC\obj\Debug\Web.MVC.csprojAssemblyReference.cache
-E:\test\Project\.NET MVC\Web.MVC\obj\Debug\Web.MVC.csproj.CoreCompileInputs.cache
-E:\test\Project\.NET MVC\Web.MVC\obj\Debug\Web.MVC.csproj.CopyComplete
+E:\test\Project\.NET MVC\Web.MVC\obj\Debug\Web.MVC.csprojResolveAssemblyReference.cache

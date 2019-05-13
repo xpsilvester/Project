@@ -136,16 +136,26 @@
     <script>
         window.onload = function () {
             //Mac自动跳格
-            function moveNextId(index) {
-                if (document.getElementById('macInput' + (index - 1)).value.length == 2) {
-                    document.getElementById('macInput' + index).focus();
+            var macInput = document.getElementsByClassName('macInput');
+            function moveNextId(index, keyCode) {
+                if (macInput[index].value.length >= 2 && keyCode != 8) {
+                    macInput[index + 1].focus();
+                }
+                if (macInput[index].value.length == 0 && keyCode == 8) {
+                    macInput[index - 1].focus();
+                    var text = macInput[index - 1].value;
+                    macInput[index - 1].value = "";
+                    macInput[index - 1].value = text;
                 }
             }
-            var macInput = document.getElementsByClassName('macInput');
+
             for (var i = 0; i < macInput.length; i++) {
                 (function (i) {
-                    document.getElementById('macInput' + (i + 1)).addEventListener("keyup", function () {
-                        moveNextId(i + 2)
+                    macInput[i].addEventListener("keyup", function (e) {
+                        moveNextId(i, e.keyCode)
+                    }, false);
+                    macInput[i].addEventListener("keydown", function (e) {
+                        moveNextId(i, e.keyCode);
                     }, false);
                 }(i))
             }
@@ -161,12 +171,12 @@
                 if (macInputCurrent.length < 1) {
                     macInputCurrent = '00';
                 }
-                
+
                 macAddr += macInputCurrent.toUpperCase();
-                
+
             }
             window.location.href = window.location.origin + window.location.pathname + "?mackey=" + macAddr;
-            
+
         }
     </script>
 </body>
