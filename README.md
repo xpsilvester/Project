@@ -25,6 +25,9 @@ jQuery源码分析
 ##### 3.Shop
 用Vue写的电商项目
 
+##### 4.Component
+手写Vue组件
+
 ### 三、Web
 ##### 1.WebMoblie
 移动web开发与适配
