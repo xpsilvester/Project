@@ -1,5 +1,5 @@
 //省市区联动组件
-let Districtbox = {
+Vue.component('Districtbox', {
     data: function () {
         return {
             cityData:[],
@@ -251,4 +251,4 @@ let Districtbox = {
             console.log(error);
         });
     }
-}
+})

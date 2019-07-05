@@ -1,5 +1,5 @@
 //日期组件
-let Timebox = {
+Vue.component('Timebox',{
     data: function () {
         return {
             monthData:[],
@@ -171,4 +171,4 @@ let Timebox = {
     created(){
         
     }
-}
+})

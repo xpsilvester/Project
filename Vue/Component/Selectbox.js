@@ -1,5 +1,5 @@
 //选择组件
-let Selectbox = {
+Vue.component('Selectbox',{
     data: function () {
         return {
             optiondata:{
@@ -33,4 +33,4 @@ let Selectbox = {
     created(){
         //console.log(this.optiondata)
     }
-}
+})
