@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />    
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>TodoList</title>
+</head>
+<style>
+    body{
+        font-size: 16px;
+    }
+    li{
+        line-height: 30px;
+    }
+    #todolist{
+        width: 80%;
+        margin: 10px auto;
+        text-align: left;
+    }
+</style>
+<body>
+    <div id='todolist'>
+        <div>
+            <input placeholder="输入事项" v-model="inputValue"/>
+            <button @click="handleSubmit">提交</button>
+        </div>
+        <h3>待办事项：</h3>
+        <ul>
+            <todo-item v-for="(item,index) of todolist"
+            :key="index"
+            :content="item"
+            :index="index"
+            @delete="handleDelete" @finish="handleFinish">  <!-- 监听delete和finish事件 -->
+            </todo-item>
+        </ul>
+        <h3>已完成事项：</h3>
+        <ul>
+            <finished-item v-for="(item,index) of finishedlist"
+            :key="index"
+            :content="item"
+            :index="index"
+            @delete2="handleDelete2">  <!-- 监听delete事件 -->
+            </finished-item>
+        </ul>
+    </div>
+</body>
+<script>
+    //注册局部组件
+    //待办事项
+    var TodoItem = {
+        props: ['content','index'],
+        template: '<li>{{content}} <button @click="handleClick2">完成</button> <button @click="handleClick">删除</button> </li>',
+        methods: {
+            handleClick:function(){
+                //删除
+                this.$emit('delete', this.index)
+            },
+            handleClick2:function(){
+                //完成
+                this.$emit('finish', this.index)
+            }
+        }
+    }
+    //已完成事项
+    var FinishedItem = {
+        props: ['content','index'],
+        template: '<li>{{content}} <button @click="handleClick">删除</button> </li>',
+        methods: {
+            handleClick: function(){
+                //发布
+                this.$emit('delete2', this.index)
+            }
+        }
+    }
+    new Vue({
+      el: "#todolist",
+      components: {   //局部组件需要声明的 components
+        'todo-item': TodoItem,
+        'finished-item': FinishedItem
+      },
+      data: {
+        inputValue: '',
+        todolist: [],
+        finishedlist:[]
+      },
+      methods: {
+        handleSubmit: function(){
+            if(this.inputValue != ''){
+                this.todolist.push(this.inputValue)
+                localStorage.setItem('todolist',JSON.stringify(this.todolist))
+                this.inputValue = ''
+            }
+        },
+        handleDelete: function(index){
+            this.todolist.splice(index,1) //使用splice方法删除list
+            localStorage.setItem('todolist',JSON.stringify(this.todolist))
+        },
+        handleFinish:function(index){
+            this.finishedlist.push(...this.todolist.splice(index,1))  //使用splice方法删除list,并添加到已完成事项
+            localStorage.setItem('todolist',JSON.stringify(this.todolist))
+            localStorage.setItem('finishedlist',JSON.stringify(this.finishedlist))
+        },
+        handleDelete2: function(index){
+          this.finishedlist.splice(index,1)  //使用splice方法删除finishedlist
+          localStorage.setItem('finishedlist',JSON.stringify(this.finishedlist))
+        },
+      },
+      created(){
+          //检查本地缓存
+          if(localStorage.getItem('todolist')){
+              this.todolist = JSON.parse(localStorage.getItem('todolist'))
+          }
+          if(localStorage.getItem('finishedlist')){
+              this.finishedlist = JSON.parse(localStorage.getItem('finishedlist'))
+          }
+      }
+    })
+</script>
+</html>
