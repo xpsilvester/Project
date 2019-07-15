@@ -35,7 +35,7 @@
             :key="index"
             :content="item"
             :index="index"
-            @delete="handleDelete" @finish="handleFinish">  <!-- 监听delete和finish事件 -->
+            @delete="handleDelete" @finish="handleFinish" @up="handleUp" @down="handleDown">  <!-- 监听delete和finish事件 -->
             </todo-item>
         </ul>
         <h3>已完成事项：</h3>
@@ -44,7 +44,7 @@
             :key="index"
             :content="item"
             :index="index"
-            @delete2="handleDelete2">  <!-- 监听delete事件 -->
+            @delete2="handleDelete2" @recover="handleRecover">  <!-- 监听delete事件 -->
             </finished-item>
         </ul>
     </div>
@@ -54,7 +54,7 @@
     //待办事项
     var TodoItem = {
         props: ['content','index'],
-        template: '<li>{{content}} <button @click="handleClick2">完成</button> <button @click="handleClick">删除</button> </li>',
+        template: `<li> <p>{{index+1 + '.' + content}} </p> <button @click="handleClick2">完成</button> <button @click="handleClick">删除</button> <button @click="handleDown">&#8595</button> <button @click="handleUp">&#8593</button> </li>`,
         methods: {
             handleClick:function(){
                 //删除
@@ -63,17 +63,29 @@
             handleClick2:function(){
                 //完成
                 this.$emit('finish', this.index)
+            },
+            handleUp:function(){
+                //升序
+                this.$emit('up',this.index)
+            },
+            handleDown:function(){
+                //降序
+                this.$emit('down',this.index)
             }
         }
     }
     //已完成事项
     var FinishedItem = {
         props: ['content','index'],
-        template: '<li>{{content}} <button @click="handleClick">删除</button> </li>',
+        template: `<li>{{index+1 + '.' + content}} <button @click="handleClick">删除</button> <button @click="handleClick2">恢复</button>  </li>`,
         methods: {
             handleClick: function(){
-                //发布
+                //删除
                 this.$emit('delete2', this.index)
+            },
+            handleClick2: function(){
+                //恢复
+                this.$emit('recover', this.index)
             }
         }
     }
@@ -89,26 +101,53 @@
         finishedlist:[]
       },
       methods: {
+        //提交
         handleSubmit: function(){
             if(this.inputValue != ''){
                 this.todolist.push(this.inputValue)
-                localStorage.setItem('todolist',JSON.stringify(this.todolist))
+                this.updateLocal()
                 this.inputValue = ''
             }
         },
+        //待办事项删除
         handleDelete: function(index){
             this.todolist.splice(index,1) //使用splice方法删除list
-            localStorage.setItem('todolist',JSON.stringify(this.todolist))
+            this.updateLocal()
         },
+        //待办事项完成
         handleFinish:function(index){
             this.finishedlist.push(...this.todolist.splice(index,1))  //使用splice方法删除list,并添加到已完成事项
-            localStorage.setItem('todolist',JSON.stringify(this.todolist))
-            localStorage.setItem('finishedlist',JSON.stringify(this.finishedlist))
+            this.updateLocal()
         },
+        //待办事项升序
+        handleUp:function(index){
+            if(index > 0){
+                this.todolist.splice(index-1,2,this.todolist[index],this.todolist[index-1])
+            }
+            this.updateLocal()
+        },
+        //待办事项降序
+        handleDown:function(index){
+            if(index < this.todolist.length - 1){
+                this.todolist.splice(index,2,this.todolist[index+1],this.todolist[index])
+            }
+            this.updateLocal()
+        },
+        //已完成事项删除
         handleDelete2: function(index){
           this.finishedlist.splice(index,1)  //使用splice方法删除finishedlist
-          localStorage.setItem('finishedlist',JSON.stringify(this.finishedlist))
+          this.updateLocal()
         },
+        //已完成事项恢复
+        handleRecover: function(index){
+            this.todolist.push(...this.finishedlist.splice(index,1))  //使用splice方法删除list,并添加到已完成事项
+            this.updateLocal()
+        },
+        //更新本地数据
+        updateLocal:function(){
+            localStorage.setItem('todolist',JSON.stringify(this.todolist))
+            localStorage.setItem('finishedlist',JSON.stringify(this.finishedlist))
+        }
       },
       created(){
           //检查本地缓存
