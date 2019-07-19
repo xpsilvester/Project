@@ -22,6 +22,9 @@
         margin: 10px auto;
         text-align: left;
     }
+    li input{
+        display: block
+    }
 </style>
 <body>
     <div id='todolist'>
@@ -35,7 +38,7 @@
             :key="index"
             :content="item"
             :index="index"
-            @delete="handleDelete" @finish="handleFinish" @up="handleUp" @down="handleDown">  <!-- 监听delete和finish事件 -->
+            @delete="handleDelete" @finish="handleFinish" @up="handleUp" @down="handleDown" @save="handleTodoEdit">  <!-- 监听delete和finish事件 -->
             </todo-item>
         </ul>
         <h3>已完成事项：</h3>
@@ -44,7 +47,7 @@
             :key="index"
             :content="item"
             :index="index"
-            @delete2="handleDelete2" @recover="handleRecover">  <!-- 监听delete事件 -->
+            @delete2="handleDelete2" @recover="handleRecover" @save="handleFiniEdit">  <!-- 监听delete事件 -->
             </finished-item>
         </ul>
     </div>
@@ -54,7 +57,21 @@
     //待办事项
     var TodoItem = {
         props: ['content','index'],
-        template: `<li> <p>{{index+1 + '.' + content}} </p> <button @click="handleClick2">完成</button> <button @click="handleClick">删除</button> <button @click="handleDown">&#8595</button> <button @click="handleUp">&#8593</button> </li>`,
+        data:function(){
+            return{
+                isEdit:false,
+                tempWord:''
+            }
+        },
+        template: ` <li> 
+                        <p>{{index+1 + '.' + content}} </p> 
+                        <input v-model='tempWord' v-show='isEdit' />
+                        <button @click="handleClick2">完成</button> 
+                        <button @click="handleClick">删除</button> 
+                        <button @click="handleDown">&#8595</button> 
+                        <button @click="handleUp">&#8593</button> 
+                        <button @click="handleEdit">{{isEdit ? '编辑完成' : '编辑'}}</button> 
+                    </li>`,
         methods: {
             handleClick:function(){
                 //删除
@@ -71,13 +88,33 @@
             handleDown:function(){
                 //降序
                 this.$emit('down',this.index)
+            },
+            handleEdit:function(){
+                //编辑
+                this.isEdit = !this.isEdit
+                this.tempWord = this.content
+                if(!this.isEdit){
+                    this.$emit('save',this.tempWord,this.index)
+                }
             }
         }
     }
     //已完成事项
     var FinishedItem = {
         props: ['content','index'],
-        template: `<li>{{index+1 + '.' + content}} <button @click="handleClick">删除</button> <button @click="handleClick2">恢复</button>  </li>`,
+        data:function(){
+            return{
+                isEdit:false,
+                tempWord:''
+            }
+        },
+        template: ` <li>
+                        <p>{{index+1 + '.' + content}}</p>
+                        <input v-model='tempWord' v-show='isEdit' />
+                        <button @click="handleClick">删除</button> 
+                        <button @click="handleClick2">恢复</button>
+                        <button @click="handleEdit">{{isEdit ? '编辑完成' : '编辑'}}</button> 
+                    </li>`,
         methods: {
             handleClick: function(){
                 //删除
@@ -86,6 +123,14 @@
             handleClick2: function(){
                 //恢复
                 this.$emit('recover', this.index)
+            },
+            handleEdit:function(){
+                //编辑
+                this.isEdit = !this.isEdit
+                this.tempWord = this.content
+                if(!this.isEdit){
+                    this.$emit('save',this.tempWord,this.index)
+                }
             }
         }
     }
@@ -95,10 +140,12 @@
         'todo-item': TodoItem,
         'finished-item': FinishedItem
       },
-      data: {
-        inputValue: '',
-        todolist: [],
-        finishedlist:[]
+      data:function() {
+          return {
+            inputValue: '',
+            todolist: [],
+            finishedlist:[]
+          }
       },
       methods: {
         //提交
@@ -133,6 +180,11 @@
             }
             this.updateLocal()
         },
+        //待办事项编辑
+        handleTodoEdit: function(tempWord,index){
+          this.todolist.splice(index,1,tempWord)
+          this.updateLocal()
+        },
         //已完成事项删除
         handleDelete2: function(index){
           this.finishedlist.splice(index,1)  //使用splice方法删除finishedlist
@@ -142,6 +194,11 @@
         handleRecover: function(index){
             this.todolist.push(...this.finishedlist.splice(index,1))  //使用splice方法删除list,并添加到已完成事项
             this.updateLocal()
+        },
+        //已完成事项编辑
+        handleFiniEdit: function(tempWord,index){
+          this.finishedlist.splice(index,1,tempWord)
+          this.updateLocal()
         },
         //更新本地数据
         updateLocal:function(){
