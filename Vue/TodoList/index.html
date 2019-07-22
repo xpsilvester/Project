@@ -92,11 +92,13 @@
             handleEdit:function(){
                 //编辑
                 this.isEdit = !this.isEdit
-                this.tempWord = this.content
                 if(!this.isEdit){
                     this.$emit('save',this.tempWord,this.index)
                 }
             }
+        },
+        mounted(){
+            this.tempWord = this.content
         }
     }
     //已完成事项
@@ -127,11 +129,13 @@
             handleEdit:function(){
                 //编辑
                 this.isEdit = !this.isEdit
-                this.tempWord = this.content
                 if(!this.isEdit){
                     this.$emit('save',this.tempWord,this.index)
                 }
             }
+        },
+        mounted(){
+            this.tempWord = this.content
         }
     }
     new Vue({
@@ -197,6 +201,7 @@
         },
         //已完成事项编辑
         handleFiniEdit: function(tempWord,index){
+          console.log(tempWord)
           this.finishedlist.splice(index,1,tempWord)
           this.updateLocal()
         },
