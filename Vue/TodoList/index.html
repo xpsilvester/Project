@@ -167,6 +167,7 @@
         },
         //待办事项完成
         handleFinish:function(index){
+            this.todolist[index] = `${this.todolist[index]} ${new Date().toLocaleString()}`
             this.finishedlist.push(...this.todolist.splice(index,1))  //使用splice方法删除list,并添加到已完成事项
             this.updateLocal()
         },
@@ -201,7 +202,6 @@
         },
         //已完成事项编辑
         handleFiniEdit: function(tempWord,index){
-          console.log(tempWord)
           this.finishedlist.splice(index,1,tempWord)
           this.updateLocal()
         },
