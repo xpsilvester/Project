@@ -155,7 +155,7 @@
         //提交
         handleSubmit: function(){
             if(this.inputValue != ''){
-                this.todolist.push(this.inputValue)
+                this.todolist.unshift(this.inputValue)
                 this.updateLocal()
                 this.inputValue = ''
             }
