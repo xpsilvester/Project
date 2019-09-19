@@ -35,7 +35,7 @@
         <h3>待办事项：</h3>
         <ul>
             <todo-item v-for="(item,index) of todolist"
-            :key="index"
+            :key="item"
             :content="item"
             :index="index"
             @delete="handleDelete" @finish="handleFinish" @up="handleUp" @down="handleDown" @save="handleTodoEdit">  <!-- 监听delete和finish事件 -->
@@ -44,7 +44,7 @@
         <h3>已完成事项：</h3>
         <ul>
             <finished-item v-for="(item,index) of finishedlist"
-            :key="index"
+            :key="item"
             :content="item"
             :index="index"
             @delete2="handleDelete2" @recover="handleRecover" @save="handleFiniEdit">  <!-- 监听delete事件 -->
