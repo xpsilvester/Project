@@ -74,7 +74,7 @@ let httpUse = ()=>{
     }).listen(8888)
 }
 
-//ES6 Symbol 测试
+//ES6 Symbol 
 let symbolTest = ()=>{
     let mySymbol = Symbol();
 
@@ -152,6 +152,43 @@ let symbolTest = ()=>{
     console.log(x.toString())
 }
 //symbolTest()
+
+//Set
+function setTest (){
+    this.dedupe = arr => {
+        return Array.from(new Set(arr))
+    };
+    this.keys = arr => {
+        let set = new Set(arr);
+        for(let item of set.keys()){
+            console.log(item)
+        }
+    };
+    this.values = arr => {
+        let set = new Set(arr);
+        for(let item of set.values()){
+            console.log(item)
+        }
+    };
+    this.entries = arr => {
+        let set = new Set(arr);
+        for(let item of set.entries()){
+            console.log(item)
+        }
+    }
+    this.forEach = arr => {
+        let set = new Set(arr);
+        set.forEach((val,key)=> console.log(key+':'+val))
+    }
+}
+
+let set1 = new setTest()
+//console.log(set1.dedupe([1,2,3,4,4,4,4]))
+//set1.keys(['red','green','blue'])
+//set1.values(['red','green','blue'])
+//set1.entries(['red','green','blue'])
+//set1.forEach(['red','green','blue'])
+
 
 
 
