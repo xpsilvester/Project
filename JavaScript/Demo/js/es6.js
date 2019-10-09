@@ -259,5 +259,21 @@ let map2 = new mapTest2();
 // console.log(map2.entries())
 // console.log(map2.map())
 
+mapTest.prototype.strMapToObj = strMap => {
+    let obj = Object.create(null);
+    for(let [k,v] of strMap){
+        obj[k] = v;
+    }
+    return obj;
+}
+mapTest.prototype.objToStrMap = obj => {
+    let strMap = new Map();
+    for(let k of Object.keys(obj)){
+        strMap.set(k,obj[k])
+    }
+    return strMap;
+}
 
+//console.log(map1.strMapToObj(map))
+//console.log(map1.objToStrMap({yes: true, no: false}))
 
