@@ -202,9 +202,62 @@ let set1 = new setTest()
 //console.log(set1.intersect(new Set(['red','green','blue']),new Set(['red'])))
 //console.log(set1.difference(new Set(['red','green','blue']),new Set(['red'])))
 
+const items = [
+    ['name','张三'],
+    ['title','Author']
+]
 
+const map = new Map();
 
+items.forEach(([key,value])=> map.set(key,value))
 
+//console.log(map)
+//let arrA = ['a'];
+
+//map.set(arrA,555)
+//console.log(map.get(arrA))
+
+function mapTest(){
+    this.keys = ()=>{
+        for(let key of map.keys()){
+            console.log(key)
+        }
+    };
+    this.values = ()=>{
+        for(let val of map.values()){
+            console.log(val)
+        }
+    };
+    this.entries = ()=>{
+        for (let [key, value] of map.entries()) {
+            console.log(key, value);
+        }
+    }
+    this.map = ()=>{
+        for (let [key, value] of map) {
+            console.log(key, value);
+        }
+    }
+} 
+
+function mapTest2(){
+    this.keys = ()=>[...map.keys()];
+    this.values = ()=>[...map.values()];
+    this.entries = ()=>[...map.entries()];
+    this.map = ()=>[...map]
+} 
+
+let map1 = new mapTest();
+let map2 = new mapTest2();
+//map1.keys()
+//map1.values()
+//map1.entries()
+//map1.map()
+
+// console.log(map2.keys())
+// console.log(map2.values())
+// console.log(map2.entries())
+// console.log(map2.map())
 
 
 
