@@ -181,6 +181,16 @@ function setTest (){
         set.forEach((val,key)=> console.log(key+':'+val))
     }
 }
+setTest.prototype.union = (arr1,arr2) => {
+    return [...new Set([...arr1,...arr2])]
+}
+setTest.prototype.intersect = (set1,set2) => {
+    return [...new Set([...set1].filter(x=> set2.has(x)))]
+}
+setTest.prototype.difference  = (set1,set2) => {
+    return [...new Set([...set1].filter(x=> !set2.has(x)))]
+}
+
 
 let set1 = new setTest()
 //console.log(set1.dedupe([1,2,3,4,4,4,4]))
@@ -188,6 +198,9 @@ let set1 = new setTest()
 //set1.values(['red','green','blue'])
 //set1.entries(['red','green','blue'])
 //set1.forEach(['red','green','blue'])
+//console.log(set1.union(['red','green','blue'],['yel']))
+//console.log(set1.intersect(new Set(['red','green','blue']),new Set(['red'])))
+//console.log(set1.difference(new Set(['red','green','blue']),new Set(['red'])))
 
 
 
