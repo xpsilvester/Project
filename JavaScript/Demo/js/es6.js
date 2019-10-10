@@ -277,3 +277,95 @@ mapTest.prototype.objToStrMap = obj => {
 //console.log(map1.strMapToObj(map))
 //console.log(map1.objToStrMap({yes: true, no: false}))
 
+//Proxy
+let proxyObj = new Proxy({},{
+    get: function (target,key,receiver){
+        console.log(`getting ${key}!`);
+        return Reflect.get(target,key,receiver);
+    },
+    set: function (target,key,value,receiver){
+        console.log(`setting ${key}!`)
+        return Reflect.set(target,key,value,receiver)
+    }
+})
+
+//proxyObj.count = 1
+
+//++proxyObj.count
+
+let proxyObj2 = new Proxy({},{
+    get: function(target,property){
+        return 35;
+    }
+})
+
+let proxyobj = Object.create(proxyObj2);
+//console.log(proxyobj.time)
+
+let handler = {
+    get: function(target,name){
+        if(name === 'prototype'){
+            return Object.prototype
+        }
+        return 'Hello, ' + name
+    },
+    apply: function(target,thisBinding,args){
+        return args[0]
+    },
+    construct: function(target,args){
+        return {value: args[1]}
+    }
+}
+
+let fproxy = new Proxy(function(x,y){
+    return x+y;
+},handler);
+
+// console.log(fproxy(1,2))
+// console.log(new fproxy(1,2))
+// console.log(fproxy.prototype === Object.prototype)
+// console.log(fproxy.foo === "Hello, foo")
+
+function createArray(...elements){
+    let handler = {
+        get(target,propKey,receiver){
+            console.log(typeof propKey)
+            let index = Number(propKey);
+            if(index < 0){
+                propKey = String(target.length + index);
+            }
+            return Reflect.get(target,propKey,receiver)
+        }
+    };
+    let target = [];
+    target.push(...elements);
+    return new Proxy(target,handler)
+}
+
+//let proxyArr = createArray('a','b','c')
+//console.log(proxyArr[-1])
+
+var pipe = (function () {
+    return function (value) {
+      var funcStack = [];
+      var oproxy = new Proxy({} , {
+        get : function (pipeObject, fnName) {
+          if (fnName === 'get') {
+            return funcStack.reduce(function (val, fn) {
+              return fn(val);
+            },value);
+          }
+          funcStack.push(pipeObject[fnName]);
+          return oproxy;
+        }
+      });
+  
+      return oproxy;
+    }
+  }());
+  
+  var double = n => n * 2;
+  var pow    = n => n * n;
+  var reverseInt = n => n.toString().split("").reverse().join("") | 0;
+
+  //console.log(pipe(3).double.pow.reverseInt.get);
