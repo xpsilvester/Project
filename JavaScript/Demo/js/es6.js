@@ -369,3 +369,52 @@ var pipe = (function () {
   var reverseInt = n => n.toString().split("").reverse().join("") | 0;
 
   //console.log(pipe(3).double.pow.reverseInt.get);
+
+ let validator = {
+     set: function(obj,prop,value){
+         if(prop === 'age'){
+             if(!Number.isInteger(value)){
+                 throw new TypeError('The age is not an integer')
+             }
+             if(value > 200){
+                 throw new RangeError('The age seems invalid')
+             }
+         }
+         obj[prop] = value
+     }
+ }
+
+ let person = new Proxy({},validator);
+
+ //person.age = 100
+
+ //person.age = 'young'
+
+ //person.age = 300
+
+ let handler2 = {
+     apply (){
+         return 'I am the proxy'
+     }
+ }
+
+ let target2 = function () {
+     return 'I am the target';
+ }
+
+ let p = new Proxy(target2,handler2);
+
+ //console.log(p())
+
+ let twice = {
+     apply(target,ctx,args){
+         return Reflect.apply(...arguments) * 2;
+     }
+ }
+ function sum(left,right){
+     return left + right;
+ }
+ let proxyObj3 = new Proxy(sum,twice);
+ //console.log(proxyObj3(1, 2)) // 6
+ //console.log(proxyObj3.call(null, 5, 6)) // 22
+ //console.log(proxyObj3.apply(null, [7, 8])) // 30
