@@ -418,3 +418,296 @@ var pipe = (function () {
  //console.log(proxyObj3(1, 2)) // 6
  //console.log(proxyObj3.call(null, 5, 6)) // 22
  //console.log(proxyObj3.apply(null, [7, 8])) // 30
+
+ let myObject = {
+     foo: 1,
+     bar: 2,
+     get baz(){
+         return this.foo + this.bar;
+     }
+ }
+ let myReceiverObject = {
+     foo: 4,
+     bar: 4
+ }
+
+ //console.log(Reflect.get(myObject,'baz',myReceiverObject))
+
+ //console.log(Reflect.get(myObject,'foo'))
+
+ const queuedObservers = new Set();
+ const observe = fn => queuedObservers.add(fn);
+ const observable = obj => new Proxy(obj,{set});
+
+ function set(target,key,value,receiver){
+     const result = Reflect.set(target,key,value,receiver);
+     queuedObservers.forEach(observer => observer())
+     return result
+ }
+
+ const person1 = observable({
+    name: '张三',
+    age: 20
+  });
+  
+  function print() {
+    console.log(`${person1.name}, ${person1.age}`)
+  }
+  
+//   observe(print);
+//   person1.name = '李四';
+//   person1.age = 10
+
+//Iterator 和 for...of 循环
+  let makeIterator = array => {
+      let nextIndex = 0;
+      return {
+          next: ()=>{
+              return nextIndex < array.length ?
+                {value:array[nextIndex++],done:false} : 
+                {value: undefined, done: true}
+          }
+      }
+  }
+
+  let it = makeIterator(['a','b']);
+
+//   console.log(it.next())
+//   console.log(it.next())
+//   console.log(it.next())
+
+let obj2 = {
+    data: ['hello','world'],
+    [Symbol.iterator](){
+        const self = this;
+        let index = 0;
+        return {
+            next() {
+                if(index < self.data.length){
+                    return {
+                        value: self.data[index++],
+                        done: false
+                    }
+                } else {
+                    return {value: undefined,done:true}
+                }
+            }
+        }
+    }
+}
+
+// for(let o of obj2){
+//     console.log(o)
+// }
+
+let NodeList = {
+    0: 'a',
+    1: 'b',
+    2: 'c',
+    length: 3,
+    [Symbol.iterator]: Array.prototype[Symbol.iterator]
+};
+
+// for(let item of NodeList){
+//     console.log(item)
+// }
+
+let someString = 'Hello';
+
+let strIterator = someString[Symbol.iterator]()
+
+// console.log(strIterator.next())
+// console.log(strIterator.next())
+// console.log(strIterator.next())
+
+let obj3 = {
+    [Symbol.iterator]: function* (){
+        yield 1;
+        yield 2;
+        yield 3;
+    }
+}
+
+//console.log([...obj3])
+
+let obj4 = {
+    * [Symbol.iterator](){
+        yield 'hello';
+        yield 'world';
+    }
+}
+
+// for(let o of obj4){
+//     console.log(o)
+// }
+
+//Generator
+function* helloWorldGenerator() {
+    yield 'hello';
+    yield 'world';
+    return 'ending';
+}
+
+let hw = helloWorldGenerator()
+
+// console.log(hw.next())
+// console.log(hw.next())
+// console.log(hw.next())
+// console.log(hw.next())
+
+let arr3 = [1,[[2,3],4],[5,6]]
+
+let flat = function* (a){
+    // a.forEach(function(item){
+    //     if(typeof item !== 'number'){
+    //         yield* flat(item)
+    //     }else{
+    //         yield item
+    //     }
+    // })
+    let length = a.length;
+    for(let i=0;i<length;i++){
+        let item = a[i];
+        if(typeof item !== 'number'){
+            yield* flat(item)
+        }else{
+            yield item
+        }
+    }
+}
+
+// for(let f of flat(arr3)){
+//     console.log(f)
+// }
+
+function* f1(){
+    for(let i=0;true;i++){
+        let reset = yield i;
+        if(reset){i=-1}
+    }
+}
+
+let g1 = f1();
+
+// console.log(g1.next())
+// console.log(g1.next())
+// console.log(g1.next(true))
+// console.log(g1.next())
+
+function* dataConsumer(){
+    console.log(`Started`);
+    console.log(`1.${yield}`);
+    console.log(`2.${yield}`);
+    return `result`
+}
+
+let genObj = dataConsumer();
+
+// genObj.next()
+// genObj.next('a')
+// genObj.next('b')
+
+let wrapper = (generatorFunction)=>{
+    return (...args)=>{
+        let generatorObject = generatorFunction(...args);
+        generatorObject.next();
+        return generatorObject
+    }
+}
+
+let wrapped = wrapper(function* (){
+    console.log(`First input: ${yield}`);
+    return 'DONE'
+})
+
+//wrapped().next('Hello!')
+
+function* fibonacci(){
+    let [prev,curr] = [0,1]
+    for(;;){
+        yield curr;
+        [prev,curr] = [curr,prev+curr]
+    }
+}
+
+// for(let n of fibonacci()){
+//     if(n > 1000) break;
+//     console.log(n)
+// }
+
+function* objectEntries(obj) {
+    let propKeys = Reflect.ownKeys(obj);
+  
+    for (let propKey of propKeys) {
+      yield [propKey, obj[propKey]];
+    }
+}
+  
+let jane = { first: 'Jane', last: 'Doe' };
+
+// for (let [key, value] of objectEntries(jane)) {
+//     console.log(`${key}: ${value}`);
+// }
+
+let delegatedIterator = (function* (){
+    yield 'Hello!';
+    yield 'Bye!';
+}())
+
+let delegatingIterator = (function* (){
+    yield 'Greetings!';
+    yield* delegatedIterator;
+    yield 'Ok, bye.'
+}())
+
+// for(let value of delegatingIterator){
+//     console.log(value)
+// }
+
+// 二叉树的构造函数
+function Tree(left,label,right){
+    this.left = left;
+    this.label = label;
+    this.right = right;
+}
+
+//中序（inorder）遍历函数
+function* inorder(t){
+    if(t){
+        yield* inorder(t.left);
+        yield t.label;
+        yield* inorder(t.right)
+    }
+}
+
+//生成二叉树
+function make(array){
+    //判断是否为叶节点
+    if (array.length == 1) return new Tree(null, array[0], null);
+    return new Tree(make(array[0]), array[1], make(array[2]));
+}
+
+let tree = make([[['a'], 'b', ['c']], 'd', [['e'], 'f', ['g']]]);
+
+let result2 = [];
+// 遍历二叉树
+for(let node of inorder(tree)){
+    result2.push(node)
+}
+
+//console.log(result2)
+
+let clock = (function* (){
+    while(true){
+        console.log('Tick!');
+        yield;
+        console.log('Tock!');
+        yield;
+    }
+})()
+
+// clock.next()
+// clock.next()
+// clock.next()
+// clock.next()
+
