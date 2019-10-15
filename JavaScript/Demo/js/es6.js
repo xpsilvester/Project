@@ -711,3 +711,154 @@ let clock = (function* (){
 // clock.next()
 // clock.next()
 
+const fs = require('fs');
+
+const readFile = function(fileName){
+    return new Promise(function (resolve,reject){
+        fs.readFile(fileName,function(error,data){
+            if(error) return reject(error);
+            resolve(data)
+        })
+    })
+}
+
+const gen = function* (){
+    const f1 = yield readFile('sun.js');
+    const f2 = yield readFile('22.js');
+    console.log(f1.toString());
+    console.log(f2.toString())
+}
+
+let g2 = gen()
+
+// console.log(g2.next())
+// console.log(g2.next('3213'))
+// console.log(g2.next('1231231'))
+
+//async
+const asyncReadFile = async function(){
+    const f1 = await readFile('sun.js');
+    const f2 = await readFile('22.js');
+    console.log(f1.toString());
+    console.log(f2.toString());
+}
+
+//asyncReadFile()
+
+function timeout(ms){
+    return new Promise((resolve) => {
+        setTimeout(resolve,ms)
+    })
+}
+
+async function asyncPrint(value,ms){
+    console.log('start',new Date())
+    await timeout(ms);
+    console.log('end',new Date(),value)
+}
+
+//asyncPrint('hello world',2000)
+
+async function f3(){
+    return 'hello world'
+}
+
+//f3().then(v => console.log(v))
+
+async function f4(){
+    throw new Error('出错了')
+}
+
+// f4().then(
+//     v => console.log(v),
+//     e => console.log(e)
+// )
+
+async function getTitle(url){
+    let response = await fetch(url);
+    let html = await response.text();
+    return html.match(/<title>([\s\S]+)<\/title>/i)[1];
+}
+
+//getTitle('https://tc39.github.io/ecma262/').then(console.log)
+
+class Sleep {
+    constructor(timeout){
+        this.timeout = timeout;
+    }
+    then(resolve,reject){
+        const startTime = Date.now();
+        setTimeout(
+            () => resolve(Date.now() - startTime),
+            this.timeout
+        )
+    }
+}
+
+// (async () => {
+//     const sleepTime = await new Sleep(1000);
+//     console.log(sleepTime)
+// })();
+
+async function myAsyncFunction(){
+    try{
+        await somethingThatReturnsAPromise();
+    } catch (err){
+        console.log(err)
+    }
+}
+
+//Class
+
+class Point {
+    constructor(x,y){
+        this.x = x;
+        this.y = y;
+        this.toNum = function(){
+            return Number(this.x) + Number(this.y)
+        }
+    }
+
+    toString(){
+        return `(${this.x},${this.y})`;
+    }
+}
+
+// let point = new Point(2,3);
+// console.log(point.toString())
+// console.log(Object.keys(Point.prototype))
+// console.log(point.hasOwnProperty('x'))
+// console.log(point.hasOwnProperty('y'))
+// console.log(point.hasOwnProperty('toString'))
+// console.log(point.hasOwnProperty('toNum'))
+// console.log(point.__proto__.hasOwnProperty('toString'))
+// console.log(point.toNum())
+
+class Foo {
+    static classMethod(){
+        return 'hello'
+    }
+}
+
+class Bar extends Foo {
+    static classMethod(){
+        return super.classMethod() + ',too'
+    }
+}
+
+//console.log(Bar.classMethod())
+
+class ColorPoint extends Point {
+    constructor(x,y,color){
+        super(x,y);
+        this.color = color;
+    }
+
+    toString(){
+        return `${this.color} ${super.toString()}`
+    }
+}
+
+//let colorPoint = new ColorPoint(1,2)
+
+//console.log(colorPoint.toNum())
