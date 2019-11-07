@@ -862,3 +862,4 @@ class ColorPoint extends Point {
 //let colorPoint = new ColorPoint(1,2)
 
 //console.log(colorPoint.toNum())
+
