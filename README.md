@@ -6,6 +6,8 @@
 根据《c#高级编程》写的练习DEMO
 ##### 2.Web.MVC
 基于.net MVC的内容管理系统，ado实体类模型生成SQL SERVER entities实体类，UnitOfWork通过context对sql增删改查进行封装，并产生数据表仓库上下文repository
+##### 3.readtxt
+读取txt文件，通过正则匹配生成SQL文件
 
 ### 二、JavaScript
 ##### 1.Demo

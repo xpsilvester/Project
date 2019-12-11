@@ -1,0 +1,9 @@
+2019/11/5 7:37:36     微信 Pay: accountId=342343223 deviceId=EREUIUI3943894389KJKJFKSL334343DFDFD bindStatus={"error_code":0}
+
+2019/11/5 7:37:36     WeiPay 页面  package（XML）：<xml><trade_type><![CDATA[APP]]></trade_type><mch_id><![CDATA[232132132131]]></mch_id><total_fee><![CDATA[15000]]></total_fee><out_trade_no><![CDATA[3213213123245445]]></out_trade_no><nonce_str><![CDATA[dsajkjkjdks4343434324243]]></nonce_str><sign><![CDATA[XXXXXXXXXXXXXXXX]]></sign><body><![CDATA[套餐9]]></body><notify_url><![CDATA[https://XXXXXXX/wechat/notify]]></notify_url><spbill_create_ip><![CDATA[172.XX.XX.XXX]]></spbill_create_ip><appid><![CDATA[wxXXXXXXXXX]]></appid></xml>
+
+2019/11/5 7:38:13     来自微信Notify：开始处理微信回调
+
+2019/11/5 7:38:13     Notify 页面  WX返回数据：<xml><appid><![CDATA[XXXXXXXXX]]></appid><bank_type><![CDATA[CFT]]></bank_type><cash_fee><![CDATA[15000]]></cash_fee><fee_type><![CDATA[CNY]]></fee_type><is_subscribe><![CDATA[N]]></is_subscribe><mch_id><![CDATA[XXXXXXXX]]></mch_id><nonce_str><![CDATA[XXXXXXXXXX]]></nonce_str><openid><![CDATA[XXXXXXXXXX]]></openid><out_trade_no><![CDATA[3213213123245445]]></out_trade_no><result_code><![CDATA[SUCCESS]]></result_code><return_code><![CDATA[SUCCESS]]></return_code><sign><![CDATA[XXXXXXXX]]></sign><time_end><![CDATA[20191105073816]]></time_end><total_fee>15000</total_fee><trade_type><![CDATA[APP]]></trade_type><transaction_id><![CDATA[432432432432432423423423]]></transaction_id></xml>
+
+2019/11/5 7:38:13     来自微信Notify：============ 单次支付结束 ===============

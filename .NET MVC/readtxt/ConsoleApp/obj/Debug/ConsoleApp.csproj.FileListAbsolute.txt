@@ -1,0 +1,15 @@
+D:\Documents and Settings\Desktop\已合并log文件\ConsoleApp\ConsoleApp\bin\Debug\ConsoleApp.exe
+D:\Documents and Settings\Desktop\已合并log文件\ConsoleApp\ConsoleApp\bin\Debug\ConsoleApp.pdb
+D:\Documents and Settings\Desktop\已合并log文件\ConsoleApp\ConsoleApp\obj\Debug\ConsoleApp.csprojAssemblyReference.cache
+D:\Documents and Settings\Desktop\已合并log文件\ConsoleApp\ConsoleApp\obj\Debug\ConsoleApp.exe
+D:\Documents and Settings\Desktop\已合并log文件\ConsoleApp\ConsoleApp\obj\Debug\ConsoleApp.pdb
+D:\Documents and Settings\Desktop\mergeLog\ConsoleApp\ConsoleApp\bin\Debug\ConsoleApp.exe
+D:\Documents and Settings\Desktop\mergeLog\ConsoleApp\ConsoleApp\bin\Debug\ConsoleApp.pdb
+D:\Documents and Settings\Desktop\mergeLog\ConsoleApp\ConsoleApp\obj\Debug\ConsoleApp.csprojAssemblyReference.cache
+D:\Documents and Settings\Desktop\mergeLog\ConsoleApp\ConsoleApp\obj\Debug\ConsoleApp.exe
+D:\Documents and Settings\Desktop\mergeLog\ConsoleApp\ConsoleApp\obj\Debug\ConsoleApp.pdb
+E:\test\Project\.NET MVC\readtxt\ConsoleApp\bin\Debug\ConsoleApp.exe
+E:\test\Project\.NET MVC\readtxt\ConsoleApp\bin\Debug\ConsoleApp.pdb
+E:\test\Project\.NET MVC\readtxt\ConsoleApp\obj\Debug\ConsoleApp.csprojAssemblyReference.cache
+E:\test\Project\.NET MVC\readtxt\ConsoleApp\obj\Debug\ConsoleApp.exe
+E:\test\Project\.NET MVC\readtxt\ConsoleApp\obj\Debug\ConsoleApp.pdb
