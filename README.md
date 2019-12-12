@@ -16,6 +16,8 @@
 用Canvas绘制的一些图案，七巧板、棋盘、数字点阵、球体运动...
 ##### 3.jQuery
 jQuery源码分析
+##### 4.Node
+Node练习，readtxt：读取txt文件，通过正则匹配生成SQL文件
 
 ### 三、Vue
 ##### 1.Demo
