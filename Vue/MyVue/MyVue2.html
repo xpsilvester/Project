@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MyVue</title>
+    <title>MyVue2</title>
 </head>
 <body>
-    <!-- <input type="text" id="text" />
-    输入的值为：<span id="textVal"></span> -->
     <div id="app">
         <input type="text" v-model="text">
         输入的值为：{{text}}
@@ -20,31 +18,16 @@
 </body>
 <script>
     window.onload = function(){
-        // let $text = document.getElementById('text'),
-        //     $textVal = document.getElementById('textVal'),
-        //     obj = {};
-        
-        // Object.defineProperty(obj,'msg',{
-        //     enumerable:true,
-        //     configurable: true,
-        //     set(newVal){
-        //         $textVal.innerHTML = newVal;
-        //     }
-        // })
-
-        // $text.addEventListener('input',function(e){
-        //     obj.msg = e.target.value;
-        // })
-        function MyVue(options){
-            console.log(`MyVue,options:${options}`)
-            this.$el = options.el;
-            this.$data = options.data;
-
-            obverser(this.$data)
-
-            //模板编译
-            let elem = document.querySelector(this.$el);
-            elem.appendChild(nodeToFragment(elem,this))
+        //构造函数MyVue
+        class MyVue{
+            constructor(options){
+                console.log(`MyVue,options:${options}`)
+                this.$el = options.el;
+                this.$data = options.data;
+                obverser(this.$data)
+                let elem = document.querySelector(this.$el);
+                elem.appendChild(nodeToFragment(elem,this))
+            }
         }
         //vue进行编译时，将挂载目标的所有子节点劫持到DocumentFragment中，经过一份解析等处理后，再将DocumentFragment整体挂载到目标节点上。
         function nodeToFragment(node,vm){
@@ -61,6 +44,7 @@
             }
             return flag;
         }
+        //指令解析器Compile，对于每个元素上的指令进行解析，根据指令替换数据，更新视图。
         function compile(node,vm){
             console.log(`compile,node:${node},nodeType:${node.nodeType}`)
             let reg = /\{\{(.*)\}\}/;
@@ -94,14 +78,15 @@
                 }
             }
         }
-
-        function Dep(){
-            this.subs = []
-        }
-        Dep.prototype = {
+        //定义一个主题对象，用来收集所有的订阅者，并提供notify方法，用来调用订阅者的update方法，从而执行相应的操作。
+        class Dep{
+            constructor(){
+                console.log(`Dep`)
+                this.subs = []
+            }
             addSub(sub){
                 this.subs.push(sub)
-            },
+            }
             notify(){
                 this.subs.forEach(sub => {
                     //执行订阅者的update方法
@@ -109,19 +94,20 @@
                 })
             }
         }
-
-        function Watcher(vm,node,name){
-            //全局的、唯一
-            console.log(`Watcher,node:${node},name:${name}`)
-            Dep.target = this;
-            this.node = node;
-            this.name = name;
-            this.vm = vm;
-            this.update();
-            Dep.target = null;
-        }
-
-        Watcher.prototype = {
+        //现订阅者Watcher，首先，定义了一个全局的Dep.target，然后执行了update方法，
+        //进而执行了get方法，都去了this.vm的访问器属性， 从而将订阅的消息保存在该属性的主题对象中，
+        //并最终将Dep.target设置为空，全局变量，是watcher和dep之间的唯一桥梁，必须保证Dep.target只有一个值。
+        class Watcher{
+            constructor(vm,node,name){
+                //全局的、唯一
+                console.log(`Watcher,node:${node},name:${name}`)
+                Dep.target = this;
+                this.node = node;
+                this.name = name;
+                this.vm = vm;
+                this.update();
+                Dep.target = null;
+            }
             update (){
                 this.get();                
                 if (this.node.nodeName === 'INPUT') {
@@ -130,12 +116,13 @@
                 } else {
                     this.node.nodeValue = this.value;
                 } 
-            },
+            }
             get(){
                 this.value = this.vm.$data[this.name]
             }
         }
-
+        //实现一个obverser给data中每个属性添加一个主题对象
+        //遍历data中的所有属性,包括子属性对象的属性
         function obverser(obj){
             console.log(`obverser,obj:${obj}`)
             Object.keys(obj).forEach(key => {
@@ -147,7 +134,7 @@
                 }
             })
         }
-
+        //使用Object.definePeoperty()来监听属性变动，给属性添加setter和getter
         function defineReactive(obj,key){
             console.log(`defineReactive,obj:${obj},key:${key}`)
             var _value = obj[key];
