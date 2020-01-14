@@ -15,6 +15,7 @@
         <div>
             <input type="text" v-model="text">
         </div>
+        <div>{{text2}}</div>
     </div>
 </body>
 <script>
@@ -47,7 +48,7 @@
         function nodeToFragment(node,vm){
             var flag = document.createDocumentFragment();
             var child;
-            while(child == node.firstChild){
+            while(child = node.firstChild){
                 compile(child,vm);
                 if(child.firstChild){
                     var dom = nodeToFragment(child,vm);
@@ -67,7 +68,7 @@
                         // 获取v-model指令绑定的data属性
                         var name = attr.nodeValue;
                         //绑定事件
-                        node.addEventListenr('input',function(e){
+                        node.addEventListener('input',function(e){
                             vm.$data[name] = e.target.value;
                         })
                         //初始化数据绑定
@@ -83,8 +84,9 @@
             if(node.nodeType === 3){
                 if(reg.test(node.nodeValue)){
                     var name = RegExp.$1 && (RegExp.$1.trim());
-                    //绑定数据到文本节点中
-                    node.nodeValue = node.nodeValue.replace(new RegExp('\\{\\{\\s*(' + name + ')\\s*\\}\\}'), vm.$data[name])
+                    // 绑定数据到文本节点中
+                    //  node.nodeValue = vm.$data[name]
+                    new Watcher(vm, node, name);
                 }
             }
         }
@@ -110,28 +112,19 @@
             this.node = node;
             this.name = name;
             this.vm = vm;
-            this.index = index;
             this.update();
             Dep.target = null;
         }
 
         Watcher.prototype = {
             update (){
-                this.get();
-                let _name;
-                if(this.index === 1){
-                    _name = this.name;
-                }else{
-                    _name = this.value;
-                }
-                if(this.node.nodeName === 'INPUT'){
-                    //可以添加TEXTAREA、SELECT等
+                this.get();                
+                if (this.node.nodeName === 'INPUT') {
+                    // 可以添加TEXTAREA、SELECT等
                     this.node.value = this.value;
-                }else{
-                    // this.node.nodeValue = this.value;
-                    this.node.nodeValue = this.node.nodeValue.replace(new RegExp('\\{?\\{?\\s*(' + _name + ')\\s*\\}?\\}?'), this.value); 
-                }
-                ++this.index;
+                } else {
+                    this.node.nodeValue = this.value;
+                } 
             },
             get(){
                 this.value = this.vm.$data[this.name]
@@ -161,7 +154,7 @@
                         return;
                     }
                     _value = newVal;
-                    console.log(_value);
+                    //console.log(_value);
                     //作为发布者发出通知给主题对象
                     dep.notify()
                 },
@@ -178,9 +171,12 @@
         var vm = new MyVue({
             el: '#app',
             data: {
-                text: 'hello world'
+                text: 'hello world',
+                text2: 'hello world'
             }
         })
+
+        console.log(vm)
     }
 </script>
 </html>
