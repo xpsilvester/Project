@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>moveTest</title>
+</head>
+<body>
+    
+</body>
+<script>
+function mousemoveWithText(text, options) {
+  options = options || {};
+  const $el = text instanceof HTMLElement ? text : createElement();
+  const pos = { x: -9999, y: - 9999 };
+  // TODO: 移动后才第一次能显示，有点糟糕
+  window.onmousemove = handleMove;
+
+  setTextPosition();
+  (function loop() {
+    setTextPosition();
+    // TODO: 如果需要销毁，需要存变量
+    requestAnimationFrame(loop);
+  })();
+
+  function createElement() {
+    const $el = document.createElement('div');
+    $el.innerText = text;
+    $el.style.position = 'fixed';
+    $el.style.pointerEvents = 'none';
+    document.body.appendChild($el);
+    return $el;
+  }
+
+  function handleMove(e) {
+    pos.x = e.clientX;
+    pos.y = e.clientY;
+    // TODO: 超出屏幕应隐藏，不然会造成比如 scroller-x 超出
+  }
+
+  function setTextPosition() {
+    const { x, y } = pos;
+    $el.style.left = x + 10 + 'px';
+    $el.style.top = y - 10 + 'px';
+  }
+}
+
+mousemoveWithText('moveTest');
+</script>
+</html>
