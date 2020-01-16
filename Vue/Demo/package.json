@@ -14,6 +14,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "element-ui": "^2.13.0",
+    "fs-extra": "^8.1.0",
+    "multiparty": "^4.2.1",
+    "spark-md5": "^3.0.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
@@ -73,7 +77,8 @@
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "worker-loader": "^2.0.0"
   },
   "engines": {
     "node": ">= 6.0.0",

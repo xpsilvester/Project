@@ -3,6 +3,7 @@
     <div v-html="msg"></div>
     <div>
       <a href="/#/PPTList">转到PPTList</a>
+      <a href="/#/CMS">转到CMS</a>
       <h1>site : {{site}}</h1>
       <h1>url : {{url}}</h1>
       <h1>{{details()}}</h1>
