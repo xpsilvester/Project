@@ -3,7 +3,7 @@
         <c-dialog
             ref="loginDialog"
             title='请输入你的昵称'
-            confirmBtn="开始聊天"
+            confirmBtn="start chat"
             @confirm="login"
         >
             <input class="nickname" v-model="nickname" type="text" placeholder="请输入你的昵称">
@@ -13,11 +13,11 @@
             <div class="content im-record">
             <div class="li" :class="{user: item.uid == uid}" v-for="item in messageList" :key="item.date">
                 <template v-if="item.type===1">
-                <p class="join-tips">{{item.msg}}</p>
+                    <p class="join-tips">{{item.msg}}</p>
                 </template>
                 <template v-else>
-                <div class="img">{{item.nickname}}</div>
-                <p class="message-box">{{item.msg}}</p>
+                    <div class="img">{{item.nickname}}</div>
+                    <p class="message-box">{{item.msg}}</p>
                 </template>
             </div>
             </div>
@@ -63,12 +63,12 @@ export default {
             }
         }
         window.onbeforeunload = function (e) {
-        vm.socket.send(JSON.stringify({
-            uid: vm.uid,
-            type: 2,
-            nickname: vm.nickname,
-            bridge: []
-        }));
+            vm.socket.send(JSON.stringify({
+                uid: vm.uid,
+                type: 2,
+                nickname: vm.nickname,
+                bridge: []
+            }));
         }
     },
     methods:{
@@ -114,6 +114,7 @@ export default {
                 // 接收服务器的消息
                 socket.onmessage = function(e){
                     let message = JSON.parse(e.data);
+                    console.log(message)
                     vm.messageList.push(message);
                 }   
             }

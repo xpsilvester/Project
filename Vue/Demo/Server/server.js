@@ -28,13 +28,28 @@ let server = ws.createServer(conn => {
             boardcast({
                 type: 1,
                 date: getDate(),
-                msg: obj.nickname + '加入聊天室',
+                msg: obj.nickname + 'add Chat',
+                users: users,
+                uid: obj.uid,
+                nickname: obj.nickname
+            })
+            console.log({
+                type: 1,
+                date: getDate(),
+                msg: obj.nickname + 'add Chat',
                 users: users,
                 uid: obj.uid,
                 nickname: obj.nickname
             })
         } else {
             boardcast({
+                type: 2,
+                date: getDate(),
+                msg: obj.msg,
+                uid: obj.uid,
+                nickname: obj.nickname
+            })
+            console.log({
                 type: 2,
                 date: getDate(),
                 msg: obj.msg,
