@@ -4,6 +4,7 @@
     <div>
       <a href="/#/PPTList">转到PPTList</a>
       <a href="/#/CMS">转到CMS</a>
+      <a href="/#/Chat">转到Chat</a>
       <h1>site : {{site}}</h1>
       <h1>url : {{url}}</h1>
       <h1>{{details()}}</h1>

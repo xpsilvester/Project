@@ -16,7 +16,9 @@
   "dependencies": {
     "element-ui": "^2.13.0",
     "fs-extra": "^8.1.0",
+    "moment": "^2.24.0",
     "multiparty": "^4.2.1",
+    "nodejs-websocket": "^1.7.2",
     "spark-md5": "^3.0.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"

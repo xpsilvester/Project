@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import PPTList from '@/components/PPTList'
 import CMS from '@/pages/CMS'
+import Chat from '@/pages/Chat'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/CMS',
       name: 'CMS',
       component: CMS
+    },
+    {
+      path: '/Chat',
+      name: 'Chat',
+      component: Chat
     }
   ]
 })
