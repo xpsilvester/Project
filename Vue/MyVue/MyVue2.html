@@ -95,7 +95,7 @@
             }
         }
         //现订阅者Watcher，首先，定义了一个全局的Dep.target，然后执行了update方法，
-        //进而执行了get方法，都去了this.vm的访问器属性， 从而将订阅的消息保存在该属性的主题对象中，
+        //进而执行了get方法，读取了this.vm的访问器属性， 从而将订阅的消息保存在该属性的主题对象中，
         //并最终将Dep.target设置为空，全局变量，是watcher和dep之间的唯一桥梁，必须保证Dep.target只有一个值。
         class Watcher{
             constructor(vm,node,name){
