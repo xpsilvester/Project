@@ -26,3 +26,16 @@ const userSchema = new mongoose.Schema({
     default: 0
   }
 })
+
+//二维码信息模型
+const codeSchema = new mongoose.Schema({
+  code: {  //存储二维码字符串
+    type: String
+  },
+  sessionKey: String //存储小程序的登录凭证
+})
+
+module.exports = {
+  User: mongoose.model('User', userSchema),
+  Code: mongoose.model('code', codeSchema)
+}
