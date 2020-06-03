@@ -1,6 +1,11 @@
 const Router = require('koa-router')
 const router = new Router()
 const account = require('./actions/account')
+const auth = require('./middlewares/auth')
+const photo = require('./actions/photo')
+const uuid = require('uuid')
+const multer = require('koa-multer')
+const path = require('path')
 
 function getPageParams(context) {
     return {
@@ -80,3 +85,94 @@ router.get('/login/errcode/check/:code', async (context, next) => {  //轮询接
     }
     await login()  //启动递归查询
 })
+
+/**
+ * 获取相册列表
+ */
+router.get('/album', auth, async (context, next) => {
+  const pageParams = getPageParams(context)
+  const albums = await photo.getAlbums(context.state.user.id, pageParams.pageIndex, pageParams.pageSize)   //调用获取相册的逻辑
+  context.body = {
+    data: albums,
+    status: 0
+  }
+})
+
+/**
+ * 小程序获取相册列表
+ */
+router.get('/xcx/album', auth, async (context, next) => {
+  const albums = await photo.getAlbums(context.state.user.id)
+  context.body = {
+    data: albums,
+    status: 0
+  }
+})
+
+/**
+ * 添加相册
+ */
+router.post('/album', auth, async (context, next) => {
+  const {
+    name
+  } = context.request.body
+  await photo.addAlbum(context.state.user.id, name)  //调用创建相册的逻辑
+  await next()
+}, responseOK)
+
+/**
+ * 修改相册
+ */
+router.put('/album/:id', auth, async (context, next) => {
+  await photo.updateAlbum(context.params.id, context.body.name, ctx.state.user)
+  await next()
+}, responseOK)
+
+/**
+ * 删除相册
+ */
+router.del('/album/:id', auth, async (context, next) => {
+  await photo.deleteAlbum(context.params.id)
+  await next()
+}, responseOK)
+
+const storage = multer.diskStorage({   //定义为采用磁盘存储
+  destination: path.join(__dirname, 'uploads'),  //定义存储的目录为uploads
+  filename (req, file, cb) {   //对写入的文件进行重命名，避免重名
+    const ext = path.extname(file.originalname) 
+    cb(null, uuid.v4() + ext)  //存储的照片文件名随机
+  }
+})
+
+const uplader = multer({   //得到上传的中间件
+  storage: storage
+})
+
+/**
+ * 上传相片
+ */
+router.post('/photo', auth, uplader.single('file'), async (context, next) => {
+  const {
+    file
+  } = context.req    //读取上传的文件对象，由上传中间件提供
+  const {
+    id
+  } = context.req.body   //读取消求中传递的相册ID
+  await photo.add(context.state.user.id, `https://xp.com/${file.filename}`, id)
+  await next()
+}, responseOK)
+
+/**
+ * 删除相片
+ */
+router.delete('/photo/:id', auth, async (context, next) => {
+  const p = await photo.getPhotoById(context.params.id)  //获取需要删除的照片信息
+  if (p) {
+    if (p.userId === context.state.user.id || context.state.user.isAdmin) {  //判断权限
+      await photo.delete(context.params.id)   //删除照片
+    } else {
+      context.throw(403, '该用户无权限')
+    }
+  }
+  await next()
+}, responseOK)
