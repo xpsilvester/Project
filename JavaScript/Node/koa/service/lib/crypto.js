@@ -21,8 +21,8 @@ function decode (str) {  //解密算法
   }
 }
 
-function encodeErCode () {
-  return encode(Math.random())
+function encodeErCode () {  //生成随机二维码字符串
+  return encode(Math.random()) //将随机数加密
 }
 
 module.exports = {

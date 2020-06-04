@@ -24,7 +24,7 @@ module.exports = async function (context, next) {
     context.throw(401, 'session 过期')
   }
 
-  if (/^\/admin/i.test(context.url) && !context.state.user.isAdmin) {
+  if (/^\/admin/i.test(context.url) && !context.state.user.isAdmin) {  //鉴权判断
     context.logger.info(`[auth] 当前的${context.url} 必须为管理员访问.`)
     context.throw(401, '当前资源必须管理员才能访问')
   }

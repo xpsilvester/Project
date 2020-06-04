@@ -8,7 +8,7 @@ module.exports = {
       code: code
     })
   },
-  async updateSessionKey (code, sessionKey) {
+  async updateSessionKey (code, sessionKey) {  //更新二维码信息中的登录凭证
     return Code.update({
       code: code
     }, {

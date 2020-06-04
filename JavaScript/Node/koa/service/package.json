@@ -7,5 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "xpsilvester",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@koa/cors": "^2.2.1",
+    "koa": "^2.5.1",
+    "koa-bodyparser": "^4.2.0",
+    "koa-multer": "^1.0.2",
+    "koa-router": "^7.4.0",
+    "koa-static": "^4.0.2",
+    "log4js": "^2.8.0",
+    "mongoose": "^5.1.1",
+    "request": "^2.85.0",
+    "uuid": "^3.2.1"
+  }
 }

@@ -1,0 +1,11 @@
+{
+  "apps" : [{
+    "name"        : "node-xcx-service",
+    "script"      : "./app.js",
+    "watch"       : true,
+    "ignore_watch": ["uploads"],
+    "env": {
+      "NODE_ENV": "production"
+    }
+  }]
+}

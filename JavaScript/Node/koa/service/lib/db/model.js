@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
   avatar: { //用户头像
     type: String
   },
-  userType: { //用户类型，标记管理员、普通用户、禁用用户
+  userType: { //用户类型，标记管理员1、普通用户0、禁用用户-1
     type: Number,
     default: 0
   }
