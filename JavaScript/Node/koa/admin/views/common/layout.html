@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- 引入boostrap相关静态文件 -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+    {% block head %} 
+    {% endblock %}
+</head>
+
+<body>
+    {% block header %}
+    {% endblock %}
+
+    {% block body %}
+    {% endblock %}
+
+    {% block footer %}
+    {% endblock %}
+
+    <!-- 引入boostrap相关静态文件 -->
+    <script src="../js/jquery-3.3.1.slim.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- 引入图标库 -->
+    <script src="../js/feather.min.js"></script>
+    <!-- 替换模版中的DOM为对应SVG图标 -->
+    <script>
+        feather.replace();
+    </script>
+
+    {% block extra %}
+    <script src="../js/util.js"></script>
+    {% endblock %}
+</body>
+</html>

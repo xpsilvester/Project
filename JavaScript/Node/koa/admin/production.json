@@ -1,0 +1,10 @@
+{
+  "apps" : [{
+    "name"        : "node-admin-web",
+    "script"      : "./index.js",
+    "watch"       : true,
+    "env": {
+      "NODE_ENV": "production"
+    }
+  }]
+}

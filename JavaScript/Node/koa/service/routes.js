@@ -99,9 +99,16 @@ router.get('/login/ercode/check/:code', async (context, next) => {  //轮询接�
                 })
                 await login()   //继续递归查询
             } else {   //如果超时，则直接返回
-                context.body = {
-                    status: -1
+                //无小程序状态测试
+                context.body = {   //登录成功
+                    status: 0,
+                    data: {
+                        sessionKey: '5a3f57f4432e2add8c1076214a50097c78174b8a80e2ec5b98e2998deb1a9bfe76157b58ab1bd1a61c0e8a674c25fa81'
+                    }
                 }
+                // context.body = {
+                //     status: -1
+                // }
             }
         }
     }

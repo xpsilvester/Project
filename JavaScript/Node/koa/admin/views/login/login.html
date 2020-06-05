@@ -1,0 +1,61 @@
+{% extends '../common/layout.html' %}
+
+{% block head %}
+<link rel="stylesheet" href='../css/login.css'>
+{% endblock %}
+
+{% block header %}
+<div class="logo">xp</div>
+{% endblock %}
+
+{% block body %}
+<main class="login-container">
+    <div class="code-container" id="j_container">
+        <div class="login-title">请打开相册小程序进行扫码登录</div>
+        <div id="j_qrcode" class="qrcode" data-id={{qrcode}}>
+            <div class="renew-code" id="j_renew">二维码已过期  点我更新</div>
+            <span class="border-deco deco-left deco-top"></span>
+            <span class="border-deco deco-right deco-top"></span>
+            <span class="border-deco deco-left deco-bottom"></span>
+            <span class="border-deco deco-right deco-bottom"></span>
+        </div>
+    </div>
+    <div class="alert alert-warning" id="j_warning" role="alert">
+        抱歉，您没有登陆权限。
+    </div>
+</main>
+{% endblock %}
+
+{% block footer %}
+<footer>
+        <div class="col-sm-12">
+            <p class="police">
+                <a href="#">ICP备xxxx号sds</a>
+            </p>
+            <div class="gov_item_box">
+                <a target="_blank" href="#" class="gov_item gov_item1">
+                    <i></i>
+                    <span>xxxxxxxx</span>
+                </a>
+                <a target="_blank" href="####" class="gov_item gov_item2">
+                    <i></i>
+                    <span>xxxxx</span>
+                </a>
+                <a target="_blank" href="#" class="gov_item gov_item3">
+                    <i></i>
+                    <span>xxxxx</span>
+                </a>
+                <a target="_blank" href="#" class="gov_item gov_item5">
+                    <i></i>
+                    <span>xxxxx</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+
+{% block extra %}
+{{ super() }}
+<script src="../js/qrcode.js"></script>
+<script src="../js/login.js"></script>
+{% endblock %}

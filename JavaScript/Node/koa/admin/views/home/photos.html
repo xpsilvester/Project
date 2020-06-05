@@ -1,0 +1,101 @@
+{% import '../common/pagination.html' as pagination %}
+{% extends './layout.html' %} 
+{% block body %}
+{{ super() }}
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 main-container">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+              <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group mr-2">
+                  <button class="btn btn-sm btn-outline-secondary multi-select" id='j_multi_select'></button>
+                </div>
+                <div class="input-group-prepend">
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                        <span data-feather="list"></span>
+                             分列
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/photos/{{status}}?index={{index}}&column=4">3</a>
+                        <a class="dropdown-item" href="/photos/{{status}}?index={{index}}&column=3">4</a>
+                        <a class="dropdown-item" href="/photos/{{status}}?index={{index}}&column=2">6</a>
+                    </div>
+                </div>
+                <div class="input-group-prepend">
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                        <span data-feather="list"></span>
+                            照片分类
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/photos/all?index={{index}}&column={{column}}">全部照片</a>
+                        <a class="dropdown-item" href="/photos/pending?index={{index}}&column={{column}}">未审核</a>
+                        <a class="dropdown-item" href="/photos/accepted?index={{index}}&column={{column}}">已通过</a>
+                        <a class="dropdown-item" href="/photos/rejected?index={{index}}&column={{column}}">未通过</a>
+                    </div>
+                </div>
+                <div class="info">
+                    <span data-feather='layers'></span>&nbsp;&#58;&nbsp;设置为未审核
+                </div>
+                <div class="info">
+                    <span data-feather='check-square'></span>&nbsp;&#58;&nbsp;通过
+                </div>
+                <div class="info">
+                    <span data-feather='x-square'></span>&nbsp;&#58;&nbsp;不通过
+                </div>
+              </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                {% for item in photos %}
+                <div class="col-md-{{column}} j-card">
+                    <div class="card mb-4 box-shadow" data-id={{item._id}}>
+                        <img class="card-img-top admin-img {{'trans' if item.isApproved !== null else ''}}" src="{{item.url}}" data-holder-rendered="true">
+                        <div class="card-body card-center">
+                                <button type="button" class="btn btn-sm btn-outline-secondary btn-tiny j-mani-btn">
+                                    {% if item.isApproved === null %}
+                                    <span data-feather='check-square' data-id='1'></span>
+                                    {% else %}
+                                    <span data-feather='layers' data-id='0'></span>
+                                    {% endif %}
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary btn-tiny j-mani-btn">
+                                    {% if item.isApproved === false %}
+                                    <span data-feather='check-square' data-id='1'></span>
+                                    {% else %}
+                                    <span data-feather='x-square' data-id='2'></span>
+                                    {% endif %}
+                                </button>
+                        </div>
+                        <div class='cover cover-card j-cover'>
+                            <span data-feather='check' class='manipulate-check'></span>
+                            <span data-feather='check' class='manipulate-check j-check'></span>
+                        </div>
+                        {% if item.isApproved === true %}
+                        <span data-feather='check-circle' class='approve-mark'></span>
+                        {% elif item.isApproved === false %}
+                        <span data-feather='x-circle' class='approve-mark'></span>
+                        {% else %}{% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% if page > 1 %}
+           {{ pagination.pagination('photos', page, status,index,column) }}
+        {% endif %}
+    </main>
+    <div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 approve-btn" id="j_approve_group">
+            <div class="btn-group mr-2">
+                    <button class="btn btn-sm btn-outline-secondary select-all" id='j_select_all'></button>
+                  </div>
+            <div class="btn-group mr-2">
+                <button class="btn btn-sm btn-outline-secondary j-mani-btn">
+                    <span data-feather='check-square' data-id='1'></span>
+                </button>
+                <button class="btn btn-sm btn-outline-secondary j-mani-btn">
+                    <span data-feather='layers' data-id='0'></span>
+                </button>
+                <button class="btn btn-sm btn-outline-secondary j-mani-btn">
+                    <span data-feather='x-square' data-id='2'></span>
+                </button>
+            </div>
+    </div>
+{% endblock %}

@@ -2,6 +2,8 @@ const env = process.env
 const appKey = env.APP_KET || 'default key'
 const appSecret = env.APP_SECRET || 'default secret'
 const nodeEnv = env.NODE_ENV
+const isTest = true;
+
 let db = {
   name: 'mongodb://127.0.0.1:27017/miniprogram',
   user: '',
@@ -18,5 +20,6 @@ if (nodeEnv === 'production') {
 module.exports = {
   appKey,
   appSecret,
-  db
+  db,
+  isTest
 }

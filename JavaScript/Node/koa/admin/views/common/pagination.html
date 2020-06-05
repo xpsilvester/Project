@@ -1,0 +1,9 @@
+{% macro pagination(path, page, status, index, column) %}
+<ul class="pagination pagination-sm justify-content-end">
+    <li class="page-item"><a class="page-link" href="/{{path}}/{{status}}?index={{index - 1 if index > 1 else 1}}&column={{column}}"><span data-feather='chevrons-left'></span></a></li>
+    {% for i in range(1, page + 1) %}
+    <li class="page-item {{'active' if loop.index === index}}"><a class="page-link" href="/{{path}}/{{status}}?index={{i}}&column={{column}}">{{i}}</a></li>
+    {% endfor %}
+    <li class="page-item"><a class="page-link" href="/{{path}}/{{status}}?index={{page if index === page else index + 1}}&column={{column}}"><span data-feather='chevrons-right'></span></a></li>
+</ul>
+{% endmacro %}

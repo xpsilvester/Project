@@ -1,0 +1,99 @@
+{% import '../common/pagination.html' as pagination %}
+{% extends './layout.html' %} 
+{% block body %}
+{{ super() }}
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 main-container">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group mr-2">
+                <button class="btn btn-sm btn-outline-secondary multi-select" id='j_multi_select'></button>
+              </div>
+              <div class="input-group-prepend">
+                  <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                      <span data-feather="list"></span>
+                          用户分类
+                  </button>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item" href="/users/all">全部</a>
+                      <a class="dropdown-item" href="/users/admin">管理员</a>
+                      <a class="dropdown-item" href="/users/ordinary">普通</a>
+                      <a class="dropdown-item" href="/users/blocked">禁用</a>
+                  </div>
+              </div>
+              <div class="info">
+                  <span data-feather='anchor'></span>&nbsp;&#58;&nbsp;设置为管理员
+              </div>
+              <div class="info">
+                  <span data-feather='user'></span>&nbsp;&#58;&nbsp;设置为普通用户
+              </div>
+              <div class="info">
+                  <span data-feather='user-x'></span>&nbsp;&#58;&nbsp;加入黑名单
+              </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+              <table class="table table-striped table-sm table-users">
+                <thead>
+                  <tr>
+                    <th class="change-status j-identity"></th>
+                    <th>ID</th>
+                    <th>名字</th>
+                    <th>最后登陆时间</th>
+                    <th>身份</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in users %}
+                  <tr data-id={{item._id}}>
+                    <td class="change-status j-identity"><input type="checkbox" class="j-option" aria-label="Checkbox for following text input"></td>
+                    <td class="{{'opa' if item.userType === -1 else ''}}">{{item.openId}}</td>
+                    <td class="{{'opa' if item.userType === -1 else ''}}">{{item.name}}</td>
+                    <td class="{{'opa' if item.userType === -1 else ''}}">{{item.lastLogin}}</td>
+                    <td>
+                      {% if item.userType === 1 %}
+                      <span class="badge badge-pill badge-warning"><span data-feather='anchor'></span></span>
+                      {% elif item.userType === -1 %}
+                      <span class="badge badge-pill badge-dark"><span data-feather='user-x'></span></span>
+                      {% endif %}
+                    </td>
+                    <td class="manipulate-cell">
+                        <button type="button" class="btn btn-sm btn-outline-secondary btn-tiny j-mani-btn">
+                            {% if item.userType === 1 %}
+                            <span data-feather='user' data-id='0'></span>
+                            {% else %}
+                            <span data-feather='anchor' data-id='1'></span>
+                            {% endif %}                      
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary btn-tiny j-mani-btn">                           
+                            {% if item.userType === -1 %}
+                            <span data-feather='user' data-id='0'></span>
+                            {% else %}
+                            <span data-feather='user-x' data-id='-1'></span>
+                            {% endif %}                
+                        </button>
+                        <div class="cover cover-table j-cover"></div>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+        {% if page > 1 %}
+            {{ pagination.pagination('users', page, status,index,column) }}
+        {% endif %}
+    </main>
+    <div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 approve-btn" id="j_approve_group">
+        <div class="btn-group mr-2">
+            <button class="btn btn-sm btn-outline-secondary j-mani-btn">
+                <span data-feather='anchor' data-id='1'></span>
+            </button>
+            <button class="btn btn-sm btn-outline-secondary j-mani-btn">
+                <span data-feather='user' data-id='0'></span>
+            </button>
+            <button class="btn btn-sm btn-outline-secondary j-mani-btn">
+                <span data-feather='user-x' data-id='-1'></span>
+            </button>
+        </div>
+    </div>
+{% endblock %}

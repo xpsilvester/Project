@@ -1,0 +1,29 @@
+{
+  "name": "code",
+  "version": "1.0.0",
+  "description": " create a backstage to display information ",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "koa",
+    "backstage",
+    "CURD"
+  ],
+  "author": "xpsilvester",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "feather-icons": "^4.7.3",
+    "koa": "^2.5.1",
+    "koa-bodyparser": "^4.2.0",
+    "koa-nunjucks-2": "^3.0.2",
+    "koa-router": "^7.4.0",
+    "koa-static": "^4.0.3",
+    "koa-views": "^6.1.4"
+  },
+  "devDependencies": {
+    "log4js": "^6.3.0"
+  }
+}

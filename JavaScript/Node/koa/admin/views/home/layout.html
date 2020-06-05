@@ -1,0 +1,39 @@
+{% extends '../common/layout.html' %}
+
+{% block head %}
+<link rel="stylesheet" href='../css/main.css'>
+{% endblock %}
+
+{% block header %}
+{% include '../common/header.html' %} 
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+              <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                  <ul class="nav flex-column" id="sidebar_list">
+                      {% for item in menu %}
+                      <li class="nav-item j-nav-item">
+                            <a class="nav-link {{'active' if activeMenu === loop.index0 else ''}}" href='{{item.url}}'>
+                                <span data-feather={{item.icon}}></span>
+                                {{item.title}}
+                            </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                </div>
+              </nav>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+{% include '../common/footer.html' %} 
+{% endblock %}
+
+{% block extra %}
+{{ super() }}
+<script src="../js/main.js"></script>
+{% endblock %}
