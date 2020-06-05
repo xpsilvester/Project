@@ -103,7 +103,7 @@ router.get('/login/ercode/check/:code', async (context, next) => {  //轮询接�
                 context.body = {   //登录成功
                     status: 0,
                     data: {
-                        sessionKey: '5a3f57f4432e2add8c1076214a50097c78174b8a80e2ec5b98e2998deb1a9bfe76157b58ab1bd1a61c0e8a674c25fa81'
+                        sessionKey: '5a3f57f4432e2add8c1076214a50097c873cdb7e1b4a78c8654f61f3e3382161d1dcd3856d984e449bd867bfd462c1ab'
                     }
                 }
                 // context.body = {
@@ -209,7 +209,7 @@ router.post('/photo', auth, uplader.single('file'), async (context, next) => {
   const {
     id
   } = context.req.body   //读取请求中传递的相册ID
-  await photo.add(context.state.user.id, `https://xp.com/${file.filename}`, id)
+  await photo.add(context.state.user.id, `http://localhost:4001/${file.filename}`, id)
   await next()
 }, responseOK)
 
@@ -298,6 +298,5 @@ router.put('/admin/user/:id', async (context, next) => {
   context.body = body
   await next()
 })
-
 
 module.exports = router

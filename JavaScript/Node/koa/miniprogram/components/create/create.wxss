@@ -1,0 +1,37 @@
+.c-c-box{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 20rpx;
+    background: #fff;
+}
+.names{
+    margin-bottom: 60rpx;
+}
+.n-input{
+    height: 150rpx;
+    line-height: 1;
+    color: #b9b9b9;
+    font-size: 64rpx;
+    border-bottom: 2rpx solid #dedede;
+}
+.btn {
+    width: 100%;
+    border-radius: 8rpx;
+    height: 84rpx;
+    line-height: 84rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 36rpx;
+    background: #00bcff;
+}
+.gray{
+    margin-top: 50rpx;
+    background: #eeeeee;
+    color: #bbbbbb;
+}
+.active-btn{
+    background: #11b8f5;
+}

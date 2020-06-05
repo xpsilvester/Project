@@ -1,6 +1,6 @@
 const env = process.env
-const appKey = env.APP_KET || 'default key'
-const appSecret = env.APP_SECRET || 'default secret'
+const appKey = env.APP_KET || 'appKey'
+const appSecret = env.APP_SECRET || 'appSecret'
 const nodeEnv = env.NODE_ENV
 const isTest = true;
 

@@ -1,0 +1,71 @@
+.pic-head {
+  position: relative;
+  height: 475rpx;
+  overflow: hidden;
+  margin-bottom: 60rpx;
+}
+
+.head-bgi {
+  width: 100%;
+}
+
+.head-tips {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.pics-name {
+  font-size: 48rpx;
+  color: #fff;
+  margin: 320rpx 0 20rpx 40rpx;
+}
+
+.pics-nums {
+  font-size: 28rpx;
+  color: #fffdfb;
+  margin-left: 40rpx;
+}
+
+.btn {
+  width: 80%;
+  border-radius: 8rpx;
+  height: 84rpx;
+  line-height: 84rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 36rpx;
+  background: #00bcff;
+  margin: 0 auto 40rpx;
+}
+
+.active-btn {
+  background: #11b8f5;
+}
+
+.item {
+  margin-bottom: 40rpx;
+}
+
+.time {
+  padding: 20rpx 0 40rpx 20rpx;
+}
+
+.pics {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: 236rpx;
+  align-items: center;
+  padding: 0 10rpx;
+}
+
+.pic {
+  width: 230rpx;
+  height: 230rpx;
+  display: block;
+  margin: 9rpx;
+  box-shadow: 0 2rpx 8rpx gray;
+}

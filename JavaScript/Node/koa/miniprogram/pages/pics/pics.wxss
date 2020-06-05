@@ -1,0 +1,54 @@
+.p-i-box {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -25rpx;
+}
+
+.box-item {
+  width: 340rpx;
+  height: 440rpx;
+  overflow: hidden;
+  margin: 0 24rpx 50rpx 0;
+}
+
+.item-img {
+  display: block;
+  width: 340rpx;
+  height: 340rpx;
+  border-radius: 8rpx;
+  box-shadow: 0 2rpx 8rpx gray;
+}
+
+.item-add {
+  text-align: center;
+  background: #f5f5f5;
+  color: #0bb9f1;
+  font-size: 28rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-name {
+  color: #000;
+  font-size: 32rpx;
+  line-height: 64rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.item-num {
+  color: #747474;
+  font-size: 28rpx;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.item-ico {
+  color: #05b9ff;
+  font-size: 140rpx;
+}

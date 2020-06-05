@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<view class="container">
+  <view>
+    <button class="btn-userInfo" wx:if="{{userInfo.data && !userInfo.data.name}}" open-type="getUserInfo" bindgetuserinfo="getUserInfoHandle"> 使用微信账号登录 </button>
+    <block wx:elif="{{userInfo}}">
+      <view class="userinfo">
+        <image class="userinfo-avatar" src="{{userInfo.data.avatar}}" mode="cover"></image>
+        <text class="userinfo-nickname">Hello, {{userInfo.data.name}}</text>
+      </view>
+      <button class="btn-qcode" bindtap="scanQrcodeHandle">扫码登录后台系统</button>
+    </block>
+  </view>
+  <view class='footer'>
+    <view>本项目开源，代码地址：</view>
+    <view>https://github.com/xpsilvester/Project</view>
+  </view>
+</view>

@@ -1,0 +1,18 @@
+<view class="p-p-box">
+  <view class="pic-head">
+    <image class="head-bgi" mode="widthFix" src="{{fm}}"></image>
+    <view class="head-tips">
+      <view class="pics-name">{{name}}</view>
+      <view class="pics-nums">{{nums}}个影像</view>
+    </view>
+  </view>
+  <view class="btn" bindtap="upload" hover-class="active-btn">上传照片</view>
+  <view class="pic-list">
+    <view class="item" wx:for="{{pics}}">
+      <view class="time">{{item[0].created}}</view>
+      <view class="pics">
+        <image class="pic" bindtap="previewImage" wx:for="{{item}}" wx:for-item="item2" data-src="{{item2.url}}" src="{{item2.url}}"></image>
+      </view>
+    </view>
+  </view>
+</view>

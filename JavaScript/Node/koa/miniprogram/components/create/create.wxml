@@ -1,0 +1,7 @@
+<view wx:if="{{!hidden}}" class="c-c-box">
+  <view class="names">
+    <input class="n-input" bindinput="eventInput" placeholder="添加相册名称" />
+  </view>
+  <view class="btn" bindtap="create" hover-class="active-btn">创建相册</view>
+  <view class="btn gray" bindtap="goBack" hover-class="active-btn">返  回</view>
+</view>
