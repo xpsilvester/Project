@@ -1,0 +1,68 @@
+[v-cloak] {
+    display: none;
+}
+body{
+    margin: 0;
+    padding: 0;
+    #app{
+        padding: 30px;
+    }
+    .product-list{
+        min-height: 450px;
+        margin-top: 30px;
+        table{
+            tr{
+                &.red{
+                    background: red;
+                }
+                td{
+                    text-align:center;
+                    
+                }
+            }
+        }
+    }
+    .mask{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        background: rgba(0,0,0,.8);
+        #popup{
+            position: absolute;
+            width: 800px;
+            height: 600px;
+            top: 50%;
+            left: 50%;
+            margin: -300px 0 0 -400px;
+            border:1px solid #ccc;
+            background: #fff;
+            h3{
+                text-align: center;
+            }
+            table{
+                width: 50%;
+                margin: 20px auto 0;
+                tr{
+                    height: 30px;
+                }
+            }
+            .operation{
+                text-align: center;
+                margin: 50px auto 0;
+            }
+        }
+    }
+    .loading{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        background: #fff;
+    }
+    
+}
