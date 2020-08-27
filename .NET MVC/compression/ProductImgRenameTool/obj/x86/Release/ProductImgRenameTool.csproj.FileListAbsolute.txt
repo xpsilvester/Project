@@ -1,0 +1,18 @@
+D:\vs project\ProductImgRenameTool\ProductImgRenameTool\bin\Release\ProductImgRenameTool.exe
+D:\vs project\ProductImgRenameTool\ProductImgRenameTool\bin\Release\ProductImgRenameTool.pdb
+D:\vs project\ProductImgRenameTool\ProductImgRenameTool\obj\x86\Release\ProductImgRenameTool.exe
+D:\vs project\ProductImgRenameTool\ProductImgRenameTool\obj\x86\Release\ProductImgRenameTool.pdb
+D:\vs project\ProductImgRenameTool\ProductImgRenameTool\obj\x86\Release\ProductImgRenameTool.csprojResolveAssemblyReference.cache
+D:\Documents and Settings\Desktop\wxp\专题\ProductImgRenameTool\ProductImgRenameTool\bin\Release\ProductImgRenameTool.exe.config
+D:\Documents and Settings\Desktop\wxp\专题\ProductImgRenameTool\ProductImgRenameTool\bin\Release\ProductImgRenameTool.exe
+D:\Documents and Settings\Desktop\wxp\专题\ProductImgRenameTool\ProductImgRenameTool\bin\Release\ProductImgRenameTool.pdb
+D:\Documents and Settings\Desktop\wxp\专题\ProductImgRenameTool\ProductImgRenameTool\obj\x86\Release\ProductImgRenameTool.csprojAssemblyReference.cache
+D:\Documents and Settings\Desktop\wxp\专题\ProductImgRenameTool\ProductImgRenameTool\obj\x86\Release\ProductImgRenameTool.exe
+D:\Documents and Settings\Desktop\wxp\专题\ProductImgRenameTool\ProductImgRenameTool\obj\x86\Release\ProductImgRenameTool.pdb
+D:\Documents and Settings\Desktop\wxp\专题\ProductImgRenameTool无损压缩\ProductImgRenameTool\bin\Release\ProductImgRenameTool.exe.config
+D:\Documents and Settings\Desktop\wxp\专题\ProductImgRenameTool无损压缩\ProductImgRenameTool\bin\Release\ProductImgRenameTool.exe
+D:\Documents and Settings\Desktop\wxp\专题\ProductImgRenameTool无损压缩\ProductImgRenameTool\bin\Release\ProductImgRenameTool.pdb
+D:\Documents and Settings\Desktop\wxp\专题\ProductImgRenameTool无损压缩\ProductImgRenameTool\obj\x86\Release\ProductImgRenameTool.csprojAssemblyReference.cache
+D:\Documents and Settings\Desktop\wxp\专题\ProductImgRenameTool无损压缩\ProductImgRenameTool\obj\x86\Release\ProductImgRenameTool.csproj.CoreCompileInputs.cache
+D:\Documents and Settings\Desktop\wxp\专题\ProductImgRenameTool无损压缩\ProductImgRenameTool\obj\x86\Release\ProductImgRenameTool.exe
+D:\Documents and Settings\Desktop\wxp\专题\ProductImgRenameTool无损压缩\ProductImgRenameTool\obj\x86\Release\ProductImgRenameTool.pdb

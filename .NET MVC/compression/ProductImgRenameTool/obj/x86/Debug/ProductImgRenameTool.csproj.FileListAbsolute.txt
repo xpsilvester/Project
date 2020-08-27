@@ -1,0 +1,5 @@
+D:\vs project\ProductImgRenameTool\ProductImgRenameTool\bin\Debug\ProductImgRenameTool.exe
+D:\vs project\ProductImgRenameTool\ProductImgRenameTool\bin\Debug\ProductImgRenameTool.pdb
+D:\vs project\ProductImgRenameTool\ProductImgRenameTool\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\vs project\ProductImgRenameTool\ProductImgRenameTool\obj\x86\Debug\ProductImgRenameTool.exe
+D:\vs project\ProductImgRenameTool\ProductImgRenameTool\obj\x86\Debug\ProductImgRenameTool.pdb

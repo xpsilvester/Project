@@ -9,6 +9,10 @@
 ##### 3.readtxt
 读取txt文件，通过正则匹配生成SQL文件
 
+4.compression
+
+图片无损压缩
+
 ### 二、JavaScript
 ##### 1.Demo
 根据《JavaScript 高级编程》、《精通正则表达式》写的练习DEMO
