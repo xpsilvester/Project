@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+  <title>test</title>
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+<script type="text/babel">
+  class FlavorForm extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = { value: 'coconut' };
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+      this.setState({ value: event.target.value });
+    }
+
+    handleSubmit(event) {
+      alert('你喜欢的风味是: ' + this.state.value);
+      event.preventDefault();
+    }
+
+    render() {
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            （受控组件）选择你喜欢的风味:
+            <select value={this.state.value} onChange={this.handleChange}>
+              <option value="grapefruit">葡萄柚</option>
+              <option value="lime">酸橙</option>
+              <option value="coconut">椰子</option>
+              <option value="mango">芒果</option>
+            </select>
+          </label>
+          <input type="submit" value="提交" />
+        </form>
+      );
+    }
+  }
+
+  class NameForm extends React.Component {
+    constructor(props) {
+      super(props);
+      this.handleSubmit = this.handleSubmit.bind(this);
+      this.input = React.createRef();
+      this.select = React.createRef();
+      this.fileInput = React.createRef();
+    }
+
+    handleSubmit(event) {
+      alert('input value:' + this.input.current.value +',select value:' + this.select.current.value );
+      console.log(this.fileInput)
+      event.preventDefault();
+    }
+
+    render() {
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Name:
+            <input type="text" ref={this.input} defaultValue="Bob" />
+          </label>
+          <label>
+            Upload file:
+            <input type="file" ref={this.fileInput} />
+          </label>
+          <label>
+            （非受控组件） 选择你喜欢的风味:
+          <select ref={this.select}>
+              <option value="grapefruit">葡萄柚</option>
+              <option value="lime">酸橙</option>
+              <option value="coconut">椰子</option>
+              <option value="mango">芒果</option>
+            </select>
+          </label>
+          <input type="submit" value="提交" />
+        </form>
+      );
+    }
+  }
+
+
+  let a = ReactDOM.render(
+    <div>
+      <FlavorForm />
+      <NameForm />
+    </div>
+    , document.getElementById('app'));
+</script>
+
+</html>

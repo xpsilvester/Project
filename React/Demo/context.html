@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+  <title>test</title>
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+<script type="text/babel">
+  const themes = {
+    light: {
+      foreground: '#000000',
+      background: '#eeeeee',
+    },
+    dark: {
+      foreground: '#ffffff',
+      background: '#222222',
+    },
+  };
+
+  const ThemeContext = React.createContext({
+    theme: themes.dark,
+    toggleTheme: () => { },
+  });
+
+  function ThemeTogglerButton() {
+    // Theme Toggler 按钮不仅仅只获取 theme 值，它也从 context 中获取到一个 toggleTheme 函数
+    return (
+      <ThemeContext.Consumer>
+        {({ theme, toggleTheme }) => (
+          <button onClick={toggleTheme}
+            style={{ backgroundColor: theme.background }}>
+            Toggle Theme
+          </button>
+        )}
+      </ThemeContext.Consumer>
+    );
+  }
+
+  function Content() {
+    return (
+      <div>
+        <ThemeTogglerButton />
+      </div>
+    );
+  }
+
+  class App extends React.Component {
+    constructor(props) {
+      super(props);
+
+      this.toggleTheme = () => {
+        this.setState(state => ({
+          theme:
+            state.theme === themes.dark
+              ? themes.light
+              : themes.dark,
+        }));
+      };
+
+      // State 也包含了更新函数，因此它会被传递进 context provider。
+      this.state = {
+        theme: themes.light,
+        toggleTheme: this.toggleTheme,
+      };
+    }
+
+    render() {
+      // 整个 state 都被传递进 provider
+      return (
+        <ThemeContext.Provider value={this.state}>
+          <Content />
+        </ThemeContext.Provider>
+      );
+    }
+  }
+  let a = ReactDOM.render(
+    <div>
+      <App />
+    </div>
+    , document.getElementById('app'));
+</script>
+
+</html>

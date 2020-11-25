@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+  <title>test</title>
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+<script type="text/babel">
+  const DataSource = {
+    getComments(){
+      return [
+        {
+          id:1,
+          title: 'comment1'
+        },
+        {
+          id:2,
+          title: 'comment2'
+        }
+      ]
+    },
+    addChangeListener(){
+
+    },
+    removeChangeListener(){
+
+    }
+  }
+
+  function Comment (props){
+    return <h2> { props.comment.title } </h2>
+  }
+
+  class CommentList extends React.Component {
+    constructor(props) {
+      super(props);
+      this.handleChange = this.handleChange.bind(this);
+      this.state = {
+        // 假设 "DataSource" 是个全局范围内的数据源变量
+        comments: DataSource.getComments()
+      };
+    }
+
+    componentDidMount() {
+      // 订阅更改
+      DataSource.addChangeListener(this.handleChange);
+    }
+
+    componentWillUnmount() {
+      // 清除订阅
+      DataSource.removeChangeListener(this.handleChange);
+    }
+
+    handleChange() {
+      // 当数据源更新时，更新组件状态
+      this.setState({
+        comments: DataSource.getComments()
+      });
+    }
+
+    render() {
+      return (
+        <div>
+          {this.state.comments.map((comment) => (
+            <Comment comment={comment} key={comment.id} />
+          ))}
+        </div>
+      );
+    }
+  }
+
+  ReactDOM.render(
+    <CommentList />
+    , document.getElementById('app'));
+  
+  // Function.prototype.myBind = function(context,...args){
+  //   args = args ? args : [];
+  //   let fn = this;
+  //   return function newFn(...newArgs){
+  //     if(this instanceof newFn){
+  //       return new fn(...args,...newArgs)
+  //     }
+  //     return fn.apply(context,[...args,...newArgs])
+  //   }
+  // }
+  // function factor(n){
+  //   if(n <= 2){
+  //     return 1
+  //   }
+  //   return factor(n-1) + factor(n-2)
+  // }
+  // function factor2(n){
+  //   if(n <=1 ){
+  //     return 1
+  //   }
+  //   let arr = [1,1]
+  //   for(let i=2;i<n;i++){
+  //     arr[i] = arr[i-1] + arr[i-2]
+  //   }
+  //   return arr[arr.length-1]
+  // }
+  // function factor3(n){
+  //   if(n <= 2){
+  //     return 1
+  //   }
+  //   let sum,n1 = 1,n2= 1;
+  //   for(let i=2;i<n;i++){
+  //     sum = n1 + n2;
+  //     n1 = n2
+  //     n2 = sum;
+  //   }
+  //   return sum
+  // }
+</script>
+
+</html>

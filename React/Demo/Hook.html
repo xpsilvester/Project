@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+  <title>test</title>
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+<script type="text/babel">
+  const { useState, useContext, useReducer } = React
+  function Example() {
+    // 声明一个新的叫做 “count” 的 state 变量
+    const [count, setCount] = useState(0);
+
+    return (
+      <div>
+        <p>You clicked {count} times</p>
+        <button onClick={() => setCount(count + 1)}>
+          Click me
+        </button>
+      </div>
+    );
+  }
+  //useReducer
+  function init(initialCount) {
+    return { count: initialCount };
+  }
+
+  function reducer(state, action) {
+    switch (action.type) {
+      case 'increment':
+        return { count: state.count + 1 };
+      case 'decrement':
+        return { count: state.count - 1 };
+      case 'reset':
+        return init(action.payload);
+      default:
+        throw new Error();
+    }
+  }
+
+  function Counter({ initialCount }) {
+    const [state, dispatch] = useReducer(reducer, initialCount, init);
+    return (
+      <div>
+        Count: {state.count}
+        <button
+          onClick={() => dispatch({ type: 'reset', payload: initialCount })}>
+          Reset
+      </button>
+        <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+        <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+      </div>
+    );
+  }
+
+
+  //useContext
+  const themes = {
+    light: {
+      foreground: "#000000",
+      background: "#eeeeee"
+    },
+    dark: {
+      foreground: "#ffffff",
+      background: "#222222"
+    }
+  };
+
+  const ThemeContext = React.createContext(themes.light);
+
+  function App() {
+    return (
+      <ThemeContext.Provider value={themes.dark}>
+        <Toolbar />
+      </ThemeContext.Provider>
+    );
+  }
+
+  function Toolbar(props) {
+    return (
+      <div>
+        <ThemedButton />
+      </div>
+    );
+  }
+
+  function ThemedButton() {
+    const theme = useContext(ThemeContext);
+    return (
+      <button style={{ background: theme.background, color: theme.foreground }}>
+        I am styled by theme context!
+      </button>
+    );
+  }
+  let a = ReactDOM.render(
+    <div>
+      <Counter initialCount={1} />
+      <Example />
+      <App />
+    </div>
+    , document.getElementById('app'));
+</script>
+
+</html>
